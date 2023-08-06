@@ -22,7 +22,7 @@ public class BasicMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.up * _initialSpeed;
+        rb.velocity = Vector3.forward * 8;
 
         graphics = transform.GetChild(0).gameObject;
     }
