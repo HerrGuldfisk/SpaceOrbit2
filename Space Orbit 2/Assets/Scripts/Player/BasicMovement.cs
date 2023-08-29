@@ -36,15 +36,14 @@ public class BasicMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-
         if(rawInput < 0) 
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steering));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
         else if (rawInput > 0) 
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
+            // rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering));
         }
 
         _currentSpeed = rb.velocity.magnitude;
