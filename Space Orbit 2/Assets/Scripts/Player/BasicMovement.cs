@@ -22,7 +22,7 @@ public class BasicMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.forward * 8;
+        rb.velocity = Vector3.forward * _initialSpeed;
 
         graphics = transform.GetChild(0).gameObject;
     }
@@ -43,7 +43,6 @@ public class BasicMovement : MonoBehaviour
         else if (rawInput > 0) 
         {
             rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
-            // rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering));
         }
 
         _currentSpeed = rb.velocity.magnitude;

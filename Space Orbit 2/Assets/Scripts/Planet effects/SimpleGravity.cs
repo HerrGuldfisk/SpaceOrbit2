@@ -1,23 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using Planets;
 
 public class SimpleGravity : MonoBehaviour
 {
 
     private List<Rigidbody> m_Rigidbodies = new List<Rigidbody>();
 
-    [SerializeField] private float m_Gravity = 5f;
+    public float _planetSize = 5f;
 
-    [SerializeField] private float m_GravityFieldSize = 3f;
+    [SerializeField] private float _gravity = 5f;
+
+    [SerializeField] private float _gravityFieldSize = 3f;
+
+    private Transform planetTransform;
 
     void Start()
     {
-        m_Gravity = Random.Range(3f, 8f);
-        m_GravityFieldSize = Random.Range(3f, 3f);
+        planetTransform = transform.parent;
 
-        transform.localScale = new Vector3(m_GravityFieldSize, m_GravityFieldSize, 1);
+        SetPlanetSize(_planetSize);
+
+
+        transform.localScale = new Vector3(_gravityFieldSize, _gravityFieldSize, 1);
     }
 
     void Update()
@@ -25,11 +32,27 @@ public class SimpleGravity : MonoBehaviour
         
     }
 
+    
+    private void OnValidate()
+    {
+        SetPlanetSize(_planetSize);
+    }
+
+    void SetPlanetSize(float planetSize)
+    {
+        if (planetTransform != null)
+        {
+            planetSize *= GeneralPlanetSettings.Instance.gravityDistance;
+            planetTransform.localScale = new Vector3(planetSize, planetSize, planetSize);
+        }
+    }
+    
+
     void FixedUpdate()
     {
         foreach (Rigidbody rb in m_Rigidbodies)
         {
-            rb.AddForce((transform.position - rb.position).normalized * m_Gravity);
+            rb.AddForce((transform.position - rb.position).normalized * _gravity);
         }
     }
 
