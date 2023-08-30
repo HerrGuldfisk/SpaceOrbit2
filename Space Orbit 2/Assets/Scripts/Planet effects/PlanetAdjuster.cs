@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlanetAdjuster : MonoBehaviour
 {
-    private GameObject planet;
-    [SerializeField] private float scale = 1;
+    private GameObject _planet;
+    [SerializeField] private float _scale = 1;
     public GravityHandling gravityField;
 
     // Start is called before the first frame update
@@ -22,11 +22,11 @@ public class PlanetAdjuster : MonoBehaviour
 
     private void OnValidate()
     {
-        Vector3 sizeScaleVector = new Vector3(scale, scale, scale);
+        Vector3 sizeScaleVector = new Vector3(_scale, _scale, _scale);
 
         transform.localScale = sizeScaleVector;
 
-        ScaleGravityFIeld(scale);
+        ScaleGravityFIeld(_scale);
     }
 
     public void ScaleGravityFIeld(float scale)

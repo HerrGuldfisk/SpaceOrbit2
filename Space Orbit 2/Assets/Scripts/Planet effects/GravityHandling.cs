@@ -6,6 +6,7 @@ public class GravityHandling : MonoBehaviour
 {
     public SphereCollider sphereCollider;
     public float scale;
+    private float _planetRadius = 0.5f;
 
     // Borrowing from simple gravity script
     //--------------------------------------------------------------------------------------------------------------------
@@ -54,6 +55,6 @@ public class GravityHandling : MonoBehaviour
 
     private void OnValidate()
     {
-        sphereCollider.radius = (0.5f + 0.2f) * scale;
+        sphereCollider.radius = (_planetRadius + 0.2f) * scale;
     }
 }
