@@ -22,11 +22,14 @@ public class PlanetAdjuster : MonoBehaviour
 
     private void OnValidate()
     {
-        Vector3 sizeScaleVector = new Vector3(_scale, _scale, _scale);
+        if (_scale > 0)
+        {
+            Vector3 sizeScaleVector = new Vector3(_scale, _scale, _scale);
 
-        transform.localScale = sizeScaleVector;
+            transform.localScale = sizeScaleVector;
 
-        ScaleGravityFIeld(_scale);
+            ScaleGravityFIeld(_scale);
+        }
     }
 
     public void ScaleGravityFIeld(float scale)
