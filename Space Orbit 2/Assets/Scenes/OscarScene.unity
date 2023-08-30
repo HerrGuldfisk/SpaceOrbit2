@@ -171,11 +171,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.7
+  m_Radius: 0.581
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &201302137
 MonoBehaviour:
@@ -190,7 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 201302136}
-  scale: 1
+  scale: 0.83
+  m_Gravity: 5
+  m_GravityFieldSize: 3
 --- !u!1 &1004776295
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +471,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83, y: 0.83, z: 0.83}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1004776296}
@@ -488,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c1eee45226a6c42a19fe12b96511bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 1
+  _scale: 0.83
   gravityField: {fileID: 201302137}
 --- !u!1 &1593575479
 GameObject:

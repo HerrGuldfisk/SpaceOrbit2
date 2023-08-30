@@ -8,6 +8,8 @@ public class GravityHandling : MonoBehaviour
     public float scale;
     private float _planetRadius = 0.5f;
 
+    // Use scale to affect gravity strength and gravity field size
+
     // Borrowing from simple gravity script
     //--------------------------------------------------------------------------------------------------------------------
     private List<Rigidbody> m_Rigidbodies = new List<Rigidbody>();
