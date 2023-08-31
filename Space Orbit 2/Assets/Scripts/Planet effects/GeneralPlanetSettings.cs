@@ -7,7 +7,7 @@ namespace Planets
     public class GeneralPlanetSettings : MonoBehaviour
     {
 
-        public static GeneralPlanetSettings Instance;
+        public static GeneralPlanetSettings instance;
 
         
         private void Awake()

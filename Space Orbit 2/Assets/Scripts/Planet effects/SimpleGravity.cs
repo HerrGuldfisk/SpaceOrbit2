@@ -42,7 +42,7 @@ public class SimpleGravity : MonoBehaviour
     {
         if (planetTransform != null)
         {
-            planetSize *= GeneralPlanetSettings.Instance.gravityDistance;
+            planetSize *= GeneralPlanetSettings.instance.gravityDistance;
             planetTransform.localScale = new Vector3(planetSize, planetSize, planetSize);
         }
     }
