@@ -16,7 +16,7 @@ public class BasicmovementFloaty : MonoBehaviour
 
     [SerializeField] private float _currentSpeed = 0;
     [SerializeField] private float _initialSpeed = 0;
-    [SerializeField] private float _steering = 10;
+    // [SerializeField] private float _steering = 10;
 
     void Start()
     {

@@ -7,14 +7,14 @@ namespace Planets
     public class GeneralPlanetSettings : MonoBehaviour
     {
 
-        public static GeneralPlanetSettings instance;
+        public static GeneralPlanetSettings Instance;
 
         
         private void Awake()
         {
-            if (instance == null || instance == this)
+            if (Instance == null || Instance == this)
             {
-                instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
             else

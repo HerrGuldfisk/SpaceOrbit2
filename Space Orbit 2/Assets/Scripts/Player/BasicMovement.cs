@@ -31,12 +31,12 @@ public class BasicMovement : MonoBehaviour
     {
         // Save heading direction to avoid recalculating each frame
         // Might need to move to fixed update
-        graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        // graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
     void FixedUpdate()
     {
-        if(rawInput < 0) 
+        if (rawInput < 0) 
         {
             rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
@@ -45,7 +45,10 @@ public class BasicMovement : MonoBehaviour
             rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
 
+
         _currentSpeed = rb.velocity.magnitude;
+
+        graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
     void OnTurn(InputValue value)
