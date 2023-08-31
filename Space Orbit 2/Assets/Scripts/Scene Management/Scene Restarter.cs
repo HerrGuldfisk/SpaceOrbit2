@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneRestarter : MonoBehaviour
@@ -19,8 +19,7 @@ public class SceneRestarter : MonoBehaviour
     // Method to restart the current scene
     private void RestartScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Disable the input action when the object is destroyed
