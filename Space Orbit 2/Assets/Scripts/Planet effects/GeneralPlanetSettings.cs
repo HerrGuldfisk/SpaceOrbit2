@@ -24,15 +24,29 @@ namespace Planets
                 Destroy(gameObject);
                 return;
             }
-
-            // GlobalGravityModeEvent.AddListener();
         }
 
-        public GlobalGravityModeEvent GlobalGravityModeEvent;
-
+        // public GlobalGravityModeEvent GlobalGravityModeEvent;
 
         [Header("Gravity settings")]
-        public GravityMode gravityMode = GravityMode.CutOff;
+        [SerializeField]public GravityMode GravityMode = GravityMode.CutOff;
+
+        /*
+        public GravityMode GravityMode
+        {
+            get
+            {
+                return gravityMode;
+            }
+            set
+            {
+                GlobalGravityModeEvent?.Invoke(value);
+                gravityMode = value;
+            }
+                
+                
+        }
+        */
 
         [Tooltip("If the players ship should get a boost when exiting atmospheres")]
         public bool exitBoost = false;

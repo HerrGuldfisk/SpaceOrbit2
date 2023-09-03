@@ -51,7 +51,7 @@ public class PlanetSettings : MonoBehaviour
 
     private void ApplyCorrectGravity(Rigidbody rb)
     {
-        switch (GeneralPlanetSettings.Instance.gravityMode)
+        switch (GeneralPlanetSettings.Instance.GravityMode)
         {
             case GravityMode.CutOff:
                 rb.AddForce((transform.position - rb.position).normalized * _gravityStrength);
