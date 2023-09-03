@@ -9,7 +9,7 @@ public class BasicMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    float rawInput = 0;
+    Vector2 rawInput = Vector2.zero;
 
     GameObject graphics;
 
@@ -36,13 +36,18 @@ public class BasicMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (rawInput < 0) 
+        if (rawInput.x < 0) 
         {
             rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
-        else if (rawInput > 0) 
+        else if (rawInput.x > 0) 
         {
             rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
+        }
+
+        if(rawInput.y < 0)
+        {
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.back * rb.velocity.magnitude));
         }
 
 
@@ -51,8 +56,8 @@ public class BasicMovement : MonoBehaviour
         graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
-    void OnTurn(InputValue value)
+    void OnMoveInput(InputValue value)
     {
-        rawInput = value.Get<float>();
+        rawInput = value.Get<Vector2>();
     }
 }

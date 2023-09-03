@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Planets
 {
@@ -22,7 +24,11 @@ namespace Planets
                 Destroy(gameObject);
                 return;
             }
+
+            // GlobalGravityModeEvent.AddListener();
         }
+
+        public GlobalGravityModeEvent GlobalGravityModeEvent;
 
 
         [Header("Gravity settings")]
