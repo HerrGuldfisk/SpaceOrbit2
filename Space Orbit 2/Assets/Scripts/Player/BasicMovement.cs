@@ -49,6 +49,10 @@ public class BasicMovement : MonoBehaviour
         {
             rb.AddForce(graphics.transform.TransformDirection(Vector3.back * rb.velocity.magnitude));
         }
+        if (rawInput.y > 0) 
+        {
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.forward * rb.velocity.magnitude / 2f));
+        }
 
 
         _currentSpeed = rb.velocity.magnitude;
