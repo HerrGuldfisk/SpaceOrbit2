@@ -17,7 +17,9 @@ public class BasicMovement : MonoBehaviour
 
     [SerializeField] private float _currentSpeed = 0;
     [SerializeField] private float _initialSpeed = 8;
-    [SerializeField] private float _steering = 10;
+    [SerializeField] private float _accelerationFactor = 1;
+    [SerializeField] private float _decelerationFactor = 1;
+    [SerializeField] private float _steeringFactor = 10;
 
     void Start()
     {
@@ -38,20 +40,20 @@ public class BasicMovement : MonoBehaviour
     {
         if (rawInput.x < 0) 
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.left * _steeringFactor * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
         else if (rawInput.x > 0) 
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steering * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.right * _steeringFactor * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
         }
 
         if(rawInput.y < 0)
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.back * rb.velocity.magnitude));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.back * rb.velocity.magnitude * _accelerationFactor));
         }
         if (rawInput.y > 0) 
         {
-            rb.AddForce(graphics.transform.TransformDirection(Vector3.forward * rb.velocity.magnitude / 2f));
+            rb.AddForce(graphics.transform.TransformDirection(Vector3.forward * rb.velocity.magnitude * _decelerationFactor));
         }
 
 
