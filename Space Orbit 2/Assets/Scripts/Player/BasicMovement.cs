@@ -13,9 +13,10 @@ public class BasicMovement : MonoBehaviour
 
     GameObject graphics;
 
-    [Header("Drive Settings")]
-
+    [Header("Data (Read only)")]
     [SerializeField] private float _currentSpeed = 0;
+
+    [Header("Drive Settings")]
     [SerializeField] private float _initialSpeed = 8;
     [SerializeField] private float _accelerationFactor = 1;
     [SerializeField] private float _decelerationFactor = 1;
