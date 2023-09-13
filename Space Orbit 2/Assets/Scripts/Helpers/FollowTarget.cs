@@ -5,8 +5,11 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     public GameObject target;
+    public bool mimicTargetRotation;
 
     private Vector3 _offset;
+
+
 
 
     private void Start()
@@ -18,5 +21,10 @@ public class FollowTarget : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, 0.05f);   
+
+        if(mimicTargetRotation)
+        {
+            transform.eulerAngles = new Vector3(90, target.transform.eulerAngles.y, target.transform.eulerAngles.z);
+        }
     }
 }
