@@ -1,0 +1,134 @@
+{
+    "name": "FreeForceMove",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "96be706e-d585-4a47-913d-c64c5d1023f7",
+            "actions": [
+                {
+                    "name": "Top",
+                    "type": "Value",
+                    "id": "1934095f-bf5d-47c7-a3f2-74a9669eb2f0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TopLeft",
+                    "type": "Value",
+                    "id": "1452710e-f86e-4596-8ece-19c9f95fcf8d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TopRight",
+                    "type": "Value",
+                    "id": "bc766196-9168-4560-a91f-54cbe5235c9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Bottom",
+                    "type": "Value",
+                    "id": "845a9390-6faf-49ae-970c-8a6abb6f2658",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "BottomLeft",
+                    "type": "Value",
+                    "id": "120683a7-f6b6-43f5-b02b-dfcf022d6632",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "BottomRight",
+                    "type": "Value",
+                    "id": "0c066fc2-78b5-495a-901c-41de29f068b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "940cf06f-e09b-4afc-a72c-1ec69b7bf81a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Top",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "477d0a64-b29e-42bf-b44a-aaa9cf87a76b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TopLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4524fd1-1c5e-4ef7-b952-7a1da7ffacdf",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TopRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7f572f8-a8ce-453f-b4ff-9e288b7db4a0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bottom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53ddeb6f-e9cb-4406-bb70-4ba6d73fbd37",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BottomLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f37cfc9-34b4-4c0a-99e0-79e44ef9ae07",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BottomRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
