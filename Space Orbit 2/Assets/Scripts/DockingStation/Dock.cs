@@ -16,7 +16,7 @@ public class Dock : MonoBehaviour
 
     void Awake()
     {
-        dockAction = new InputAction("Dock", binding: "<Keyboard>/e");
+        dockAction = new InputAction("Dock", binding: "<Keyboard>/q");
         dockAction.performed += ctx => DockToStation();
         dockAction.Enable();
         centralizedDocking = GameObject.Find("CentralizedDocking").GetComponent<CentralizedDocking>();
@@ -48,7 +48,7 @@ public class Dock : MonoBehaviour
         dockInstructionCanvas.SetActive(dockable);
     }
 
-    public void GetPlayerSpawnPoint()
+    public Transform GetPlayerSpawnPoint()
     {
         return playerSpawnPoint;
     }

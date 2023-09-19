@@ -23,14 +23,12 @@ public class Eject : MonoBehaviour
       Debug.Log("No station to eject to!");
       return;
     };
+    Debug.Log("Ejecting to station: " + centralizedDocking.GetCurrentStation().name);
     Transform spawnPoint = centralizedDocking.GetCurrentStation().GetComponent<Dock>().GetPlayerSpawnPoint();
-
+    Rigidbody rigidbody = GetComponent<Rigidbody>();
+    rigidbody.velocity = rigidbody.velocity.normalized;
+    rigidbody.angularVelocity = rigidbody.angularVelocity.normalized;
     transform.position = spawnPoint.position;
     transform.rotation = spawnPoint.rotation;
-    transform.velocity = 0;
-    trans
-    //maybe set velocity to 0
-    //and also set angular velocity to 0
-    //and rotation to the rotation of the spawn point
   }
 }

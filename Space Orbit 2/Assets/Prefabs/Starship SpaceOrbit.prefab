@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7216932809895427142}
   - component: {fileID: 400310904518778337}
   - component: {fileID: 6260479284672362923}
+  - component: {fileID: 5396214966194167764}
   m_Layer: 0
   m_Name: Starship SpaceOrbit
   m_TagString: Player
@@ -167,6 +168,18 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5396214966194167764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617894982804905214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338ec3c9656deeb4e96e26b0d0309612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3948743865359752147
 GameObject:
   m_ObjectHideFlags: 0
