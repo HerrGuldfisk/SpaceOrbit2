@@ -285,6 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156036526}
   - component: {fileID: 156036527}
+  - component: {fileID: 156036528}
   m_Layer: 0
   m_Name: Planet (1)
   m_TagString: Untagged
@@ -331,6 +332,26 @@ MonoBehaviour:
     rgba: 1120907877
   _body: {fileID: 1037480498}
   _gravityField: {fileID: 1305214537}
+--- !u!114 &156036528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156036525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3dda05a71ca4e428bb85f36cbf43fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 903420058}
+  CircleRadius: 163.54
+  RotationSpeed: 10
+  ElevationOffset: 0
+  StartAngle: 0
+  UseTargetCoordinateSystem: 1
+  LookAtTarget: 0
+  drawGizmos: 1
 --- !u!1 &227278210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252396905}
   - component: {fileID: 1252396906}
+  - component: {fileID: 1252396907}
   m_Layer: 0
   m_Name: Planet (2)
   m_TagString: Untagged
@@ -1916,6 +1938,26 @@ MonoBehaviour:
     rgba: 1120907877
   _body: {fileID: 1204996350}
   _gravityField: {fileID: 526588328}
+--- !u!114 &1252396907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252396904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3dda05a71ca4e428bb85f36cbf43fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 903420058}
+  CircleRadius: 400
+  RotationSpeed: 3
+  ElevationOffset: 0
+  StartAngle: 0
+  UseTargetCoordinateSystem: 0
+  LookAtTarget: 0
+  drawGizmos: 1
 --- !u!1 &1297521261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,6 +1968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1297521262}
   - component: {fileID: 1297521263}
+  - component: {fileID: 1297521264}
   m_Layer: 0
   m_Name: Planet (3)
   m_TagString: Untagged
@@ -1972,6 +2015,26 @@ MonoBehaviour:
     rgba: 1120907877
   _body: {fileID: 1984915162}
   _gravityField: {fileID: 1903506305}
+--- !u!114 &1297521264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297521261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3dda05a71ca4e428bb85f36cbf43fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 2125456132}
+  CircleRadius: 80
+  RotationSpeed: 6
+  ElevationOffset: 0
+  StartAngle: 0
+  UseTargetCoordinateSystem: 0
+  LookAtTarget: 0
+  drawGizmos: 1
 --- !u!1 &1305214537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cam: {fileID: 1647886042}
   _playerData: {fileID: 1996717195}
+  _playerSpeed: 1
 --- !u!1 &1903506305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +2936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125456132}
   - component: {fileID: 2125456131}
+  - component: {fileID: 2125456133}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -2918,6 +2983,26 @@ Transform:
   - {fileID: 1182055369}
   m_Father: {fileID: 1150197574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125456133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125456130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3dda05a71ca4e428bb85f36cbf43fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 903420058}
+  CircleRadius: 300
+  RotationSpeed: 4
+  ElevationOffset: 0
+  StartAngle: 55
+  UseTargetCoordinateSystem: 1
+  LookAtTarget: 0
+  drawGizmos: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

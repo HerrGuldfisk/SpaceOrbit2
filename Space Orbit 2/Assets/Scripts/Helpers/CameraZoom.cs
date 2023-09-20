@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraZoom : MonoBehaviour
 {
     private float _zoom;
-    private float _zoomMultiplier = 0.5f;
+    private float _zoomMultiplier = 0.8f;
     private float _minZoom = 32f;
     private float _maxZoom = 128f;
     private float _velCam = 0f;
