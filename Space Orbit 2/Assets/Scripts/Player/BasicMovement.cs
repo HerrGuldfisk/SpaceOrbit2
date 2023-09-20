@@ -14,7 +14,7 @@ public class BasicMovement : MonoBehaviour
     GameObject graphics;
 
     [Header("Data (Read only)")]
-    [SerializeField] private float _currentSpeed = 0;
+    [SerializeField] public float currentSpeed = 0;
 
     [Header("Drive Settings")]
     [SerializeField] private float _initialSpeed = 8;
@@ -58,7 +58,7 @@ public class BasicMovement : MonoBehaviour
         }
 
 
-        _currentSpeed = rb.velocity.magnitude;
+        currentSpeed = rb.velocity.magnitude;
 
         graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }

@@ -17,6 +17,6 @@ public class FollowTarget : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, 0.05f);   
+        transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, 1f);   
     }
 }
