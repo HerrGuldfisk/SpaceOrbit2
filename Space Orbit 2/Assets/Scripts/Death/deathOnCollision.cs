@@ -2,36 +2,12 @@
 //requires the "Player" tag on the player
 //requires a rigidbody2d and a 2d collider on the player object
 //requires a trigger collider on the hazard
-//activates the death screen if it has the name DeathScreen
+//sets alpha to 1 on the canvasGroup of the "DeathScreen" object
 
 using UnityEngine;
 
 public class DeathOnCollision : MonoBehaviour
 {
-    CanvasGroup _deathScreenRenderer; // Reference to the Death Screen renderer
-
-    private void Awake()
-    {
-        //finds the death screen canvas renderer
-        if (_deathScreenRenderer == null)
-        {
-            GameObject deathScreenObject = GameObject.Find("DeathScreen");
-            if (!deathScreenObject)
-            {
-                Debug.LogError("Could not find the DeathScreen object in the scene");
-                return;
-            }
-
-            _deathScreenRenderer = deathScreenObject.GetComponent<CanvasGroup>();
-            if (!_deathScreenRenderer)
-            {
-                Debug.LogError("Could not find the canvas renderer in the death screen");
-                return;
-            }
-        }
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //loose if collision obj is player
@@ -45,14 +21,13 @@ public class DeathOnCollision : MonoBehaviour
 
     private void ShowDeathScreen()
     {
-        //show the death screen
-        if (_deathScreenRenderer != null)
+        if (DeathScreen.canvasGroup != null)
         {
-            _deathScreenRenderer.alpha = 1;
+            DeathScreen.canvasGroup.alpha = 1;
         }
         else
         {
-            Debug.LogError("Can't show death screen. Missing reference to renderer component");
+            Debug.LogError("Can't show death screen. No static variable canvasGroup found");
         }
     }
 }
