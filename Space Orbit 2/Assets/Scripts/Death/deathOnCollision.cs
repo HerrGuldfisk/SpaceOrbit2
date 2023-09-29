@@ -1,4 +1,4 @@
-//triggers the death screen and destroys the player game object when the player collides with this trigger object
+//shows the death screen and destroys the player game object when the player collides with this trigger object
 //requires the "Player" tag on the player
 //requires a rigidbody2d and a 2d collider on the player object
 //requires a trigger collider on the hazard
@@ -6,38 +6,53 @@
 
 using UnityEngine;
 
-public class deathOnCollision : MonoBehaviour
+public class DeathOnCollision : MonoBehaviour
 {
-    GameObject _deathScreen; // Reference to the Death Screen UI object
+    CanvasGroup _deathScreenRenderer; // Reference to the Death Screen renderer
 
     private void Awake()
     {
-        _deathScreen = GameObject.Find("DeathScreen"); //Find the death screen object
-        if (!_deathScreen) Debug.LogError("Could not find the DeathScreen object in the scene");
-        else
+        //finds the death screen canvas renderer
+        if (_deathScreenRenderer == null)
         {
-            _deathScreen.SetActive(false);
+            GameObject deathScreenObject = GameObject.Find("DeathScreen");
+            if (!deathScreenObject)
+            {
+                Debug.LogError("Could not find the DeathScreen object in the scene");
+                return;
+            }
+
+            _deathScreenRenderer = deathScreenObject.GetComponent<CanvasGroup>();
+            if (!_deathScreenRenderer)
+            {
+                Debug.LogError("Could not find the canvas renderer in the death screen");
+                return;
+            }
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //loose if collision obj is player
         if (collision.CompareTag("Player"))
         {
             ShowDeathScreen();
-            Destroy(collision.gameObject);
+            if (!collision.gameObject) Debug.LogError("No gameObject found on the collider. Cant destroy it.");
+            else Destroy(collision.gameObject);
         }
     }
 
     private void ShowDeathScreen()
     {
-        if (_deathScreen != null)
+        //show the death screen
+        if (_deathScreenRenderer != null)
         {
-            _deathScreen.SetActive(true);
+            _deathScreenRenderer.alpha = 1;
         }
         else
         {
-            Debug.LogError("Death Screen not assigned in the inspector");
+            Debug.LogError("Can't show death screen. Missing reference to renderer component");
         }
     }
 }
