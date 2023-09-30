@@ -23,7 +23,7 @@ public class BasicMovement : MonoBehaviour
     [SerializeField] private float _thrustFactor = 16f;
 
     [SerializeField] private float _accelerationFactor = 1f;
-    [SerializeField] private float _decelerationFactor = 4f;
+    [SerializeField] private float _decelerationFactor = 1f;
 
     [SerializeField] private float _maxThrustSpeed = 100f;
     [SerializeField] private float _maxRotationSpeed = 1f;

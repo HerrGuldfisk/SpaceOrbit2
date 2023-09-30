@@ -20,7 +20,7 @@ public class PlayerCoordinates : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currentCoordinates = "[" + _target.position.x.ToString("F0") + " , " + _target.position.z.ToString("F0") + "]";
+        _currentCoordinates = "[" + _target.position.x.ToString("F0") + " , " + _target.position.y.ToString("F0") + "]";
         _displayText.text = _currentCoordinates;
     }
 }
