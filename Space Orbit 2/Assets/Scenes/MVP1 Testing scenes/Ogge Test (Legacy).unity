@@ -1123,7 +1123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 257193352}
   - component: {fileID: 257193355}
-  - component: {fileID: 257193354}
   - component: {fileID: 257193353}
   m_Layer: 0
   m_Name: Minimap Camera
@@ -1191,14 +1190,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &257193354
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257193351}
-  m_Enabled: 1
 --- !u!20 &257193355
 Camera:
   m_ObjectHideFlags: 0
@@ -7222,7 +7213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   _initialSpeed: 8
-  _steeringFactor: 1
+  _steerFactor: 1.6
   _thrustFactor: 10
   _accelerationFactor: 1
   _decelerationFactor: 1
