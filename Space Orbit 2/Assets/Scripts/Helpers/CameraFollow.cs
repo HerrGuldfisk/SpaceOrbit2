@@ -42,7 +42,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime);
-        _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime);
+        _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
         
     }
 
@@ -56,7 +56,7 @@ public class CameraFollow : MonoBehaviour
         }
         else if(type == FollowType.Planet)
         {
-            CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().BodySize;
+            CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize;
         }
     }
 

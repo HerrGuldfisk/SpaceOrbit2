@@ -171,7 +171,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.05
+  m_GravityScale: 0.01
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -694,6 +694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: _gravityMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
