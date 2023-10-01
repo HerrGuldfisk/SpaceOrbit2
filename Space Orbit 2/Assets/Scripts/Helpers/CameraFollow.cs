@@ -36,6 +36,7 @@ public class CameraFollow : MonoBehaviour
         _offset = transform.position;
 
         _mainCamera.orthographicSize = _BASEZOOMLEVEL;
+        CurrentZoomLevelTarget = _BASEZOOMLEVEL;
     }
 
     void LateUpdate()
