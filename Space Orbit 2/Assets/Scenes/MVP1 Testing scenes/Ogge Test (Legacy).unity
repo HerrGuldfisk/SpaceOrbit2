@@ -5646,7 +5646,7 @@ GameObject:
   - component: {fileID: 1395261879}
   - component: {fileID: 1395261882}
   - component: {fileID: 1395261881}
-  - component: {fileID: 1395261880}
+  - component: {fileID: 1395261883}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -5669,29 +5669,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2079593208}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!136 &1395261880
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395261878}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1395261881
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5742,6 +5719,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395261878}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!70 &1395261883
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395261878}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &1624302247
 GameObject:
   m_ObjectHideFlags: 0
@@ -5753,7 +5765,7 @@ GameObject:
   - component: {fileID: 1624302251}
   - component: {fileID: 1624302250}
   - component: {fileID: 1624302249}
-  - component: {fileID: 1624302248}
+  - component: {fileID: 1624302252}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -5761,27 +5773,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &1624302248
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624302247}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1624302249
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5847,6 +5838,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2125456132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1624302252
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624302247}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1633313717
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,14 +7239,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   _initialSpeed: 8
-  _steerFactor: 1.6
-  _thrustFactor: 10
+  _steerFactor: 2.4
+  _thrustFactor: 16
   _accelerationFactor: 1
-  _decelerationFactor: 1
-  _maxThrustSpeed: 100
+  _decelerationFactor: 2
+  _maxThrustSpeed: 300
   _maxRotationSpeed: 1
   _speedDrag: 0
-  _angularDrag: 0
+  _angularDrag: 1
 --- !u!114 &1996717196
 MonoBehaviour:
   m_ObjectHideFlags: 0

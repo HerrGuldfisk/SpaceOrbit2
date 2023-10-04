@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
@@ -19,17 +20,17 @@ public class BasicMovement : MonoBehaviour
     [Header("Drive Settings")]
     [SerializeField] private float _initialSpeed = 8f;
 
-    [SerializeField] private float _steerFactor = 1.6f;
+    [SerializeField] private float _steerFactor = 2.4f;
     [SerializeField] private float _thrustFactor = 16f;
 
     [SerializeField] private float _accelerationFactor = 1f;
-    [SerializeField] private float _decelerationFactor = 4f;
+    [SerializeField] private float _decelerationFactor = 2f;
 
-    [SerializeField] private float _maxThrustSpeed = 100f;
+    [SerializeField] private float _maxThrustSpeed = 300f;
     [SerializeField] private float _maxRotationSpeed = 1f;
 
     [SerializeField] private float _speedDrag = 0.0000f;
-    [SerializeField] private float _angularDrag = 0.0000f;
+    [SerializeField] private float _angularDrag = 1.0000f;
 
 
     private float _steerInput;
@@ -61,22 +62,32 @@ public class BasicMovement : MonoBehaviour
         rb.drag = _speedDrag;
         rb.angularDrag = _angularDrag;
 
+        // Splitting input in X and Y
         _thrustInput = rawInput.y;
         _steerInput = -rawInput.x;
 
+        // Why cast this lol...
         _inputDirection = rawInput;
 
-        _currentDirection = transform.forward;
+        // Save current dir
+        _currentDirection = graphics.transform.forward;
     }
 
     void FixedUpdate()
     {
+        // Save current velocity
         _currentVelocity = rb.velocity;
 
         PhysicsMovement();
-        //NoPhysicsMovement();
+        //PhysicsMovementTest();
 
+        // Save current speed
         currentSpeed = rb.velocity.magnitude;
+
+        // Clamp speed
+        if (currentSpeed > _maxThrustSpeed) {
+            rb.velocity = rb.velocity.normalized * _maxThrustSpeed;
+        }
     }
 
     void OnMoveInput(InputValue value)
@@ -108,7 +119,7 @@ public class BasicMovement : MonoBehaviour
 
         currentSpeed = rb.velocity.magnitude;
 
-        graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector2.up);
+        graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
     void PhysicsMovement()
@@ -121,7 +132,7 @@ public class BasicMovement : MonoBehaviour
             }
             else if (_thrustInput < 0)
             {
-                _thrustForce = _thrustFactor * _decelerationFactor * -_currentDirection;
+                _thrustForce = rb.velocity * -_decelerationFactor;
             }
 
             rb.AddForce(_thrustForce, ForceMode2D.Force);
@@ -129,10 +140,34 @@ public class BasicMovement : MonoBehaviour
 
         if (_steerInput != 0)
         {
+            rb.angularVelocity = 0;
             rb.rotation += _steerInput * _steerFactor;
             _desiredVelocity = _currentVelocity.magnitude * _currentDirection.normalized;
             rb.velocity = _desiredVelocity;
         }
+    }
+
+    void PhysicsMovementTest()
+    {
+        if (_steerInput != 0)
+        {
+            rb.AddTorque(_steerFactor * _steerInput);
+        }
+
+        if (_thrustInput != 0)
+        {
+            if (_thrustInput < 0)
+            {
+                //rb.AddForce(-_currentDirection * _thrustFactor * _decelerationFactor);
+                _thrustForce = rb.velocity * -_decelerationFactor;
+            }
+        }
+        else
+        {
+            _thrustForce = _currentDirection * _thrustFactor * _accelerationFactor;
+        }
+
+        rb.AddForce(_thrustForce, ForceMode2D.Force);
     }
 
     void NoPhysicsMovement()
