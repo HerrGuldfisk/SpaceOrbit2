@@ -15,19 +15,19 @@ public class BasicMovement : MonoBehaviour
     GameObject graphics;
 
     [Header("Data (Read only)")]
-    [SerializeField] public float currentSpeed = 0;
+    [SerializeField] public float currentSpeed = 0.0f;
 
     [Header("Drive Settings")]
-    [SerializeField] private float _initialSpeed = 8f;
+    [SerializeField] private float _initialSpeed = 8.0f;
 
     [SerializeField] private float _steerFactor = 2.4f;
-    [SerializeField] private float _thrustFactor = 16f;
+    [SerializeField] private float _thrustFactor = 16.0f;
 
-    [SerializeField] private float _accelerationFactor = 1f;
-    [SerializeField] private float _decelerationFactor = 2f;
+    [SerializeField] private float _accelerationFactor = 1.0f;
+    [SerializeField] private float _decelerationFactor = 2.0f;
 
-    [SerializeField] private float _maxThrustSpeed = 300f;
-    [SerializeField] private float _maxRotationSpeed = 1f;
+    [SerializeField] private float _maxThrustSpeed = 300.0f;
+    [SerializeField] private float _maxRotationSpeed = 1.0f;
 
     [SerializeField] private float _speedDrag = 0.0000f;
     [SerializeField] private float _angularDrag = 1.0000f;
