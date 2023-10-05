@@ -8,7 +8,7 @@ public abstract class GravityProvider : MonoBehaviour
     protected List<Gravitable> _objectsInOrbit = new List<Gravitable>();
 
 
-    void Update()
+    void FixedUpdate()
     {
         if(_objectsInOrbit.Count > 0)
         {
@@ -16,7 +16,7 @@ public abstract class GravityProvider : MonoBehaviour
         }
     }
 
-    public abstract void ApplyGravity(GameObject objectInOrbit, float gravityStrength);
+    public abstract void ApplyGravity(Gravitable objectInOrbit, float gravityStrength);
 
     public abstract void CalculateGravity();
 
@@ -24,7 +24,7 @@ public abstract class GravityProvider : MonoBehaviour
     {
         if (collision.TryGetComponent(out Gravitable newObjectInGravityField))
         {
-            if (newObjectInGravityField.rootObject.tag == "Ship")
+            if (newObjectInGravityField.rootObject.tag == "Player")
             {
                 CameraFollow.Instance.ChangeTarget(transform.root.gameObject, CameraFollow.FollowType.Planet);
             }
@@ -38,7 +38,7 @@ public abstract class GravityProvider : MonoBehaviour
         if (collision.TryGetComponent(out Gravitable objectLeavingGravityField))
         {
 
-            if (objectLeavingGravityField.rootObject.tag == "Ship")
+            if (objectLeavingGravityField.rootObject.tag == "Player")
             {
                 CameraFollow.Instance.ChangeTarget(objectLeavingGravityField.rootObject, CameraFollow.FollowType.PlayerShip);
             }

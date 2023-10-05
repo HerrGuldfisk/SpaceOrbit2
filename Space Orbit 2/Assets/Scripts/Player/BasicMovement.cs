@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
-public class BasicMovement : MonoBehaviour
+public class BasicMovement : Gravitable
 {
-
-    Rigidbody2D rb;
 
     Vector2 rawInput = Vector2.zero;
 
@@ -49,10 +47,11 @@ public class BasicMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.forward * _initialSpeed;
-
         graphics = transform.GetChild(0).gameObject;
+
+        rootObject = transform.root.gameObject;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()

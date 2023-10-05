@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
 
     private Camera _mainCamera;
     private Vector3 _offset;
-    [SerializeField] const float _BASEZOOMLEVEL = 8;
+    [SerializeField] private float _baseZoomLevel = 40;
     
     public float CurrentZoomLevelTarget { get; set; }
 
@@ -35,15 +35,14 @@ public class CameraFollow : MonoBehaviour
         _mainCamera = Camera.main;
         _offset = transform.position;
 
-        _mainCamera.orthographicSize = _BASEZOOMLEVEL;
-        CurrentZoomLevelTarget = _BASEZOOMLEVEL;
+        _mainCamera.orthographicSize = _baseZoomLevel;
+        CurrentZoomLevelTarget = _baseZoomLevel;
     }
 
-    void LateUpdate()
+    void Update()
     {
         transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime);
         _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
-        
     }
 
     public void ChangeTarget(GameObject newTarget, FollowType type)
@@ -52,7 +51,7 @@ public class CameraFollow : MonoBehaviour
 
         if(type == FollowType.PlayerShip)
         {
-            CurrentZoomLevelTarget = _BASEZOOMLEVEL;
+            CurrentZoomLevelTarget = _baseZoomLevel;
         }
         else if(type == FollowType.Planet)
         {

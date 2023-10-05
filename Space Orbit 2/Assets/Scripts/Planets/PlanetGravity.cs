@@ -21,18 +21,18 @@ public class PlanetGravity : GravityProvider
             switch (_planet.GravityMode)
             {
                 case PlanetSettings.PlanetGravityMode.Constant:
-                    ApplyGravity(gravitable.rootObject, _planet.GravityStrength);
+                    ApplyGravity(gravitable, _planet.GravityStrength);
                     break;
 
                 case PlanetSettings.PlanetGravityMode.Linear:
-                    ApplyGravity(gravitable.rootObject, ((_planet.GravityFieldSize / 2) - Vector3.Distance(_planet.transform.position, gravitable.rootObject.transform.position)) * _planet.GravityStrength);
+                    ApplyGravity(gravitable, ((_planet.GravityFieldSize / 2) - Vector3.Distance(_planet.transform.position, gravitable.rootObject.transform.position)) * _planet.GravityStrength);
                     break;
             }
         }
     }
 
-    public override void ApplyGravity(GameObject objectInOrbit, float gravityStrength)
+    public override void ApplyGravity(Gravitable objectInOrbit, float gravityStrength)
     {
-        objectInOrbit.transform.position += (_planet.transform.position - objectInOrbit.transform.position) * gravityStrength / 10 * Time.deltaTime;
+        objectInOrbit.rb.AddForce((_planet.transform.position - objectInOrbit.transform.position) * gravityStrength / 10);
     }
 }
