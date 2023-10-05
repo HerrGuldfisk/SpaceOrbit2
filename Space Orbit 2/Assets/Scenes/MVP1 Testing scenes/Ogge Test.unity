@@ -1048,6 +1048,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
+      propertyPath: _gravityMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
       propertyPath: _gravityStrength
       value: 8
       objectReference: {fileID: 0}
