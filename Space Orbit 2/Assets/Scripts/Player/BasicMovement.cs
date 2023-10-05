@@ -141,7 +141,8 @@ public class BasicMovement : Gravitable
         {
             rb.angularVelocity = 0;
             rb.rotation += _steerInput * _steerFactor;
-            //rb.MoveRotation(_steerInput * _steerFactor);
+            // rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
+            // rb.MoveRotation(_steerInput * _steerFactor);
             _desiredVelocity = _currentVelocity.magnitude * _currentDirection.normalized;
             rb.velocity = _desiredVelocity;
         }
@@ -149,7 +150,6 @@ public class BasicMovement : Gravitable
         {
             rb.angularVelocity = 0;
             rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
-
         }
     }
 

@@ -447,6 +447,11 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 415452939}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _steerFactor
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -979,12 +984,12 @@ PrefabInstance:
     - target: {fileID: 1652856652778913595, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8384695
+      value: -12.9
       objectReference: {fileID: 0}
     - target: {fileID: 1652856652778913595, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.378761
+      value: -42.9
       objectReference: {fileID: 0}
     - target: {fileID: 1652856652778913595, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
@@ -1029,22 +1034,22 @@ PrefabInstance:
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: _bodySize
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
@@ -1059,17 +1064,17 @@ PrefabInstance:
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: _gravityFieldSize
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7621000570941648732, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7621000570941648732, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
