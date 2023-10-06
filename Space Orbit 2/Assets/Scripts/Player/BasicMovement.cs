@@ -14,6 +14,7 @@ public class BasicMovement : Gravitable
 
     [Header("Data (Read only)")]
     [SerializeField] public float currentSpeed = 0.0f;
+    [SerializeField] public float currentTurningSpeed = 0.0f;
 
     [Header("Drive Settings")]
     [SerializeField] private float _initialSpeed = 8.0f;
@@ -140,16 +141,16 @@ public class BasicMovement : Gravitable
         if (_steerInput != 0)
         {
             rb.angularVelocity = 0;
-            rb.rotation += _steerInput * _steerFactor;
-            // rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
-            // rb.MoveRotation(_steerInput * _steerFactor);
+            //rb.rotation += _steerInput * _steerFactor + Vector2.SignedAngle(_currentDirection, _currentVelocity);
+            rb.MoveRotation(rb.rotation + _steerInput * _steerFactor + Vector2.SignedAngle(_currentDirection, _currentVelocity));
             _desiredVelocity = _currentVelocity.magnitude * _currentDirection.normalized;
             rb.velocity = _desiredVelocity;
         }
         else if(_steerInput == 0)
         {
             rb.angularVelocity = 0;
-            rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
+            //rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
+            rb.MoveRotation(rb.rotation + Vector2.SignedAngle(_currentDirection, _currentVelocity));
         }
     }
 
