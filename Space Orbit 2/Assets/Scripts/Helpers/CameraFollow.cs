@@ -37,10 +37,17 @@ public class CameraFollow : MonoBehaviour
 
         _mainCamera.orthographicSize = _baseZoomLevel;
         CurrentZoomLevelTarget = _baseZoomLevel;
+
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        if (target == null)
+        {
+            return;
+        }
+
         transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime);
         _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
     }
@@ -57,6 +64,11 @@ public class CameraFollow : MonoBehaviour
         {
             CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize;
         }
+    }
+
+    public void ResetTarget()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
 

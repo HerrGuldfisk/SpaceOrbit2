@@ -8,4 +8,11 @@ public class KillPlayerOnCollision : MonoBehaviour
         Destroy(collision.gameObject);
         DeathScreen.Instance.Show();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player")) return;
+        Destroy(collision.gameObject);
+        DeathScreen.Instance.Show();
+    }
 }

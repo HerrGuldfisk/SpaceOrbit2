@@ -61,6 +61,8 @@ public class BasicMovement : Gravitable
 
         rb = GetComponent<Rigidbody2D>();
 
+        Camera.main.GetComponent<CameraFollow>().ResetTarget();
+
         fuelSystem = GetComponent<FuelSystem>();
         fuelSystem.SetMaxFuel(_maxFuel);
         fuelSystem.ResetFuel();
