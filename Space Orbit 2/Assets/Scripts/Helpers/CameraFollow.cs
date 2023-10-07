@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private GameObject target;
+    private FollowType _currentFollowType;
 
     private Camera _mainCamera;
     private Vector3 _offset;
@@ -48,13 +49,25 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
-        transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime);
-        _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
+        if(_currentFollowType == FollowType.Planet)
+        {
+            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime * 2);
+            _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
+        }
+        else if(_currentFollowType == FollowType.PlayerShip)
+        {
+            Vector3 aheadDirection = target.GetComponent<BasicMovement>().rb.velocity.normalized;
+            float aheadDistance = target.GetComponent<BasicMovement>().currentSpeed / 2; 
+
+            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset + (aheadDirection * aheadDistance), Time.deltaTime * 2);
+            _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
+        }
     }
 
     public void ChangeTarget(GameObject newTarget, FollowType type)
     {
         target = newTarget;
+        _currentFollowType = type;
 
         if(type == FollowType.PlayerShip)
         {
@@ -62,7 +75,7 @@ public class CameraFollow : MonoBehaviour
         }
         else if(type == FollowType.Planet)
         {
-            CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize;
+            CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize / 1.8f;
         }
     }
 
