@@ -12,6 +12,8 @@ public class BasicMovement : Gravitable
 
     GameObject graphics;
 
+    FuelSystem fuelSystem;
+
     [Header("Data (Read only)")]
     [SerializeField] public float currentSpeed = 0.0f;
     [SerializeField] public float currentTurningSpeed = 0.0f;
@@ -30,6 +32,10 @@ public class BasicMovement : Gravitable
 
     [SerializeField] private float _speedDrag = 0.0000f;
     [SerializeField] private float _angularDrag = 1.0000f;
+
+    [SerializeField] private float _maxFuel = 100f;
+    [SerializeField] private float _fuelUsageThrusting = 0.1f;
+    [SerializeField] private float _fuelUsageSteering = 0.01f;
 
 
     private float _steerInput;
@@ -54,6 +60,10 @@ public class BasicMovement : Gravitable
         rootObject = transform.root.gameObject;
 
         rb = GetComponent<Rigidbody2D>();
+
+        fuelSystem = GetComponent<FuelSystem>();
+        fuelSystem.SetMaxFuel(_maxFuel);
+        fuelSystem.ResetFuel();
     }
 
     void Update()
@@ -126,6 +136,12 @@ public class BasicMovement : Gravitable
     {
         if (_thrustInput != 0)
         {
+            if (fuelSystem.IsFuelEmpty())
+            {
+                print("FUEL IS EMPTY");
+                return;
+            }
+
             if (_thrustInput > 0)
             {
                 _thrustForce = _thrustFactor * _accelerationFactor * _currentDirection;
@@ -136,17 +152,31 @@ public class BasicMovement : Gravitable
             }
 
             rb.AddForce(_thrustForce, ForceMode2D.Force);
+
+            if (currentSpeed >= 1)
+            {
+                fuelSystem.UseFuel(_fuelUsageThrusting);
+            }
         }
 
         if (_steerInput != 0)
         {
+            if (fuelSystem.IsFuelEmpty())
+            {
+                print("FUEL IS EMPTY");
+                return;
+            }
+
             rb.angularVelocity = 0;
             //rb.rotation += _steerInput * _steerFactor + Vector2.SignedAngle(_currentDirection, _currentVelocity);
             rb.MoveRotation(rb.rotation + _steerInput * _steerFactor + Vector2.SignedAngle(_currentDirection, _currentVelocity));
             _desiredVelocity = _currentVelocity.magnitude * _currentDirection.normalized;
             rb.velocity = _desiredVelocity;
+
+            fuelSystem.UseFuel(_fuelUsageSteering);
         }
-        else if(_steerInput == 0)
+        
+        if(_steerInput == 0)
         {
             rb.angularVelocity = 0;
             //rb.rotation += Vector2.SignedAngle(_currentDirection, _currentVelocity);
