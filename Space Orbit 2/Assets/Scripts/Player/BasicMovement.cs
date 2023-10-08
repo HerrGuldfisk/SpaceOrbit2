@@ -91,7 +91,6 @@ public class BasicMovement : Gravitable
         _currentVelocity = rb.velocity;
 
         PhysicsMovement();
-        //PhysicsMovementTest();
 
         // Save current speed
         currentSpeed = rb.velocity.magnitude;
@@ -105,33 +104,6 @@ public class BasicMovement : Gravitable
     void OnMoveInput(InputValue value)
     {
         rawInput = value.Get<Vector2>();
-    }
-
-    void OldMovement()
-    {
-        // OOPS I BROKE IT?
-        if (rawInput.x < 0) 
-        {
-            rb.AddForce(graphics.transform.TransformDirection(Vector2.left * _steerFactor * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
-        }
-        else if (rawInput.x > 0) 
-        {
-            rb.AddForce(graphics.transform.TransformDirection(Vector2.right * _steerFactor * Mathf.Clamp(Mathf.Log(rb.velocity.magnitude, 3), 1, 10)));
-        }
-
-        if(rawInput.y < 0)
-        {
-            rb.AddForce(graphics.transform.TransformDirection(Vector2.down * rb.velocity.magnitude * _accelerationFactor));
-        }
-        if (rawInput.y > 0) 
-        {
-            rb.AddForce(graphics.transform.TransformDirection(Vector2.up * rb.velocity.magnitude * _decelerationFactor));
-        }
-
-
-        currentSpeed = rb.velocity.magnitude;
-
-        graphics.transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
     void PhysicsMovement()
@@ -190,7 +162,7 @@ public class BasicMovement : Gravitable
     {
         if (_steerInput != 0)
         {
-            rb.AddTorque(_steerFactor * _steerInput);
+            rb.AddTorque(_steerFactor / 10f * _steerInput);
         }
 
         if (_thrustInput != 0)
