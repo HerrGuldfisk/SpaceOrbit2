@@ -59,7 +59,7 @@ public class CameraFollow : MonoBehaviour
             Vector3 aheadDirection = target.GetComponent<BasicMovement>().rb.velocity.normalized;
             float aheadDistance = target.GetComponent<BasicMovement>().currentSpeed / 2; 
 
-            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset + (aheadDirection * aheadDistance), Time.deltaTime * 2);
+            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset + (aheadDirection * aheadDistance), Time.deltaTime * 5);
             _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
         }
     }

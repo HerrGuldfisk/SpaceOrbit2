@@ -19,10 +19,10 @@ public class BasicMovement : Gravitable
     [SerializeField] public float currentTurningSpeed = 0.0f;
 
     [Header("Drive Settings")]
-    [SerializeField] private float _initialSpeed = 8.0f;
+    [SerializeField] private float _initialSpeed = 0.0f;
 
-    [SerializeField] private float _steerFactor = 2.4f;
-    [SerializeField] private float _thrustFactor = 16.0f;
+    [SerializeField] private float _steerFactor = 3f;
+    [SerializeField] private float _thrustFactor = 20.0f;
 
     [SerializeField] private float _accelerationFactor = 1.0f;
     [SerializeField] private float _decelerationFactor = 2.0f;
@@ -31,12 +31,12 @@ public class BasicMovement : Gravitable
     [SerializeField] private float _maxRotationSpeed = 1.0f;
 
     [SerializeField] private float _speedDrag = 0.0000f;
-    [SerializeField] private float _angularDrag = 1.0000f;
+    [SerializeField] private float _angularDrag = 0.0000f;
 
     [SerializeField] private float _maxFuel = 100f;
-    [SerializeField] private float _fuelUsageThrusting = 0.1f;
-    [SerializeField] private float _fuelUsageSteering = 0.01f;
-
+    [SerializeField] private float _fuelUsageThrusting = 1f;
+    [SerializeField] private float _fuelUsageSteering = 0.1f;
+    [SerializeField] private float _orbitRefuel = 0.1f;
 
     private float _steerInput;
     private float _thrustInput;
@@ -83,6 +83,11 @@ public class BasicMovement : Gravitable
 
         // Save current dir
         _currentDirection = graphics.transform.forward;
+
+        if (InOrbit)
+        {
+            fuelSystem.AddFuel(_orbitRefuel);
+        }
     }
 
     void FixedUpdate()
@@ -129,7 +134,10 @@ public class BasicMovement : Gravitable
 
             if (currentSpeed >= 1)
             {
-                fuelSystem.UseFuel(_fuelUsageThrusting);
+                if (!InOrbit)
+                {
+                    fuelSystem.UseFuel(_fuelUsageThrusting);
+                }
             }
         }
 
@@ -147,7 +155,10 @@ public class BasicMovement : Gravitable
             _desiredVelocity = _currentVelocity.magnitude * _currentDirection.normalized;
             rb.velocity = _desiredVelocity;
 
-            fuelSystem.UseFuel(_fuelUsageSteering);
+            if (!InOrbit)
+            {
+                fuelSystem.UseFuel(_fuelUsageSteering);
+            }
         }
         
         if(_steerInput == 0)

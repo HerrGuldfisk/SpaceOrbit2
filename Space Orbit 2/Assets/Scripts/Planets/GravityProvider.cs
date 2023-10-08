@@ -30,6 +30,7 @@ public abstract class GravityProvider : MonoBehaviour
             }
 
             _objectsInOrbit.Add(newObjectInGravityField);
+            newObjectInGravityField.InOrbit = true;
         }
     }
 
@@ -44,6 +45,7 @@ public abstract class GravityProvider : MonoBehaviour
             }
 
             _objectsInOrbit.Remove(objectLeavingGravityField);
+            objectLeavingGravityField.InOrbit = false;
         }
     }
 }

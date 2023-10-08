@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Gravitable : MonoBehaviour
 {
-    /*[HideInInspector]*/ public GameObject rootObject;
+    /*[HideInInspector]*/
+    public GameObject rootObject;
 
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
+
+    public bool InOrbit { get; set; }
 
     void Start()
     {
