@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -15,6 +16,7 @@ public class CameraFollow : MonoBehaviour
 
     public static CameraFollow Instance;
 
+    private Coroutine _moveToTargetCoRoutine;
     private void Awake()
     {
         if(Instance == null)
@@ -77,11 +79,33 @@ public class CameraFollow : MonoBehaviour
         {
             CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize / 1.8f;
         }
+
+        _moveToTargetCoRoutine = StartCoroutine(MoveTowardstargetEnumerator());
     }
 
-    public void ResetTarget()
+    
+    IEnumerator MoveTowardstargetEnumerator()
+    {
+        float _completionPercent = 0;
+
+        while(_completionPercent < 1) 
+        {
+            
+        }
+
+        yield return null;
+    }
+    
+
+    float EaseInOutSine(float x) 
+    {
+        return -(Mathf.Cos(Mathf.PI* x) - 1) / 2;
+    }
+
+public void ResetTarget()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        transform.position = target.transform.position + _offset;
     }
 
 
