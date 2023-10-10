@@ -16,8 +16,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance;
 
-    private float _baseVolume;
-
     private void Awake()
     {
         if (Instance == null)
@@ -50,16 +48,13 @@ public class AudioManager : MonoBehaviour
         musicSourceLayer03.loop = true;
         musicSourceLayer04.loop = true;
 
-        _baseVolume = musicSourceLayer01.volume;
-
-        musicSourceLayer02.volume = _baseVolume;
-        musicSourceLayer03.volume = 0;
-        musicSourceLayer04.volume = 0;
-
         musicSourceLayer01.Play();
         musicSourceLayer02.Play();
         musicSourceLayer03.Play();
         musicSourceLayer04.Play();
+
+        musicSourceLayer03.mute = true;
+        musicSourceLayer04.mute = true;
     }
 
     // Update is called once per frame
@@ -72,7 +67,7 @@ public class AudioManager : MonoBehaviour
     {
         if (musicSourceLayer01 != null && musicSourceLayer02 != null) 
         {
-            musicSourceLayer02.volume = 0;
+            musicSourceLayer02.mute = true;
         }
     }
 
@@ -80,19 +75,19 @@ public class AudioManager : MonoBehaviour
     {
         if (musicSourceLayer01 != null && musicSourceLayer02 != null)
         {
-            musicSourceLayer02.volume = _baseVolume;
+            musicSourceLayer02.mute = false;
         }
     }
 
     public void GoingFast()
     {
-        musicSourceLayer03.volume = 0;
-        musicSourceLayer04.volume = _baseVolume;
+        musicSourceLayer03.mute = true;
+        musicSourceLayer04.mute = false;
     }
 
     public void GoingSlow()
     {
-        musicSourceLayer03.volume = _baseVolume;
-        musicSourceLayer04.volume = 0;
+        musicSourceLayer03.mute = false;
+        musicSourceLayer04.mute = true;
     }
 }
