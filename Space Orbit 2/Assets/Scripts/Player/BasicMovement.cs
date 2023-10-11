@@ -98,7 +98,7 @@ public class BasicMovement : Gravitable
             if (!_goingFast)
             {
                 _goingFast = true;
-                AudioManager.Instance.GoingFast();
+                //AudioManager.Instance.GoingFast();
             }
         }
 
@@ -107,7 +107,7 @@ public class BasicMovement : Gravitable
             if (_goingFast)
             {
                 _goingFast = false;
-                AudioManager.Instance.GoingSlow();
+                //AudioManager.Instance.GoingSlow();
             }
         }
     }

@@ -11462,7 +11462,7 @@ PrefabInstance:
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: _gravityStrength
-      value: 11.8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
@@ -13159,7 +13159,7 @@ PrefabInstance:
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: _gravityStrength
-      value: 5.9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
@@ -17738,7 +17738,7 @@ PrefabInstance:
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: _gravityStrength
-      value: 8.9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4185653282691344864, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
