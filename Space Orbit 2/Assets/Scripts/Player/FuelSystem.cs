@@ -29,6 +29,20 @@ public class FuelSystem : MonoBehaviour
         UpdateFuelText();
     }
 
+    public bool TryRemoveFuel(float fuelRemoved)
+    {
+        if (IsFuelEmpty())
+        {
+            return false;   
+        }
+        else
+        {
+            _currentFuel -= fuelRemoved;
+            UpdateFuelText();
+            return true;
+        }     
+    }
+
     public void SetCurrentFuel(float fuelSet)
     {
         _currentFuel = fuelSet;
