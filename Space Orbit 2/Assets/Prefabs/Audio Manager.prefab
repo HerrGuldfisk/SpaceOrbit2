@@ -48,7 +48,7 @@ MonoBehaviour:
   musicSourceLayer02: {fileID: 0}
   musicSourceLayer03: {fileID: 0}
   musicSourceLayer04: {fileID: 0}
-  musicLayer01: {fileID: 8300000, guid: b5df0ca4a03a5484f9f98593e4a251c8, type: 3}
-  musicLayer02: {fileID: 8300000, guid: 40220516395dc6746aeb075d0a0260f2, type: 3}
+  musicLayer01: {fileID: 8300000, guid: 1d596e7797c100145ad1fef54eee5097, type: 3}
+  musicLayer02: {fileID: 8300000, guid: 98d91889a0a8cd94d9bba85bdb19aae1, type: 3}
   musicLayer03: {fileID: 8300000, guid: b5cc00bffdb856141963637bd776b78f, type: 3}
   musicLayer04: {fileID: 8300000, guid: 9566539481f37b242b91273e3b26de6e, type: 3}
