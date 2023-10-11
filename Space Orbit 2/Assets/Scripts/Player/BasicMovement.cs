@@ -55,6 +55,8 @@ public class BasicMovement : Gravitable
     private Vector2 _totalForce;
     private float _steerTorque;
 
+    private bool _goingFast;
+
     void Start()
     {
         graphics = transform.GetChild(0).gameObject;
@@ -89,6 +91,24 @@ public class BasicMovement : Gravitable
         if (InOrbit)
         {
             fuelSystem.AddFuel(_orbitRefuel);
+        }
+
+        if (_currentVelocity.magnitude > 100)
+        {
+            if (!_goingFast)
+            {
+                _goingFast = true;
+                AudioManager.Instance.GoingFast();
+            }
+        }
+
+        if(_currentVelocity.magnitude < 100) 
+        {
+            if (_goingFast)
+            {
+                _goingFast = false;
+                AudioManager.Instance.GoingSlow();
+            }
         }
     }
 

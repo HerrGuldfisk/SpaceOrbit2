@@ -27,6 +27,7 @@ public abstract class GravityProvider : MonoBehaviour
             if (newObjectInGravityField.rootObject.tag == "Player")
             {
                 CameraFollow.Instance.ChangeTarget(transform.root.gameObject, CameraFollow.FollowType.Planet);
+                AudioManager.Instance.PlayerEnterOrbit();
             }
 
             _objectsInOrbit.Add(newObjectInGravityField);
@@ -42,6 +43,7 @@ public abstract class GravityProvider : MonoBehaviour
             if (objectLeavingGravityField.rootObject.tag == "Player")
             {
                 CameraFollow.Instance.ChangeTarget(objectLeavingGravityField.rootObject, CameraFollow.FollowType.PlayerShip);
+                AudioManager.Instance.PlayerExitOrbit();
             }
 
             _objectsInOrbit.Remove(objectLeavingGravityField);
