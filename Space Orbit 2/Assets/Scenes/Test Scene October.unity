@@ -13131,6 +13131,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: CircleRadius
+      value: 51.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: RotationSpeed
+      value: 26.23
+      objectReference: {fileID: 0}
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -17708,6 +17718,31 @@ PrefabInstance:
     - target: {fileID: 1652856652778913595, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: StartAngle
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: CircleRadius
+      value: 54.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: _nrOfPlanets
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: _nrOfAsteroids
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: UseTargetCoordinateSystem
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
