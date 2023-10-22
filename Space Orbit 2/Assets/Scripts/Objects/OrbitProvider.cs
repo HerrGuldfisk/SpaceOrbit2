@@ -7,13 +7,17 @@ using Unity.VisualScripting;
 
 public class OrbitProvider : MonoBehaviour
 {
-    [SerializeField] private int _numPlanets;
-    [SerializeField] private int _numAsteroids;
+    [SerializeField] 
+    private int _numPlanets;
+
+    [SerializeField] 
+    private int _numAsteroids;
 
     public GameObject planetPrefab;
     public GameObject asteroidPrefab;
 
-    private GameObject[] _allInOrbit;
+    [SerializeField]
+    private Orbitable[] _allInOrbit;
 
     // Drag & drop the target in the inspector
     public Transform Target;
@@ -31,20 +35,9 @@ public class OrbitProvider : MonoBehaviour
 
     private float angle;
 
-    private void Awake()
+    private void Start()
     {
-        angle = StartAngle;
-    }
-
-    void InstantiateObjectsInOrbit()
-    {
-        int totalNrOfObjects = _numPlanets + _numAsteroids;
-        for (int i = 0; i < totalNrOfObjects; i++)
-        {
-            Selection.activeObject = PrefabUtility.InstantiatePrefab(Selection.activeObject as GameObject);
-
-            _allInOrbit[i] = Selection.activeObject.GameObject();
-        }
+        
     }
 
     private Vector3 ComputePositionOffset(float a)
