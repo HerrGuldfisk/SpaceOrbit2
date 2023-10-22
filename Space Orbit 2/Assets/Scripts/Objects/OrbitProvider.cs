@@ -7,13 +7,13 @@ using Unity.VisualScripting;
 
 public class OrbitProvider : MonoBehaviour
 {
-    [SerializeField] private int _nrOfPlanets;
-    [SerializeField] private int _nrOfAsteroids;
+    [SerializeField] private int _numPlanets;
+    [SerializeField] private int _numAsteroids;
 
-    public Orbitable planet;
-    public Orbitable asteroid;
+    public GameObject planetPrefab;
+    public GameObject asteroidPrefab;
 
-    private GameObject[] _allObjectsInOrbit;
+    private GameObject[] _allInOrbit;
 
     // Drag & drop the target in the inspector
     public Transform Target;
@@ -21,8 +21,6 @@ public class OrbitProvider : MonoBehaviour
     public float CircleRadius = 1;
 
     public float RotationSpeed = 1;
-
-    public float ElevationOffset = 0;
 
     [Range(0, 360)]
     public float StartAngle = 0;
@@ -38,33 +36,15 @@ public class OrbitProvider : MonoBehaviour
         angle = StartAngle;
     }
 
-    [MenuItem("Test/Instantiate Selected")]
     void InstantiateObjectsInOrbit()
     {
-        int totalNrOfObjects = _nrOfPlanets + _nrOfAsteroids;
+        int totalNrOfObjects = _numPlanets + _numAsteroids;
         for (int i = 0; i < totalNrOfObjects; i++)
         {
             Selection.activeObject = PrefabUtility.InstantiatePrefab(Selection.activeObject as GameObject);
 
-            _allObjectsInOrbit[i] = Selection.activeObject.GameObject();
+            _allInOrbit[i] = Selection.activeObject.GameObject();
         }
-    }
-
-    private void LateUpdate()
-    {
-        // Define the position the object must rotate around
-        Vector3 position = Target != null ? Target.position : Vector3.zero;
-
-        Vector3 positionOffset = ComputePositionOffset(angle);
-
-        // Assign new position
-        transform.position = position + positionOffset;
-
-        // Rotate object so as to look at the target
-        if (LookAtTarget)
-            transform.rotation = Quaternion.LookRotation(position - transform.position, Target == null ? Vector3.up : Target.up);
-
-        angle += Time.fixedDeltaTime * RotationSpeed;
     }
 
     private Vector3 ComputePositionOffset(float a)
@@ -74,8 +54,8 @@ public class OrbitProvider : MonoBehaviour
         // Compute the position of the object
         Vector3 positionOffset = new Vector3(
             Mathf.Cos(a) * CircleRadius,
-            ElevationOffset,
-            Mathf.Sin(a) * CircleRadius
+            Mathf.Sin(a) * CircleRadius,
+            Target.position.z
         );
 
         // Change position if the object must rotate in the coordinate system of the target
@@ -91,7 +71,7 @@ public class OrbitProvider : MonoBehaviour
     [SerializeField]
     private bool drawGizmos = true;
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (!drawGizmos)
             return;
@@ -119,7 +99,6 @@ public class OrbitProvider : MonoBehaviour
             UnityEditor.Handles.DrawDottedLine(position, position + verticalOffset, 5);
             labelPosition = position + verticalOffset * 0.5f;
             labelPosition += Vector3.Cross(verticalOffset.normalized, Target != null && UseTargetCoordinateSystem ? Target.forward : Vector3.forward) * 0.25f;
-            UnityEditor.Handles.Label(labelPosition, ElevationOffset.ToString("0.00"));
         }
 
         position += verticalOffset;
