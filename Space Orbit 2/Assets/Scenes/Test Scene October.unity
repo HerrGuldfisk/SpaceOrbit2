@@ -1720,6 +1720,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 110203100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &91983288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1102280568004835166, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 974141530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &97166393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8223,6 +8229,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b905b66a93e9946be82066fa28c665, type: 3}
+--- !u!4 &591136373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1652856652778913595, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328272273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &592273774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7184517130076052379, guid: 5d15e936680190c41bb634e615ff454c,
@@ -17745,6 +17757,36 @@ PrefabInstance:
       propertyPath: UseTargetCoordinateSystem
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.data[0].target
+      value: 
+      objectReference: {fileID: 591136373}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.data[0].drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.data[0].circleRadius
+      value: 12.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.data[0].rotationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857982348797003296, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+        type: 3}
+      propertyPath: OrbitingObjects.Array.data[0].orbitingObject
+      value: 
+      objectReference: {fileID: 91983288}
     - target: {fileID: 2838535985692705650, guid: 09e4fe071afe46841abf8c66e4f98e0d,
         type: 3}
       propertyPath: m_LocalScale.x
