@@ -9,6 +9,7 @@ TagManager:
   - FuelPackage
   - Planet
   - AudioManager
+  - Asteroid
   layers:
   - Default
   - TransparentFX

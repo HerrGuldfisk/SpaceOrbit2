@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UIElements;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class OrbitProvider : MonoBehaviour
 {
     [SerializeField]
