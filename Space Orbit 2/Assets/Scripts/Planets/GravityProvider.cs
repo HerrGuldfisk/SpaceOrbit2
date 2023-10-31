@@ -7,6 +7,8 @@ public abstract class GravityProvider : MonoBehaviour
 {
     protected List<Gravitable> _objectsInOrbit = new List<Gravitable>();
 
+    protected CameraFollow cameraFollow;
+
 
     void FixedUpdate()
     {
@@ -26,7 +28,11 @@ public abstract class GravityProvider : MonoBehaviour
         {
             if (newObjectInGravityField.rootObject.tag == "Player")
             {
-                CameraFollow.Instance.ChangeTarget(transform.root.gameObject, CameraFollow.FollowType.Planet);
+                if(cameraFollow == null)
+                {
+                    cameraFollow = Camera.main.GetComponent<CameraFollow>();
+                }
+                cameraFollow.ChangeTarget(transform.root.gameObject, CameraFollow.FollowType.Planet);
             }
 
             _objectsInOrbit.Add(newObjectInGravityField);
@@ -41,7 +47,12 @@ public abstract class GravityProvider : MonoBehaviour
 
             if (objectLeavingGravityField.rootObject.tag == "Player")
             {
-                CameraFollow.Instance.ChangeTarget(objectLeavingGravityField.rootObject, CameraFollow.FollowType.PlayerShip);
+                if (cameraFollow == null)
+                {
+                    cameraFollow = Camera.main.GetComponent<CameraFollow>();
+                }
+
+                cameraFollow.ChangeTarget(objectLeavingGravityField.rootObject, CameraFollow.FollowType.PlayerShip);
             }
 
             _objectsInOrbit.Remove(objectLeavingGravityField);

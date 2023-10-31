@@ -11,27 +11,12 @@ public class CameraFollow : MonoBehaviour
     private Camera _mainCamera;
     private Vector3 _offset;
     [SerializeField] private float _baseZoomLevel = 40;
+
+    StateMachine _stateMachine = new StateMachine();
+
+    Dictionary<FollowType, BaseState> _availableStates = new Dictionary<FollowType, BaseState>();
     
     public float CurrentZoomLevelTarget { get; set; }
-
-    public static CameraFollow Instance;
-
-    private Coroutine _moveToTargetCoRoutine;
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
-
 
     private void Start()
     {
@@ -42,28 +27,17 @@ public class CameraFollow : MonoBehaviour
         CurrentZoomLevelTarget = _baseZoomLevel;
 
         target = GameObject.FindGameObjectWithTag("Player");
+
+        // Initialize states
+        _availableStates.Add(FollowType.PlayerShip, new CameraFollowPlayerState(target.GetComponent<BasicMovement>(), _mainCamera));
+        _availableStates.Add(FollowType.Planet, new CameraFollowPlanetState(_mainCamera));
+
+        _stateMachine.ChangeState(_availableStates[FollowType.PlayerShip]);
     }
 
     void Update()
     {
-        if (target == null)
-        {
-            return;
-        }
-
-        if(_currentFollowType == FollowType.Planet)
-        {
-            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, Time.deltaTime * 2);
-            _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
-        }
-        else if(_currentFollowType == FollowType.PlayerShip)
-        {
-            Vector3 aheadDirection = target.GetComponent<BasicMovement>().rb.velocity.normalized;
-            float aheadDistance = target.GetComponent<BasicMovement>().currentSpeed / 2; 
-
-            transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset + (aheadDirection * aheadDistance), Time.deltaTime * 5);
-            _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, CurrentZoomLevelTarget, Time.deltaTime * 2);
-        }
+        _stateMachine.ExecuteState();
     }
 
     public void ChangeTarget(GameObject newTarget, FollowType type)
@@ -73,41 +47,21 @@ public class CameraFollow : MonoBehaviour
 
         if(type == FollowType.PlayerShip)
         {
-            CurrentZoomLevelTarget = _baseZoomLevel;
+            _stateMachine.ChangeState(_availableStates[FollowType.PlayerShip]);
         }
         else if(type == FollowType.Planet)
         {
-            CurrentZoomLevelTarget = target.GetComponent<PlanetSettings>().GravityFieldSize / 1.8f;
+            CameraFollowPlanetState tempSettings = _availableStates[FollowType.Planet] as CameraFollowPlanetState;
+            tempSettings.Planet = newTarget.GetComponent<PlanetSettings>();
+            _stateMachine.ChangeState(_availableStates[FollowType.Planet]);
         }
+    } 
 
-        _moveToTargetCoRoutine = StartCoroutine(MoveTowardstargetEnumerator());
-    }
-
-    
-    IEnumerator MoveTowardstargetEnumerator()
-    {
-        float _completionPercent = 0;
-
-        while(_completionPercent < 1) 
-        {
-            
-        }
-
-        yield return null;
-    }
-    
-
-    float EaseInOutSine(float x) 
-    {
-        return -(Mathf.Cos(Mathf.PI* x) - 1) / 2;
-    }
-
-public void ResetTarget()
+    public void ResetTarget()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         transform.position = target.transform.position + _offset;
     }
-
 
     public enum FollowType
     {
