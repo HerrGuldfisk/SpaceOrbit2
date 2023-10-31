@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 
 public class Gravitable : MonoBehaviour
@@ -10,7 +12,18 @@ public class Gravitable : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
 
-    public bool InOrbit { get; set; }
+    private bool _inOrbit;
+    public bool InOrbit 
+    {
+        get { return _inOrbit; }
+        set 
+        {
+            _inOrbit = value;
+            OnOrbit?.Invoke(value);  
+        }
+    }
+
+    public BoolEvent OnOrbit;
 
     void Start()
     {
@@ -18,4 +31,6 @@ public class Gravitable : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
     }
+
+
 }
