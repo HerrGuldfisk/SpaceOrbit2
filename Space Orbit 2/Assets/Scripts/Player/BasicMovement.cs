@@ -7,7 +7,6 @@ using UnityEngine.PlayerLoop;
 
 public class BasicMovement : Gravitable
 {
-
     Vector2 rawInput = Vector2.zero;
 
     GameObject graphics;
@@ -217,5 +216,10 @@ public class BasicMovement : Gravitable
     void NoPhysicsMovement()
     {
         
+    }
+
+    public Vector2 GetDirection()
+    {
+        return _currentDirection;
     }
 }

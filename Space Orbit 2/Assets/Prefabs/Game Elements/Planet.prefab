@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4185653282691344864}
   - component: {fileID: 8982101897094905950}
   - component: {fileID: 5034587144813052781}
+  - component: {fileID: 1857982348797003296}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -116,6 +117,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1857982348797003296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102280568004835166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91613df90dfe7254f802997094603ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numPlanets: 0
+  _numAsteroids: 0
+  planetPrefab: {fileID: 0}
+  asteroidPrefab: {fileID: 0}
+  OrbitingObjects: []
+  target: {fileID: 0}
+  circleRadius: 1
+  rotationSpeed: 1
+  startAngle: 0
+  useTargetCoordinateSystem: 0
+  lookAtTarget: 0
+  drawGizmos: 1
 --- !u!1 &1266288961151893475
 GameObject:
   m_ObjectHideFlags: 0
