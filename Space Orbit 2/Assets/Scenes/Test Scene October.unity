@@ -5587,10 +5587,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.71
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 335199790938377868, guid: b78a424bf53eaed44be7e8670d8c1bf7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3617894982804905214, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 415452938}
   m_SourcePrefab: {fileID: 100100000, guid: b78a424bf53eaed44be7e8670d8c1bf7, type: 3}
 --- !u!1 &415452929 stripped
 GameObject:
@@ -5598,6 +5603,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 415452928}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &415452938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415452929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75514959d5333f48a4c460609e1ef47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chargeSpeed: 2
+  _sonarWave: {fileID: 4196956307632904806, guid: a86077de0208659429178592a20c5851,
+    type: 3}
 --- !u!4 &417409272 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7184517130076052379, guid: 5d15e936680190c41bb634e615ff454c,

@@ -14,6 +14,8 @@ public class BasicMovement : Gravitable
 
     FuelSystem fuelSystem;
 
+    public FuelSystem FuelSystem { get { return fuelSystem; } }
+
     [Header("Data (Read only)")]
     [SerializeField] public float currentSpeed = 0.0f;
     [SerializeField] public float currentTurningSpeed = 0.0f;
@@ -136,7 +138,7 @@ public class BasicMovement : Gravitable
             {
                 if (!InOrbit)
                 {
-                    fuelSystem.UseFuel(_fuelUsageThrusting);
+                    fuelSystem.TryRemoveFuel(_fuelUsageThrusting);
                 }
             }
         }
@@ -157,7 +159,7 @@ public class BasicMovement : Gravitable
 
             if (!InOrbit)
             {
-                fuelSystem.UseFuel(_fuelUsageSteering);
+                fuelSystem.TryRemoveFuel(_fuelUsageSteering);
             }
         }
         
