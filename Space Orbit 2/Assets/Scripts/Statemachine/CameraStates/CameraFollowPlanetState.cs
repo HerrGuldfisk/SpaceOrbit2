@@ -36,7 +36,7 @@ public class CameraFollowPlanetState : BaseState
         if (_transitionTime < 1) 
         {
             TransitionToPlanet();
-            _transitionTime += Time.deltaTime / 1.2f;
+            _transitionTime += Time.deltaTime / 0.8f;
         }
         else
         {

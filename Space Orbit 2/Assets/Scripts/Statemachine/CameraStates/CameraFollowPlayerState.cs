@@ -31,7 +31,7 @@ public class CameraFollowPlayerState : BaseState
         if (_transitionTime < 1) 
         {
             TransitionToPlayer();
-            _transitionTime += Time.deltaTime / 1.2f;
+            _transitionTime += Time.deltaTime / 0.8f;
         }
         else
         {
