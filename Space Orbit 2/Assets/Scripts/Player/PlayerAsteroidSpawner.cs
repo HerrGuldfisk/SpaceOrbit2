@@ -7,7 +7,7 @@ public class PlayerAsteroidSpawner : MonoBehaviour
     private BasicMovement _playerMovement;
 
     [SerializeField] private float _offsetPlayerDir = 100f;
-    [SerializeField] private float _spawnTimer = 10f;
+    [SerializeField] private float _spawnTimer = 24f;
     // Could potentially scale based on player current velocity
     [SerializeField] private float _spawnRadius = 300f;
 

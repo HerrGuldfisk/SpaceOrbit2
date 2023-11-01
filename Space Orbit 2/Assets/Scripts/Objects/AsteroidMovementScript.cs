@@ -6,7 +6,7 @@ public class AsteroidMovementScript : MonoBehaviour
 {
     public bool runaway = false;
 
-    [SerializeField] private float _destroyTimer = 10f;
+    [SerializeField] private float _destroyTimer = 24f;
 
     private Vector2 _velocity;
     private Vector2 _direction;
