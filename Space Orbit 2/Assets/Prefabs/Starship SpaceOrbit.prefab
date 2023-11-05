@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 6624498914071495782}
   - component: {fileID: 7082944826942403088}
   - component: {fileID: 5396214966194167764}
-  - component: {fileID: 335199790938377868}
   - component: {fileID: 1637414783492321257}
   - component: {fileID: 4077656145117070205}
+  - component: {fileID: 6321118167358796428}
   m_Layer: 0
   m_Name: Starship SpaceOrbit
   m_TagString: Player
@@ -230,6 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootObject: {fileID: 0}
   rb: {fileID: 0}
+  OnOrbit:
+    m_PersistentCalls:
+      m_Calls: []
   currentSpeed: 0
   currentTurningSpeed: 0
   _initialSpeed: 0
@@ -286,22 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338ec3c9656deeb4e96e26b0d0309612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &335199790938377868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617894982804905214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e47e665c6c79443b7b269deb32afaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxCharge: 5
-  _charge: 0
-  _sonarWave: {fileID: 4196956307632904806, guid: a86077de0208659429178592a20c5851,
-    type: 3}
 --- !u!70 &1637414783492321257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -349,8 +336,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295546d3528dff74fb5f781be5947b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayTimer: 10
+  _offsetPlayerDir: 100
+  _spawnTimer: 24
   _spawnRadius: 200
+--- !u!114 &6321118167358796428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617894982804905214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75514959d5333f48a4c460609e1ef47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chargeSpeed: 4
+  _sonarWave: {fileID: 4196956307632904806, guid: a86077de0208659429178592a20c5851,
+    type: 3}
 --- !u!1 &3948743865359752147
 GameObject:
   m_ObjectHideFlags: 0
