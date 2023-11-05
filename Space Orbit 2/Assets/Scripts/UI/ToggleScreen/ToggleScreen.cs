@@ -12,7 +12,6 @@ public class ToggleScreen : MonoBehaviour
   public void Show()
   {
     canvasGroup.alpha = 1;
-    Debug.Log("Showing toggle screen");
   }
 
   public void Hide()
