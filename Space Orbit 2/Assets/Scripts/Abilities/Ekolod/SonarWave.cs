@@ -43,7 +43,7 @@ public class SonarWave : MonoBehaviour
     {
         if(collision.gameObject.tag == "Planet")
         {
-            Debug.Log($"Hit a planet at: {collision.gameObject.transform.position}");
+            Debug.Log($"Hit a planet at: {(Vector2)collision.gameObject.transform.position}");
         }
     }
 }
