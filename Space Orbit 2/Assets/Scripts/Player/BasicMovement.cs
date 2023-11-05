@@ -17,11 +17,8 @@ public class BasicMovement : Gravitable
 
     [Header("Data (Read only)")]
     [SerializeField] public float currentSpeed = 0.0f;
-    [SerializeField] public float currentTurningSpeed = 0.0f;
 
     [Header("Drive Settings")]
-    [SerializeField] private float _initialSpeed = 0.0f;
-
     [SerializeField] private float _steerFactor = 3f;
     [SerializeField] private float _thrustFactor = 20.0f;
 
@@ -29,7 +26,6 @@ public class BasicMovement : Gravitable
     [SerializeField] private float _decelerationFactor = 2.0f;
 
     [SerializeField] private float _maxThrustSpeed = 300.0f;
-    [SerializeField] private float _maxRotationSpeed = 1.0f;
 
     [SerializeField] private float _speedDrag = 0.0000f;
     [SerializeField] private float _angularDrag = 0.0000f;
