@@ -6,11 +6,11 @@ public class AsteroidMovementScript : MonoBehaviour
 {
     public bool runaway = false;
 
-    [SerializeField] private float _destroyTimer = 24f;
+    [SerializeField] private float _destroyTimer = 6f;
 
     private Vector2 _velocity;
     private Vector2 _direction;
-    private float _speed = 20f;
+    private float _speed = 24f;
 
     // Update is called once per frame
     void Update()

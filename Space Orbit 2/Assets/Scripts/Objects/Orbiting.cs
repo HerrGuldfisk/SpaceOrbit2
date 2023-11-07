@@ -38,11 +38,14 @@ public class Orbiting
         Vector3 positionOffset = ComputePositionOffset(angle);
 
         // Assign new position
-        orbitingObject.transform.position = position + positionOffset;
+        if(orbitingObject != null)
+        {
+            orbitingObject.transform.position = position + positionOffset;
 
-        // Rotate object so as to look at the target
-        if (lookAtTarget)
-            orbitingObject.transform.rotation = Quaternion.LookRotation(position - orbitingObject.transform.position, target == null ? Vector3.up : target.forward);
+            // Rotate object so as to look at the target
+            if (lookAtTarget)
+                orbitingObject.transform.rotation = Quaternion.LookRotation(position - orbitingObject.transform.position, target == null ? Vector3.up : target.forward);
+        }
 
         angle += Time.deltaTime * rotationSpeed;
     }
