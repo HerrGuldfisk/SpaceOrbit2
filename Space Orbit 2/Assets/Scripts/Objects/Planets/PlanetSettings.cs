@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlanetSettings : MonoBehaviour
 {
     [Header("Planet Settings")]
-    [SerializeField] float _bodySize;
+    [SerializeField] float _bodySize = 15f;
 
     [SerializeField] PlanetGravityMode _gravityMode;
-    [SerializeField] float _gravityFieldSize;
+    [SerializeField] float _gravityFieldSize = 50f;
     [SerializeField] float _gravityStrength;
 
     public float BodySize { get; }

@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b0e56bcb5b474488b964681b931e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bodySize: 1
+  _bodySize: 15
   _gravityMode: 1
-  _gravityFieldSize: 3
+  _gravityFieldSize: 50
   _gravityStrength: 2
   _body: {fileID: 2838535985692705650}
   _gravityField: {fileID: 7621000570941648732}
@@ -129,17 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91613df90dfe7254f802997094603ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numPlanets: 0
-  _numAsteroids: 0
-  planetPrefab: {fileID: 0}
-  asteroidPrefab: {fileID: 0}
   OrbitingObjects: []
-  target: {fileID: 0}
-  circleRadius: 1
-  rotationSpeed: 1
-  startAngle: 0
-  useTargetCoordinateSystem: 0
-  lookAtTarget: 0
   drawGizmos: 1
 --- !u!1 &1266288961151893475
 GameObject:
@@ -170,7 +160,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1652856652778913595}
@@ -305,7 +295,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1652856652778913595}
