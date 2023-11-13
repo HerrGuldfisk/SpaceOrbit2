@@ -2,54 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetSettings : MonoBehaviour
-{
-    [Header("Planet Settings")]
-    [SerializeField] float _bodySize = 15f;
+public class PlanetSettings : MonoBehaviour {
+    [Header("Planet Settings")] [SerializeField]
+    float _bodySize = 15f;
 
-    [SerializeField] PlanetGravityMode _gravityMode;
+    [SerializeField] PlanetGravityMode _gravityMode = PlanetGravityMode.Linear;
     [SerializeField] float _gravityFieldSize = 50f;
-    [SerializeField] float _gravityStrength;
+    [SerializeField] float _gravityStrength = 2f;
 
-    public float BodySize { get; }
-    public PlanetGravityMode GravityMode { get { return _gravityMode; } }
-    public float GravityFieldSize { get { return _gravityFieldSize; } set { _gravityFieldSize = value; } }
-    public float GravityStrength { get { return _gravityStrength; } set { _gravityStrength = value; } }
-    
+    [SerializeField] private float BodySize = 15f;
+
+    public PlanetGravityMode GravityMode {
+        get { return _gravityMode; }
+    }
+
+    public float GravityFieldSize {
+        get { return _gravityFieldSize; }
+        set { _gravityFieldSize = value; }
+    }
+
+    public float GravityStrength {
+        get { return _gravityStrength; }
+        set { _gravityStrength = value; }
+    }
 
 
-    [Header("Do not change")]
-    [SerializeField] Transform _body;
+    [Header("Do not change")] [SerializeField]
+    Transform _body;
+
     [SerializeField] Transform _gravityField;
-    
 
-    void Start()
-    {
-
+    private void OnValidate() {
+        SetBodySize(_bodySize);
+        SetGravityFieldSize(_gravityFieldSize);
     }
 
-
-    void Update()
-    {
-        
-    }
-
-
-    private void OnValidate()
-    {
-        if (_body != null)
-        {
-            _body.localScale = new Vector3(_bodySize, _bodySize, _bodySize);
-        }
-
-        if(_gravityField != null)
-        {
-            _gravityField.localScale = new Vector3(_gravityFieldSize, _gravityFieldSize, 1);
+    public void SetGravityFieldSize(float newSize) {
+        if (_gravityField != null) {
+            _gravityFieldSize = newSize;
+            _gravityField.localScale = new Vector3(newSize, newSize, 1);
         }
     }
 
-    public enum PlanetGravityMode
-    {
+    public void SetBodySize(float newSize) {
+        if (_body != null) {
+            _bodySize = newSize;
+            _body.localScale = new Vector3(newSize, newSize, newSize);
+        }
+    }
+
+
+    public enum PlanetGravityMode {
         Constant,
         Linear,
         Logarithmic

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5579248390940311250}
   - component: {fileID: 2497148159404667668}
+  - component: {fileID: 3201581743390841753}
   m_Layer: 0
   m_Name: World Generator
   m_TagString: Untagged
@@ -44,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07fcc3a6b93d6f4797142d1fbca0e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetPrefab: {fileID: 1102280568004835166, guid: 09e4fe071afe46841abf8c66e4f98e0d,
-    type: 3}
   starPrefab: {fileID: 2646586524208943470, guid: 231afcefafd595c4bbde5751358fa8ca,
     type: 3}
   numberOfPlanets: 30
@@ -53,3 +52,21 @@ MonoBehaviour:
   mapSize: 1000
   minGenerationDistanceFromOrigin: 50
   minDistanceBetweenObjects: 50
+--- !u!114 &3201581743390841753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252243339038980245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce991002f5f3a4345a68618bd4944ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetPrefab: {fileID: 1102280568004835166, guid: 09e4fe071afe46841abf8c66e4f98e0d,
+    type: 3}
+  bodySizeMin: 2
+  bodySizeMax: 15
+  gravityFieldSizeMin: 30
+  gravityFieldSizeMax: 150

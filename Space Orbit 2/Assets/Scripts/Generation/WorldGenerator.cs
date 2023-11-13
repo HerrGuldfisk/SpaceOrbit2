@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // randomly places a set amount of planets and stars around the world
+[RequireComponent(typeof(PlanetSpawner))]
 public class WorldGenerator : MonoBehaviour {
-    [SerializeField] private GameObject planetPrefab;
     [SerializeField] private GameObject starPrefab;
+
+    private PlanetSpawner _planetSpawner;
 
     [SerializeField] private int numberOfPlanets = 30;
     [SerializeField] private int numberOfStars = 5;
@@ -16,29 +20,46 @@ public class WorldGenerator : MonoBehaviour {
 
     private readonly List<Vector2> _positionsPlacedAt = new List<Vector2>();
 
+    private void Awake() {
+        _planetSpawner = GetComponent<PlanetSpawner>();
+    }
+
     void Start() {
         GenerateMap();
     }
 
     void GenerateMap() {
-        GenerateObjects(numberOfStars, starPrefab);
-        GenerateObjects(numberOfPlanets, planetPrefab);
+        SpawnAllStars();
+        SpawnAllPlanets();
     }
 
-    private void GenerateObjects(float numberOfObjects, GameObject prefab) {
-        for (int i = 0; i < numberOfObjects; i++) {
-            Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
-            int iterator = 0;
-            while (PosIsTooCloseToExistingObject(randomPos)) {
-                randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
-                iterator++;
-            }
-
-            Debug.Assert(iterator < 30,
-                "iterated object placement position more than 30 times. Please make sure that there is enough space to generate all the objects");
-            Instantiate(prefab, randomPos, Quaternion.identity);
-            _positionsPlacedAt.Add(randomPos);
+    private void SpawnAllStars() {
+        for (int i = 0; i < numberOfStars; i++) {
+            var spawnPosition = GetValidSpawnPosition();
+            Instantiate(starPrefab, spawnPosition, Quaternion.identity);
+            _positionsPlacedAt.Add(spawnPosition);
         }
+    }
+
+    private void SpawnAllPlanets() {
+        for (int i = 0; i < numberOfPlanets; i++) {
+            var spawnPosition = GetValidSpawnPosition();
+            _planetSpawner.SpawnPlanet(spawnPosition);
+            _positionsPlacedAt.Add(spawnPosition);
+        }
+    }
+
+    private Vector2 GetValidSpawnPosition() {
+        Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
+        int iterator = 0;
+        while (PosIsTooCloseToExistingObject(randomPos)) {
+            randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
+            iterator++;
+        }
+
+        Debug.Assert(iterator < 30,
+            "iterated object placement position more than 30 times. Please make sure that there is enough space to generate all the objects");
+        return randomPos;
     }
 
     Vector2 GetRandomPosition(float minDistanceFromOrigin, float maxDistanceFromOrigin) {
