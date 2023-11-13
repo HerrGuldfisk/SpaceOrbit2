@@ -419,6 +419,8 @@ MonoBehaviour:
   numberOfPlanets: 12
   numberOfStars: 5
   mapSize: 1000
+  minGenerationDistanceFromOrigin: 50
+  minDistanceBetweenObjects: 50
 --- !u!4 &450776811
 Transform:
   m_ObjectHideFlags: 0
