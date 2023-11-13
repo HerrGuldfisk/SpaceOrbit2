@@ -416,7 +416,7 @@ MonoBehaviour:
     type: 3}
   starPrefab: {fileID: 2646586524208943470, guid: 231afcefafd595c4bbde5751358fa8ca,
     type: 3}
-  numberOfPlanets: 12
+  numberOfPlanets: 30
   numberOfStars: 5
   mapSize: 1000
   minGenerationDistanceFromOrigin: 50

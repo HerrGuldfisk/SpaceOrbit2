@@ -11,8 +11,13 @@ public class Star : MonoBehaviour {
 
     public static event StarCollected OnStarCollected;
 
+    public delegate void StarSpawned(Vector2 starPosition);
+
+    public static event StarSpawned OnStarSpawned;
+
     private void Awake() {
         _starManager = FindObjectOfType<StarManager>();
+        OnStarSpawned?.Invoke(transform.position);
         Debug.Assert((_starManager != null), "no star manager found in scene");
     }
 
