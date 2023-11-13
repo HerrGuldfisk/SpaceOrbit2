@@ -12,12 +12,6 @@ public class StarManager : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI starsHeldText;
     [SerializeField] private TextMeshProUGUI starsDeliveredText;
 
-    // private void Awake()
-    // {
-    //     _starsInScene = FindObjectsOfType<Star>().Length;
-    //     UpdateStarCounterUI();
-    // }
-
     private void OnEnable() {
         Star.OnStarSpawned += OnStarSpawned;
     }

@@ -7,14 +7,14 @@ public class WorldGenerator : MonoBehaviour {
     [SerializeField] private GameObject planetPrefab;
     [SerializeField] private GameObject starPrefab;
 
-    [SerializeField] private int numberOfPlanets = 10;
+    [SerializeField] private int numberOfPlanets = 30;
     [SerializeField] private int numberOfStars = 5;
 
-    [SerializeField] private float mapSize = 500f;
+    [SerializeField] private float mapSize = 1000f;
     [SerializeField] private float minGenerationDistanceFromOrigin = 50f;
-    [SerializeField] private float minDistanceBetweenObjects = 25f;
+    [SerializeField] private float minDistanceBetweenObjects = 50f;
 
-    private List<Vector2> positionsPlacedAt = new List<Vector2>();
+    private readonly List<Vector2> _positionsPlacedAt = new List<Vector2>();
 
     void Start() {
         GenerateMap();
@@ -37,7 +37,7 @@ public class WorldGenerator : MonoBehaviour {
             Debug.Assert(iterator < 30,
                 "iterated object placement position more than 30 times. Please make sure that there is enough space to generate all the objects");
             Instantiate(prefab, randomPos, Quaternion.identity);
-            positionsPlacedAt.Add(randomPos);
+            _positionsPlacedAt.Add(randomPos);
         }
     }
 
@@ -51,7 +51,7 @@ public class WorldGenerator : MonoBehaviour {
     bool PosIsTooCloseToExistingObject(Vector2 positionToCheck) {
         bool isTooClose = false;
 
-        foreach (Vector2 positionPlaced in positionsPlacedAt) {
+        foreach (Vector2 positionPlaced in _positionsPlacedAt) {
             float distanceBetweenNewAndOldPosition = Vector2.Distance(positionToCheck, positionPlaced);
             if (distanceBetweenNewAndOldPosition < minDistanceBetweenObjects) {
                 isTooClose = true;
