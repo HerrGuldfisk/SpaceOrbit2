@@ -10,6 +10,7 @@ TagManager:
   - Planet
   - AudioManager
   - Asteroid
+  - Star
   layers:
   - Default
   - TransparentFX
