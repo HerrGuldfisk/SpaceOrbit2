@@ -9,28 +9,28 @@ public class WorldGenerator : MonoBehaviour {
     public int numberOfPlanets = 10;
     public int numberOfStars = 5;
     public float mapSize = 500f;
+    [SerializeField] private float minGenerationDistanceFromOrigin = 50f;
 
     void Start() {
         GenerateMap();
     }
 
     void GenerateMap() {
-        // Generate planets
-        for (int i = 0; i < numberOfPlanets; i++) {
-            Vector2 randomPos = GetRandomPosition();
-            Instantiate(planetPrefab, randomPos, Quaternion.identity);
-        }
+        GenerateObjects(numberOfStars, starPrefab);
+        GenerateObjects(numberOfPlanets, planetPrefab);
+    }
 
-        // Generate stars
-        for (int i = 0; i < numberOfStars; i++) {
-            Vector2 randomPos = GetRandomPosition();
-            Instantiate(starPrefab, randomPos, Quaternion.identity);
+    private void GenerateObjects(float numberOfObjects, GameObject prefab) {
+        for (int i = 0; i < numberOfObjects; i++) {
+            Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
+            Instantiate(prefab, randomPos, Quaternion.identity);
         }
     }
 
-    Vector2 GetRandomPosition() {
-        float x = Random.Range(-mapSize, mapSize);
-        float y = Random.Range(-mapSize, mapSize);
-        return new Vector2(x, y);
+    Vector2 GetRandomPosition(float minDistanceFromOrigin, float maxDistanceFromOrigin) {
+        float distanceFromOrigin = Random.Range(minDistanceFromOrigin, maxDistanceFromOrigin);
+        Vector2 directionFromOrigin = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        Vector2 position = directionFromOrigin * distanceFromOrigin;
+        return position;
     }
 }
