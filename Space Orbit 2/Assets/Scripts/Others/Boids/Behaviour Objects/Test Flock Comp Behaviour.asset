@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15f7e73e3f816bf41a12632b68d89c30, type: 3}
-  m_Name: Composite Behaviour Object
+  m_Name: Test Flock Comp Behaviour
   m_EditorClassIdentifier: 
   behaviours:
-  - {fileID: 11400000, guid: 8126f9641a23066468fa774a179aeb0a, type: 2}
-  - {fileID: 11400000, guid: 2532e4bee2bc31f4bb7b0e1d23976846, type: 2}
-  - {fileID: 11400000, guid: 57041deb333cf4c4cbe80b4c3aea1e4e, type: 2}
+  - {fileID: 11400000, guid: 468b535eb55d82d4f838d07a061c1584, type: 2}
+  - {fileID: 11400000, guid: b5c3b2a431d16d349ab25ece30851f9f, type: 2}
+  - {fileID: 11400000, guid: 8ff6e72e2eb30a942be03999789d402f, type: 2}
+  - {fileID: 11400000, guid: 6da9e0b37e83f32429743aab039e9ebd, type: 2}
   weights:
-  - 3
   - 1
-  - 2
+  - 1000
+  - 0.1
+  - 4

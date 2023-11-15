@@ -10,5 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e33d1b47f931a24cb8fb10e62de7bc8, type: 3}
-  m_Name: Alignment Behaviour Object
+  m_Name: Alignment Behaviour
   m_EditorClassIdentifier: 
+  filter: {fileID: 0}

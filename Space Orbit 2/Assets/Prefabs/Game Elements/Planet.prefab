@@ -53,6 +53,7 @@ MonoBehaviour:
   _gravityMode: 1
   _gravityFieldSize: 50
   _gravityStrength: 2
+  BodySize: 15
   _body: {fileID: 2838535985692705650}
   _gravityField: {fileID: 7621000570941648732}
 --- !u!50 &8982101897094905950
@@ -143,7 +144,7 @@ GameObject:
   - component: {fileID: 4542770068291277483}
   - component: {fileID: 588080442815052314}
   - component: {fileID: 7205586394481108600}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +279,7 @@ GameObject:
   - component: {fileID: 2446120619047657953}
   - component: {fileID: 8164777837241202013}
   - component: {fileID: 1456844656828611103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

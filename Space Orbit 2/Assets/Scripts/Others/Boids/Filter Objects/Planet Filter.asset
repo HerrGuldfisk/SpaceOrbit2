@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f022ba92bfc44af439d28ab4051276b7, type: 3}
-  m_Name: Steered Cohesion Behaviour Object
+  m_Script: {fileID: 11500000, guid: d2452414f682bf64e932bbbc468817b6, type: 3}
+  m_Name: Planet Filter
   m_EditorClassIdentifier: 
-  agentSmoothTime: 0.5
+  mask:
+    serializedVersion: 2
+    m_Bits: 256

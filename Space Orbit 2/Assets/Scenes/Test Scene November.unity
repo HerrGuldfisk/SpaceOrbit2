@@ -459,58 +459,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 30581475}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &191809034
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 191809036}
-  - component: {fileID: 191809035}
-  m_Layer: 0
-  m_Name: Flock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &191809035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191809034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 4294681694495879432, guid: 8d264f57c2e35d045ab5971d17a77f13,
-    type: 3}
-  behaviour: {fileID: 11400000, guid: 5f12fa5df1295a84ab5d49977b548ebe, type: 2}
-  startCount: 200
-  driveFactor: 10
-  maxSpeed: 5
-  neighbourRadius: 1.5
-  avoidanceRadiusMultiplier: 0.5
---- !u!4 &191809036
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191809034}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &234026991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
@@ -2463,6 +2411,58 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1534912265}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1071259687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1071259689}
+  - component: {fileID: 1071259688}
+  m_Layer: 0
+  m_Name: Test Flock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1071259688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071259687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 4294681694495879432, guid: 8d264f57c2e35d045ab5971d17a77f13,
+    type: 3}
+  behaviour: {fileID: 11400000, guid: a7f826f74b16995419fba38a6cd439f6, type: 2}
+  startCount: 200
+  driveFactor: 30
+  maxSpeed: 6
+  neighbourRadius: 5
+  avoidanceRadiusMultiplier: 0.9
+--- !u!4 &1071259689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071259687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1098388981 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8431851335165978270, guid: 442e6cd9a0dd1824b8c41ef21aaa441e,
@@ -6085,6 +6085,6 @@ SceneRoots:
   - {fileID: 572397435}
   - {fileID: 9122710541279604916}
   - {fileID: 588973482}
-  - {fileID: 191809036}
+  - {fileID: 1071259689}
   - {fileID: 284975282}
   - {fileID: 662115876}
