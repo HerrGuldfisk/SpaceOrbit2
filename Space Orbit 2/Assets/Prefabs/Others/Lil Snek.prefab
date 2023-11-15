@@ -192,7 +192,8 @@ GameObject:
   - component: {fileID: 2689656141198184544}
   - component: {fileID: 7660659305556733808}
   - component: {fileID: 4709369353304701399}
-  m_Layer: 0
+  - component: {fileID: -7765272770390504765}
+  m_Layer: 12
   m_Name: Lil Snek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4326632487933286833}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51c1ae54558992d44ba215ed9105bcd3, type: 3}
   m_Name: 
@@ -355,6 +356,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dea0e7c69b29174080fde20e14b59e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7765272770390504765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326632487933286833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75adbdc88ba89594b95c2e246a6b3aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8699479484938931139

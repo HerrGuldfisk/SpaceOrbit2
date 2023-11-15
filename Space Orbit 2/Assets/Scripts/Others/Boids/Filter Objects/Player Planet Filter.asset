@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccedc41ad962e541a3538e5b731a975, type: 3}
-  m_Name: Avoid Planets Behaviour
+  m_Script: {fileID: 11500000, guid: d2452414f682bf64e932bbbc468817b6, type: 3}
+  m_Name: Player Planet Filter
   m_EditorClassIdentifier: 
-  filter: {fileID: 11400000, guid: 92ccaa6423a1a1c42bf62499b549745d, type: 2}
+  mask:
+    serializedVersion: 2
+    m_Bits: 12672

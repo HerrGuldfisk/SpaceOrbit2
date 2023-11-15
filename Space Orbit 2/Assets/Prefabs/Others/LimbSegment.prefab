@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4403096756630284879}
   - component: {fileID: 4697036778174919185}
   - component: {fileID: -7359683680940461324}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LimbSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

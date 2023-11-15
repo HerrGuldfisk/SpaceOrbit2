@@ -234,14 +234,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   currentSpeed: 0
-  currentTurningSpeed: 0
-  _initialSpeed: 0
   _steerFactor: 3
   _thrustFactor: 20
   _accelerationFactor: 1
   _decelerationFactor: 2
   _maxThrustSpeed: 300
-  _maxRotationSpeed: 1
   _speedDrag: 0
   _angularDrag: 0
   _maxFuel: 100
@@ -366,7 +363,7 @@ GameObject:
   - component: {fileID: 8490164948036089507}
   - component: {fileID: 4372622282665686459}
   - component: {fileID: 8122727710210168882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16,9 +16,9 @@ public class Flock : MonoBehaviour
     public float driveFactor = 10f;
     [Range(1f, 100f)]
     public float maxSpeed = 5f;
-    [Range(1f, 10f)]
+    [Range(1f, 100f)]
     public float neighbourRadius = 1.5f;
-    [Range(0f, 1f)]
+    [Range(0f, 100f)]
     public float avoidanceRadiusMultiplier = 0.5f;
 
     private float _squareMaxSpeed;
@@ -37,7 +37,7 @@ public class Flock : MonoBehaviour
         {
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
-                Random.insideUnitCircle * startCount * AgentDensity,
+                (Vector2)transform.position + Random.insideUnitCircle * startCount * AgentDensity,
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
                 );
