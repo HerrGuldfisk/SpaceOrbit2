@@ -8,9 +8,9 @@ public class Flock : MonoBehaviour
     List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehaviour behaviour;
 
-    [Range(5f, 500f)]
-    public int startCount = 20;
-    const float AgentDensity = 0.8f;
+    [Range(5, 500)]
+    public int startCount = 50;
+    const float AgentDensity = 0.2f;
 
     [Range(1f, 100f)]
     public float driveFactor = 10f;
@@ -23,15 +23,15 @@ public class Flock : MonoBehaviour
 
     private float _squareMaxSpeed;
     private float _squareNeighbourRadius;
-    private float _squareAvoidanceRadiusMultiplier;
-    public float squareNeighbourRadius { get { return _squareNeighbourRadius; } }
+    private float _squareAvoidanceRadius;
+    public float squareAvoidance { get { return _squareAvoidanceRadius; } }
 
     // Start is called before the first frame update
     void Start()
     {
         _squareMaxSpeed = maxSpeed * maxSpeed;
         _squareNeighbourRadius = neighbourRadius * neighbourRadius;
-        _squareAvoidanceRadiusMultiplier = _squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
+        _squareAvoidanceRadius = _squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
         
         for (int i = 0; i < startCount; i++)
         {
@@ -51,9 +51,11 @@ public class Flock : MonoBehaviour
     {
         foreach(FlockAgent agent in agents)
         {
-
-            /*
             List<Transform> context = GetNearbyObjects(agent);
+
+            // For testing
+            // agent.GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+
             Vector2 move = behaviour.CalculateMove(agent, context, this);
             move *= driveFactor;
             if (move.sqrMagnitude > _squareMaxSpeed)
@@ -61,7 +63,6 @@ public class Flock : MonoBehaviour
                 move = move.normalized * maxSpeed;
             }
             agent.Move(move);
-            */
         }
     }
 

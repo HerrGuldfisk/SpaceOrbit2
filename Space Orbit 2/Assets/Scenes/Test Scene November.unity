@@ -475,7 +475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &191809035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 4294681694495879432, guid: 8d264f57c2e35d045ab5971d17a77f13,
     type: 3}
-  behaviour: {fileID: 0}
-  startCount: 20
+  behaviour: {fileID: 11400000, guid: 5f12fa5df1295a84ab5d49977b548ebe, type: 2}
+  startCount: 200
   driveFactor: 10
   maxSpeed: 5
   neighbourRadius: 1.5
