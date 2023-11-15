@@ -459,6 +459,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 30581475}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &191809034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191809036}
+  - component: {fileID: 191809035}
+  m_Layer: 0
+  m_Name: Flock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &191809035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191809034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 4294681694495879432, guid: 8d264f57c2e35d045ab5971d17a77f13,
+    type: 3}
+  behaviour: {fileID: 0}
+  startCount: 20
+  driveFactor: 10
+  maxSpeed: 5
+  neighbourRadius: 1.5
+  avoidanceRadiusMultiplier: 0.5
+--- !u!4 &191809036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191809034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &234026991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
@@ -5767,6 +5819,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2257792754921403775, guid: 5bc96cfbcae8f8843a57f4f3a38c68d8,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5231573475547471641, guid: 5bc96cfbcae8f8843a57f4f3a38c68d8,
         type: 3}
       propertyPath: m_Name
@@ -5993,3 +6050,4 @@ SceneRoots:
   - {fileID: 9122710541279604916}
   - {fileID: 588973482}
   - {fileID: 662115876}
+  - {fileID: 191809036}
