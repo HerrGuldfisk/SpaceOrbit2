@@ -383,18 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &450776812 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3201581743390841753, guid: bf8ea93c47649a345abdd7c4e91fb731,
-    type: 3}
-  m_PrefabInstance: {fileID: 6312751295889998468}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce991002f5f3a4345a68618bd4944ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &588462496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1713,27 +1701,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2497148159404667668, guid: bf8ea93c47649a345abdd7c4e91fb731,
-        type: 3}
-      propertyPath: planetSpawner
-      value: 
-      objectReference: {fileID: 450776812}
-    - target: {fileID: 3201581743390841753, guid: bf8ea93c47649a345abdd7c4e91fb731,
-        type: 3}
-      propertyPath: planetPrefab
-      value: 
-      objectReference: {fileID: 1102280568004835166, guid: 09e4fe071afe46841abf8c66e4f98e0d,
-        type: 3}
-    - target: {fileID: 3201581743390841753, guid: bf8ea93c47649a345abdd7c4e91fb731,
-        type: 3}
-      propertyPath: gravityFieldSizeMax
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201581743390841753, guid: bf8ea93c47649a345abdd7c4e91fb731,
-        type: 3}
-      propertyPath: gravityFieldSizeMin
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 5252243339038980245, guid: bf8ea93c47649a345abdd7c4e91fb731,
         type: 3}
       propertyPath: m_Name

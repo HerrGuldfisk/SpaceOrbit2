@@ -10,6 +10,10 @@ public class PlanetSpawner : MonoBehaviour {
     [SerializeField] private float gravityFieldSizeMin = 10f;
     [SerializeField] private float gravityFieldSizeMax = 100f;
 
+    public float GetMaxRadiusPlanetPlusGravity() {
+        return gravityFieldSizeMax + bodySizeMax;
+    }
+
     public void SpawnPlanet(Vector2 worldPosition) {
         GameObject planetInstance = Instantiate(planetPrefab, worldPosition, Quaternion.identity);
         RandomizePlanetSettings(planetInstance);

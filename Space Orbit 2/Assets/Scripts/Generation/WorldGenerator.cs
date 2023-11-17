@@ -35,7 +35,7 @@ public class WorldGenerator : MonoBehaviour {
 
     private void SpawnAllStars() {
         for (int i = 0; i < numberOfStars; i++) {
-            var spawnPosition = GetValidSpawnPosition();
+            var spawnPosition = GetValidSpawnPosition(false);
             Instantiate(starPrefab, spawnPosition, Quaternion.identity);
             _positionsPlacedAt.Add(spawnPosition);
         }
@@ -43,16 +43,16 @@ public class WorldGenerator : MonoBehaviour {
 
     private void SpawnAllPlanets() {
         for (int i = 0; i < numberOfPlanets; i++) {
-            var spawnPosition = GetValidSpawnPosition();
+            var spawnPosition = GetValidSpawnPosition(true);
             _planetSpawner.SpawnPlanet(spawnPosition);
             _positionsPlacedAt.Add(spawnPosition);
         }
     }
 
-    private Vector2 GetValidSpawnPosition() {
+    private Vector2 GetValidSpawnPosition(bool isPlanet) {
         Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
         int iterator = 0;
-        while (PosIsTooCloseToExistingObject(randomPos)) {
+        while (PosIsTooCloseToExistingObject(randomPos, isPlanet)) {
             randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
             iterator++;
         }
@@ -69,12 +69,19 @@ public class WorldGenerator : MonoBehaviour {
         return position;
     }
 
-    bool PosIsTooCloseToExistingObject(Vector2 positionToCheck) {
+    bool PosIsTooCloseToExistingObject(Vector2 positionToCheck, bool isPlanet) {
+        float effectiveMinDistanceBetweenPoints = minDistanceBetweenObjects;
+
+        if (isPlanet) {
+            float maxPlanetSize = GetComponent<PlanetSpawner>().GetMaxRadiusPlanetPlusGravity();
+            effectiveMinDistanceBetweenPoints += maxPlanetSize;
+        }
+
         bool isTooClose = false;
 
         foreach (Vector2 positionPlaced in _positionsPlacedAt) {
             float distanceBetweenNewAndOldPosition = Vector2.Distance(positionToCheck, positionPlaced);
-            if (distanceBetweenNewAndOldPosition < minDistanceBetweenObjects) {
+            if (distanceBetweenNewAndOldPosition < effectiveMinDistanceBetweenPoints) {
                 isTooClose = true;
                 break;
             }
