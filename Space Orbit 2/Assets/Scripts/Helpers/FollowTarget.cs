@@ -19,6 +19,6 @@ public class FollowTarget : MonoBehaviour
     {
         if(target == null) return;
 
-        transform.position = Vector3.Slerp(transform.position, target.transform.position + _offset, 1f);   
+        transform.position = Vector3.Lerp(transform.position, target.transform.position + new Vector3(0,0,-10), 0.08f);   
     }
 }

@@ -1,0 +1,66 @@
+{
+    "name": "OnPlanetControlls",
+    "maps": [
+        {
+            "name": "Starship",
+            "id": "94dbc2dd-0628-4860-b1cf-d5e7a882e316",
+            "actions": [
+                {
+                    "name": "StarshipThrust",
+                    "type": "Value",
+                    "id": "9bb36923-eacc-49dd-aafc-cfaf7d2835d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "StarshipMove",
+                    "type": "Value",
+                    "id": "5d9e18bc-8894-4bf2-ab3c-2069e1a802c7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e3febb22-9828-44cd-a977-cb33cef85f9e",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StarshipThrust",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3a4aa7a-f80f-4b50-b545-7150fa014582",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "StarshipMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
