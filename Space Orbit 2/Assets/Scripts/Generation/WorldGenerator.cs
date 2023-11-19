@@ -40,6 +40,17 @@ public class WorldGenerator : MonoBehaviour {
 
     private void SpawnAllStars() {
         for (int i = 0; i < numberOfStars; i++) {
+            
+            //must make sure that it does not cross orbit field with other suns
+            //to do this, we must get the radius of the orbit field of the sun
+            //then, we must generate a point that is, at minimum, 2 radiuses away from existing suns
+            //so we must save the positions and sizes of the suns that we generated
+            //and then look at those when we decide the position of this sun
+            //also, we DONT want the suns orbit field to be on top of the player
+            //so we can only generate it outside of that sphere
+            //probably, the world generation area might have to be expanded for this
+            //or, the size of the world generation area can determine the max size of the suns, so that its populated correctly.
+            
             var spawnPosition = GetValidSpawnPosition(false);
             Instantiate(starPrefab, spawnPosition, Quaternion.identity);
             _positionsPlacedAt.Add(spawnPosition);
