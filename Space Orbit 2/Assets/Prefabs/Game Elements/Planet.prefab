@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91613df90dfe7254f802997094603ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrbitingObjects: []
-  drawGizmos: 1
+  orbitCenterPrefab: {fileID: 8294317798392583447, guid: e9d179f8d249d704b910820d6646cfd3,
+    type: 3}
 --- !u!114 &9086095426475886232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1782517271660921515, guid: 5d15e936680190c41bb634e615ff454c,
     type: 3}
+  maxNumberOfAsteroids: 10
+  minNumberOfAsteroids: 0
+  maxAsteroidSize: 10
+  minAsteroidSize: 1
 --- !u!1 &1266288961151893475
 GameObject:
   m_ObjectHideFlags: 0

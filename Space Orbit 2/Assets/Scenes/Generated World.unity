@@ -506,12 +506,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1281748749}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &682005748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1652856652778913595, guid: a103a867032b7ef49b8b10bddb628718,
-    type: 3}
-  m_PrefabInstance: {fileID: 1281748749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &682005749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,40 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91613df90dfe7254f802997094603ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrbitingObjects:
-  - orbitingObject: {fileID: 0}
-    target: {fileID: 682005748}
-    circleRadius: 152.85
-    rotationSpeed: 2
-    startAngle: 0
-    useTargetCoordinateSystem: 0
-    lookAtTarget: 0
-    angle: 0
-  - orbitingObject: {fileID: 0}
-    target: {fileID: 682005748}
-    circleRadius: 224.9
-    rotationSpeed: 6
-    startAngle: 0
-    useTargetCoordinateSystem: 0
-    lookAtTarget: 0
-    angle: 180
-  - orbitingObject: {fileID: 0}
-    target: {fileID: 682005748}
-    circleRadius: 290.3
-    rotationSpeed: 4
-    startAngle: 0
-    useTargetCoordinateSystem: 0
-    lookAtTarget: 0
-    angle: 80
-  - orbitingObject: {fileID: 0}
-    target: {fileID: 682005748}
-    circleRadius: 82.4
-    rotationSpeed: 2
-    startAngle: 0
-    useTargetCoordinateSystem: 0
-    lookAtTarget: 0
-    angle: 40
-  drawGizmos: 1
+  orbitCenterPrefab: {fileID: 0}
 --- !u!1001 &1006415152
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,9 +6,11 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(PlanetSettings))]
+[RequireComponent(typeof(OrbitProvider))]
 public class AsteroidSpawner : MonoBehaviour {
     [SerializeField] private GameObject asteroidPrefab;
     private PlanetSettings _planetSettings;
+    private OrbitProvider _orbitProvider;
 
     [SerializeField] private int maxNumberOfAsteroids = 10;
     [SerializeField] private int minNumberOfAsteroids = 0;
@@ -17,6 +19,7 @@ public class AsteroidSpawner : MonoBehaviour {
 
     private void Awake() {
         _planetSettings = GetComponent<PlanetSettings>();
+        _orbitProvider = GetComponent<OrbitProvider>();
     }
 
     public void SpawnAsteroidsInOrbit() {
@@ -25,7 +28,7 @@ public class AsteroidSpawner : MonoBehaviour {
 
         float planetBodyRadius = planetBodyDiameter / 2;
         float gravityFieldRadius = gravityFieldDiameter / 2;
-        
+
         int numberOfAsteroidsToSpawn = GenerateNumberOfAsteroidsToSpawn(planetBodyRadius, gravityFieldRadius);
 
         for (int i = 0; i < numberOfAsteroidsToSpawn; i++) {
@@ -36,7 +39,7 @@ public class AsteroidSpawner : MonoBehaviour {
     private int GenerateNumberOfAsteroidsToSpawn(float planetBodyRadius, float gravityFieldRadius) {
         int randomAsteroidNumber =
             Random.Range(minNumberOfAsteroids, maxNumberOfAsteroids);
-        
+
         float distanceFromPlanetSurfaceToGravityFieldEdge = gravityFieldRadius - planetBodyRadius;
 
         int numberOfFullSizeAsteroidsThatCanFitInGravityField =
@@ -57,7 +60,8 @@ public class AsteroidSpawner : MonoBehaviour {
         asteroid.transform.localScale =
             new Vector3(asteroidLocalScaleValue, asteroidLocalScaleValue, asteroidLocalScaleValue);
 
-        //++set in orbit
+        //set in orbit
+        _orbitProvider.AddObjectInOrbit(asteroid);
     }
 
     private Vector3 GetRandomPosInGravityField(float planetBodyRadius, float gravityFieldRadius) {
