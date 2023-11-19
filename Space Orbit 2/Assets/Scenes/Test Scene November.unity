@@ -841,6 +841,36 @@ PrefabInstance:
       propertyPath: _displayText
       value: 
       objectReference: {fileID: 446386244}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: rootObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _orbitRefuel
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: currentSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _fuelUsageSteering
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _fuelUsageThrusting
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -33,7 +33,7 @@ public class BasicMovement : Gravitable
     [SerializeField] private float _maxFuel = 100f;
     [SerializeField] private float _fuelUsageThrusting = 1f;
     [SerializeField] private float _fuelUsageSteering = 0.1f;
-    [SerializeField] private float _orbitRefuel = 0.1f;
+    [SerializeField] private float _orbitRefuel = 1f;
 
     private float _steerInput;
     private float _thrustInput;
