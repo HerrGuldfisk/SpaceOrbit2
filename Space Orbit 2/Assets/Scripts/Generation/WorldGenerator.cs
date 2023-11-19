@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-// randomly places a set amount of planets and stars around the world
+// randomly places a set amount of planets, stars, and suns around the world
 [RequireComponent(typeof(PlanetSpawner))]
+[RequireComponent(typeof(SunSpawner))]
 public class WorldGenerator : MonoBehaviour {
     [SerializeField] private GameObject starPrefab;
 
     private PlanetSpawner _planetSpawner;
+    private SunSpawner _sunSpawner;
 
     [SerializeField] private int numberOfPlanets = 30;
     [SerializeField] private int numberOfStars = 5;
+    [SerializeField] private int numberOfSuns = 4;
 
     [SerializeField] private float mapSize = 1000f;
     [SerializeField] private float minGenerationDistanceFromOrigin = 50f;
@@ -22,6 +25,7 @@ public class WorldGenerator : MonoBehaviour {
 
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
+        _sunSpawner = GetComponent<SunSpawner>();
     }
 
     void Start() {
@@ -31,6 +35,7 @@ public class WorldGenerator : MonoBehaviour {
     void GenerateMap() {
         SpawnAllStars();
         SpawnAllPlanets();
+        SpawnAllSuns();
     }
 
     private void SpawnAllStars() {
@@ -45,6 +50,14 @@ public class WorldGenerator : MonoBehaviour {
         for (int i = 0; i < numberOfPlanets; i++) {
             var spawnPosition = GetValidSpawnPosition(true);
             _planetSpawner.SpawnPlanet(spawnPosition);
+            _positionsPlacedAt.Add(spawnPosition);
+        }
+    }
+
+    private void SpawnAllSuns() {
+        for (int i = 0; i < numberOfSuns; i++) {
+            var spawnPosition = GetValidSpawnPosition(false);
+            _sunSpawner.Spawn(spawnPosition);
             _positionsPlacedAt.Add(spawnPosition);
         }
     }

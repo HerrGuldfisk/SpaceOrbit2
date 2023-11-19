@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5579248390940311250}
   - component: {fileID: 2497148159404667668}
   - component: {fileID: 3201581743390841753}
+  - component: {fileID: 4557623143496195685}
   m_Layer: 0
   m_Name: World Generator
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
     type: 3}
   numberOfPlanets: 30
   numberOfStars: 5
+  numberOfSuns: 4
   mapSize: 1500
   minGenerationDistanceFromOrigin: 150
   minDistanceBetweenObjects: 50
@@ -70,3 +72,19 @@ MonoBehaviour:
   bodySizeMax: 15
   gravityFieldSizeMin: 30
   gravityFieldSizeMax: 150
+--- !u!114 &4557623143496195685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252243339038980245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53df14b0c70774042a2120dc27563e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunPrefab: {fileID: 7239224056361073828, guid: a64bce54c825a7841ae5afb9ee67a68b,
+    type: 3}
+  sunSizeMin: 15
+  sunSizeMax: 100
