@@ -20,10 +20,11 @@ public class PlanetSpawner : MonoBehaviour {
         return gravityFieldSizeMax + bodySizeMax;
     }
 
-    public void SpawnPlanet(Vector2 worldPosition) {
+    public GameObject SpawnPlanet(Vector2 worldPosition) {
         GameObject planetInstance = Instantiate(planetPrefab, worldPosition, Quaternion.identity);
         RandomizePlanetSettings(planetInstance);
         planetInstance.GetComponent<AsteroidSpawner>().SpawnAsteroidsInOrbit();
+        return planetInstance;
     }
 
     private void RandomizePlanetSettings(GameObject planetInstance) {

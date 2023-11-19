@@ -13,7 +13,7 @@ public class SunSpawner : MonoBehaviour {
     public void Spawn(Vector2 worldPosition) {
         GameObject sunInstance = Instantiate(sunPrefab, worldPosition, Quaternion.identity);
         RandomizeSunSettings(sunInstance);
-        //++spawn planets orbiting around the sun
+        sunInstance.GetComponent<SolarSystemSpawner>().SpawnSolarSystem();
     }
 
     private void RandomizeSunSettings(GameObject sunInstance) {
