@@ -51,6 +51,13 @@ public class PlanetSettings : MonoBehaviour {
         }
     }
 
+    public float GetBodySize() {
+        return _bodySize;
+    }
+
+    public float GetGravityFieldSize() {
+        return _gravityFieldSize;
+    }
 
     public enum PlanetGravityMode {
         Constant,
