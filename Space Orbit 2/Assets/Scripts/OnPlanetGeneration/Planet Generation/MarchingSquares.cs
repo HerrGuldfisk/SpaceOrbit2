@@ -244,6 +244,8 @@ public class MarchingSquares : MonoBehaviour
 
     void CreateGrid()
     {
+        if(_dotParent == null) { return; }
+
         foreach ( Transform child in _dotParent)
         {
             Destroy(child.gameObject);
