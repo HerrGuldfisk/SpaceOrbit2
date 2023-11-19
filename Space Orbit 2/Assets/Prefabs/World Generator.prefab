@@ -50,7 +50,7 @@ MonoBehaviour:
   numberOfPlanets: 30
   numberOfStars: 5
   mapSize: 1500
-  minGenerationDistanceFromOrigin: 50
+  minGenerationDistanceFromOrigin: 150
   minDistanceBetweenObjects: 50
 --- !u!114 &3201581743390841753
 MonoBehaviour:
