@@ -2,47 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimbsBehaviour2 : MonoBehaviour
+public class SnekTailState : BaseState
 {
-    public int segmentAmount;
-    public LineRenderer lineRenderer;
-    public Vector3[] segmentPositions;
-    private Vector3[] segmentVel;
-
-    public Transform targetDir;
-    public float targetDist;
-    public float smoothSpeed;
-
-    public Transform endSegment;
-    public Transform[] segmentObjects;
-
-    private SegmentState _currentSegmentState;
-
-    StateMachine _stateMachine = new StateMachine();
-
-    Dictionary<SegmentState, BaseState> _availableStates = new Dictionary<SegmentState, BaseState>();
-
-    public enum SegmentState
+    public override void Enter()
     {
-        Tail,
-        Boid,
-        Chase
-    }
-
-    void Start()
-    {
-        lineRenderer = GetComponent<LineRenderer>();
-
-        segmentAmount = segmentObjects.Length + 1;
-
-        lineRenderer.positionCount = segmentAmount;
-        segmentPositions = new Vector3[segmentAmount];
-        segmentVel = new Vector3[segmentAmount];
-
         ResetPos();
     }
 
-    void Update()
+    public override void Execute()
     {
         if (targetDir != null)
         {
@@ -62,6 +29,11 @@ public class LimbsBehaviour2 : MonoBehaviour
         {
             endSegment.position = segmentPositions[segmentPositions.Length - 1];
         }
+    }
+
+    public override void Exit()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void ResetPos()
