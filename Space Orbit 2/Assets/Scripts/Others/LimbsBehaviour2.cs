@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class LimbsBehaviour2 : MonoBehaviour
 {
-    public int segmentAmount = 4;
+    public int segmentAmount = 6;
+    [HideInInspector]
     public LineRenderer lineRenderer;
+    [HideInInspector]
     public Vector3[] segmentPositions;
     private Vector3[] segmentVel;
 
     public GameObject limbSegmentPrefab;
 
+    [HideInInspector]
     public Transform targetDir;
     public float targetDist = 3;
     public float smoothSpeed = 0.005f;
 
+    [HideInInspector]
     public Transform endSegment;
     public Transform[] segmentObjects;
 
+    [HideInInspector]
     public Flock flock;
 
     private BaseState _currentState;
@@ -65,12 +70,14 @@ public class LimbsBehaviour2 : MonoBehaviour
 
     private void InitSegments()
     {
+        segmentObjects = new Transform[segmentAmount];
+
         for(int i = 0; i < segmentObjects.Length; i++) 
         {
             segmentObjects[i] = Instantiate(limbSegmentPrefab, gameObject.transform.parent).transform;
         }
 
-        segmentAmount = segmentObjects.Length + 1;
+        //segmentAmount = segmentObjects.Length + 1;
 
         lineRenderer.positionCount = segmentAmount;
         segmentPositions = new Vector3[segmentAmount];
@@ -80,7 +87,7 @@ public class LimbsBehaviour2 : MonoBehaviour
     private void InitFlock()
     {
         // Is this a way to inherit flock to SnekFlockState????? how?
-        flock = new Flock();
+        //flock = new Flock();
 
     }
 }
