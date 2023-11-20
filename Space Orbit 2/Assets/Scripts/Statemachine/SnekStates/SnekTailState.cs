@@ -4,6 +4,30 @@ using UnityEngine;
 
 public class SnekTailState : BaseState
 {
+    public Transform TargetDir { get; private set; }
+    public float TargetDist { get; private set; }
+    public float SmoothSpeed { get; private set; }
+    public Vector3[] SegmentPositions { get; private set; }
+    public Vector3[] SegmentVel { get; private set; }
+    public int SegmentAmount { get; private set; }
+    public LineRenderer LR { get; private set; }
+    public Transform[] SegmentObjects { get; private set; }
+    public Transform EndSegment { get; private set; }
+
+
+    public SnekTailState(Transform targetDir, float targetDist, float smoothSpeed, Vector3[] segmentPositions, Vector3[] segmentVel, int segmentAmount, LineRenderer lineRenderer, Transform[] segmentObjects, Transform endSegment) : base()
+    {
+        TargetDir = targetDir;
+        TargetDist = targetDist;
+        SmoothSpeed = smoothSpeed;
+        SegmentPositions = segmentPositions;
+        SegmentVel = segmentVel;
+        SegmentAmount = segmentAmount;
+        LR = lineRenderer;
+        SegmentObjects = segmentObjects;
+        EndSegment = endSegment;
+    }
+
     public override void Enter()
     {
         ResetPos();
@@ -11,23 +35,23 @@ public class SnekTailState : BaseState
 
     public override void Execute()
     {
-        if (targetDir != null)
+        if (TargetDir != null)
         {
-            segmentPositions[0] = targetDir.position;
+            SegmentPositions[0] = TargetDir.position;
         }
 
-        for (int i = 1; i < segmentAmount; i++)
+        for (int i = 1; i < SegmentAmount; i++)
         {
-            Vector3 targetPos = segmentPositions[i - 1] + (segmentPositions[i] - segmentPositions[i - 1]).normalized * targetDist;
-            segmentPositions[i] = Vector3.SmoothDamp(segmentPositions[i], targetPos, ref segmentVel[i], smoothSpeed);
-            segmentObjects[i - 1].transform.position = segmentPositions[i];
+            Vector3 targetPos = SegmentPositions[i - 1] + (SegmentPositions[i] - SegmentPositions[i - 1]).normalized * TargetDist;
+            SegmentPositions[i] = Vector3.SmoothDamp(SegmentPositions[i], targetPos, ref SegmentVel[i], SmoothSpeed);
+            SegmentObjects[i - 1].transform.position = SegmentPositions[i];
         }
 
-        lineRenderer.SetPositions(segmentPositions);
+        LR.SetPositions(SegmentPositions);
 
-        if (endSegment != null)
+        if (EndSegment != null)
         {
-            endSegment.position = segmentPositions[segmentPositions.Length - 1];
+            EndSegment.position = SegmentPositions[SegmentPositions.Length - 1];
         }
     }
 
@@ -38,16 +62,16 @@ public class SnekTailState : BaseState
 
     private void ResetPos()
     {
-        if (targetDir != null)
+        if (TargetDir != null)
         {
-            segmentPositions[0] = targetDir.position;
+            SegmentPositions[0] = TargetDir.position;
         }
 
-        for (int i = 1; i < segmentAmount; i++)
+        for (int i = 1; i < SegmentAmount; i++)
         {
-            segmentPositions[i] = segmentPositions[i - 1] + targetDir.right * targetDist;
+            SegmentPositions[i] = SegmentPositions[i - 1] + TargetDir.right * TargetDist;
         }
 
-        lineRenderer.SetPositions(segmentPositions);
+        LR.SetPositions(SegmentPositions);
     }
 }
