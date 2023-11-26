@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 2646586524208943470, guid: 231afcefafd595c4bbde5751358fa8ca,
     type: 3}
-  numberOfPlanets: 30
-  numberOfStars: 5
+  numberOfPlanets: 0
+  numberOfStars: 0
   numberOfSuns: 4
-  mapSize: 1500
+  mapSize: 500
   minGenerationDistanceFromOrigin: 150
   minDistanceBetweenObjects: 50
 --- !u!114 &3201581743390841753
@@ -86,5 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sunPrefab: {fileID: 7239224056361073828, guid: a64bce54c825a7841ae5afb9ee67a68b,
     type: 3}
-  sunSizeMin: 15
-  sunSizeMax: 100
+  sunSizeMin: 50
+  sunSizeMax: 300
+  sunGravityFieldSizeMin: 2
+  sunGravityFieldSizeMax: 5

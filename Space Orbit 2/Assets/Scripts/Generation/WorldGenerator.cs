@@ -32,6 +32,8 @@ public class WorldGenerator : MonoBehaviour {
 
     private GridMap _worldGridMap;
 
+    private readonly List<GameObject> _suns = new List<GameObject>();
+
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
         _sunSpawner = GetComponent<SunSpawner>();
@@ -65,41 +67,40 @@ public class WorldGenerator : MonoBehaviour {
     }
 
     private void SpawnAllSuns() {
-        /*
-         ok so there are 2 other possible strats here
-         we can save the exact positoin and sizes of the suns we have generated, and use that to "calculate" what positions are free to place a sun at
-         in this case, it would also be good to know the size of the sun that we are generating, so that we can determine the real possible distance
-         and then, we just get a random value out of those that are possible.
-         this is an interesting idea, so i will see how it coul be done
-         */
-
-        //also, we DONT want the suns orbit field to be on top of the player
-        //so we can only generate it outside of that sphere
-
-        //probably, the world generation area might have to be expanded for this
+        //++ make sure orbit does not dover the player on spawn
 
         //or, the size of the world generation area can determine the max size of the suns, so that its populated correctly.
 
         for (int i = 0; i < numberOfSuns; i++) {
             // var spawnPosition = GetValidSpawnPosition(SpawnedObjectType.Sun); //++replace by a function that utilizes the gridmap
-            Vector2 spawnPosition = _worldGridMap.GetRandomCellWithDistanceFromOccupiedZones(100); //the number we put in here should be the radius of the sun
-            GameObject sunInstance = _sunSpawner.Spawn(spawnPosition); //should not spawn at a position, that will be determined later.
             // _positionsPlacedAt.Add(spawnPosition); //++replace with gridmap
-
             // use the sun 
 
+            //spawn the sum at origin
+            GameObject sunInstance = _sunSpawner.Spawn(Vector2.zero);
+
+            //save transform and radius of sun
+            // Transform sunTransform = sunInstance.transform;
+            // Transform sunFieldTransform = sunInstance.GetComponentsInChildren<Transform>()[1]; //a bit shaky if we modify the sun prefab
+            // float sunRadius = sunFieldTransform.lossyScale.x / 2;
+
+            //move the sun to a random valid position
+            // Vector2 sunPosition = _worldGridMap.GetRandomCellWithDistanceFromOccupiedZones((int)sunRadius);
+            Vector2 freeSunPosition = GetValidSpawnPosition(SpawnedObjectType.Sun, sunInstance);
+            sunInstance.transform.position = freeSunPosition;
+
+            //add sun to list
+            _suns.Add(sunInstance);
+
             //set grid cells to occupied
-            Transform sunFieldTransform = sunInstance.GetComponentsInChildren<Transform>()[1]; //a bit shaky if we modify the sun prefab
-            Vector2 sunPosition = sunFieldTransform.position;
-            float sunRadius = sunFieldTransform.lossyScale.x / 2;
-            _worldGridMap.OccupyCellsInCircle(_worldGridMap.grid, (int)sunPosition.x, (int)sunPosition.y, (int)sunRadius);
+            // _worldGridMap.OccupyCellsInCircle(_worldGridMap.grid, (int)sunPosition.x, (int)sunPosition.y, (int)sunRadius);
         }
     }
 
-    private Vector2 GetValidSpawnPosition(SpawnedObjectType type) {
+    private Vector2 GetValidSpawnPosition(SpawnedObjectType type, GameObject spawnedObject = null) {
         Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
         int iterator = 0;
-        while (PosIsTooCloseToExistingObject(randomPos, type)) {
+        while (PosIsTooCloseToExistingObject(randomPos, type, spawnedObject)) {
             randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
             iterator++;
             if (iterator > 30) {
@@ -118,25 +119,34 @@ public class WorldGenerator : MonoBehaviour {
         return position;
     }
 
-    bool PosIsTooCloseToExistingObject(Vector2 positionToCheck, SpawnedObjectType type) {
-        float effectiveMinDistanceBetweenPoints = minDistanceBetweenObjects;
+    bool PosIsTooCloseToExistingObject(Vector2 positionToCheck, SpawnedObjectType type, GameObject spawnedObject = null) {
+        bool isTooClose = false;
 
         if (type == SpawnedObjectType.Planet) {
             float maxPlanetSize = GetComponent<PlanetSpawner>().GetMaxRadiusPlanetPlusGravity();
-            effectiveMinDistanceBetweenPoints += maxPlanetSize;
+            float effectiveMinDistanceBetweenPoints = minDistanceBetweenObjects + maxPlanetSize;
+            foreach (Vector2 positionPlaced in _positionsPlacedAt) {
+                float distanceBetweenNewAndOldPosition = Vector2.Distance(positionToCheck, positionPlaced);
+                if (distanceBetweenNewAndOldPosition < effectiveMinDistanceBetweenPoints) {
+                    isTooClose = true;
+                    break;
+                }
+            }
         }
         else if (type == SpawnedObjectType.Sun) {
-            float maxSunRadius = GetComponent<SunSpawner>().GetSolarSystemMaxRadius();
-            effectiveMinDistanceBetweenPoints += maxSunRadius * 2;
-        }
+            Debug.Assert(spawnedObject != null, "have to provide the ref to spawned object when checking sun positions!");
+            Transform[] spawnedSunTransforms = spawnedObject.GetComponentsInChildren<Transform>();
 
-        bool isTooClose = false;
-
-        foreach (Vector2 positionPlaced in _positionsPlacedAt) {
-            float distanceBetweenNewAndOldPosition = Vector2.Distance(positionToCheck, positionPlaced);
-            if (distanceBetweenNewAndOldPosition < effectiveMinDistanceBetweenPoints) {
-                isTooClose = true;
-                break;
+            foreach (GameObject sun in _suns) {
+                Transform[] existingSunTransforms = sun.GetComponentsInChildren<Transform>();
+                float radiusOfExistingSun = existingSunTransforms[1].lossyScale.x / 2;
+                float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
+                float minDistanceBetweenSuns = radiusOfExistingSun + radiusOfSpawnedSun + minDistanceBetweenObjects;
+                float distanceBetweenSuns = Vector2.Distance(sun.transform.position, positionToCheck);
+                if (distanceBetweenSuns < minDistanceBetweenSuns) {
+                    isTooClose = true;
+                    break;
+                }
             }
         }
 

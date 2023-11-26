@@ -10,6 +10,7 @@ public class GridMap {
         this.width = width;
         this.height = height;
         grid = new bool[width, height];
+        Debug.Log("grid created with this many cells: " + grid.Length);
     }
 
     public void SetCell(int x, int y, bool isOccupied) {
@@ -35,7 +36,17 @@ public class GridMap {
 
     public Vector2 GetRandomCellWithDistanceFromOccupiedZones(int distance) {
         Vector2[] freeCells = GenerateListOfCellsWithDistanceFromOccupiedSpaced(distance);
-        return freeCells[Random.Range(0, freeCells.Length)];
+        Vector2 randomFreeCell;
+        if (freeCells.Length == 0) {
+            Debug.LogWarning("No free cells found. Map might be too small");
+            randomFreeCell = Vector2.zero;
+        }
+        else {
+            Debug.Log("Found " + freeCells.Length + " free cells");
+            randomFreeCell = freeCells[Random.Range(0, freeCells.Length)];
+        }
+
+        return randomFreeCell;
     }
 
     private Vector2[] GenerateListOfCellsWithDistanceFromOccupiedSpaced(int distance) {
@@ -71,25 +82,30 @@ public class GridMap {
             }
         }
 
+        // Return the map of forbidden cells
         return mapWithForbiddenCells;
-
-        //maybe, instead of doing this we should just give back an array of free cells
-        //or, randomly pick one?
     }
 
     public void OccupyCellsInCircle(bool[,] gridToOccupy, int centerX, int centerY, int radius) {
+        int iterations = 0;
         //iterate through a square that is the size of the circle
         for (int x = centerX - radius; x <= centerX + radius; x++) {
             for (int y = centerY - radius; y <= centerY + radius; y++) {
-                //check if the cell is within the circle
+                // check if the cell is within the circle
                 if (IsWithinCircle(x, y, centerX, centerY, radius)) {
-                    //check if the cell is within the grid
+                    // //check if the cell is within the grid
                     if (x >= 0 && y >= 0 && x < width && y < height) {
                         //if yes, mark it as occupied
-                        gridToOccupy[x, y] = true;
+                        iterations++;
+                        // gridToOccupy[x, y] = true;
                     }
                 }
             }
         }
+
+        Debug.Log("went through " + iterations + " iterations");
+        Debug.Log("for grid with size: " + gridToOccupy.Length);
+        gridToOccupy[1, 2] = true;
+        
     }
 }
