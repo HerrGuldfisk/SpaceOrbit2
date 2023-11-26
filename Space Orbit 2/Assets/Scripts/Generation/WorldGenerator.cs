@@ -63,10 +63,6 @@ public class WorldGenerator : MonoBehaviour {
     }
 
     private void SpawnAllSuns() {
-        //++ make sure orbit does not dover the player on spawn
-
-        //or, the size of the world generation area can determine the max size of the suns, so that its populated correctly.
-
         for (int i = 0; i < numberOfSuns; i++) {
             GameObject sunInstance = _sunSpawner.Spawn(Vector2.zero);
             Vector2 freeSunPosition = GetValidSpawnPosition(SpawnedObjectType.Sun, sunInstance);
@@ -114,16 +110,22 @@ public class WorldGenerator : MonoBehaviour {
         else if (type == SpawnedObjectType.Sun) {
             Debug.Assert(spawnedObject != null, "have to provide the ref to spawned object when checking sun positions!");
             Transform[] spawnedSunTransforms = spawnedObject.GetComponentsInChildren<Transform>();
+            float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
+            bool orbitFieldCoversWorldOrigin = (radiusOfSpawnedSun > positionToCheck.magnitude);
 
-            foreach (GameObject sun in _suns) {
-                Transform[] existingSunTransforms = sun.GetComponentsInChildren<Transform>();
-                float radiusOfExistingSun = existingSunTransforms[1].lossyScale.x / 2;
-                float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
-                float minDistanceBetweenSuns = radiusOfExistingSun + radiusOfSpawnedSun + minDistanceBetweenObjects;
-                float distanceBetweenSuns = Vector2.Distance(sun.transform.position, positionToCheck);
-                if (distanceBetweenSuns < minDistanceBetweenSuns) {
-                    isTooClose = true;
-                    break;
+            if (orbitFieldCoversWorldOrigin) {
+                isTooClose = true;
+            }
+            else {
+                foreach (GameObject sun in _suns) {
+                    Transform[] existingSunTransforms = sun.GetComponentsInChildren<Transform>();
+                    float radiusOfExistingSun = existingSunTransforms[1].lossyScale.x / 2;
+                    float minDistanceBetweenSuns = radiusOfExistingSun + radiusOfSpawnedSun + minDistanceBetweenObjects;
+                    float distanceBetweenSuns = Vector2.Distance(sun.transform.position, positionToCheck);
+                    if (distanceBetweenSuns < minDistanceBetweenSuns) {
+                        isTooClose = true;
+                        break;
+                    }
                 }
             }
         }
