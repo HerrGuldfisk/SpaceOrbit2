@@ -4,22 +4,16 @@ using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
 
-public class PlanetGravity : GravityProvider
-{
+public class PlanetGravity : GravityProvider {
     PlanetSettings _planet;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _planet = transform.root.GetComponent<PlanetSettings>();
+    void Start() {
+        _planet = transform.GetComponentInParent<PlanetSettings>();
     }
 
-    public override void CalculateGravity()
-    {
-        foreach (Gravitable gravitable in _objectsInOrbit)
-        {
-            switch (_planet.GravityMode)
-            {
+    public override void CalculateGravity() {
+        foreach (Gravitable gravitable in _objectsInOrbit) {
+            switch (_planet.GravityMode) {
                 case PlanetSettings.PlanetGravityMode.Constant:
                     ApplyGravity(gravitable, _planet.GravityStrength);
                     break;
@@ -31,8 +25,7 @@ public class PlanetGravity : GravityProvider
         }
     }
 
-    public override void ApplyGravity(Gravitable objectInOrbit, float gravityStrength)
-    {
+    public override void ApplyGravity(Gravitable objectInOrbit, float gravityStrength) {
         objectInOrbit.rb.AddForce((_planet.transform.position - objectInOrbit.transform.position) * gravityStrength / 10);
     }
 }
