@@ -11,21 +11,23 @@ public class SolarSystemSpawner : MonoBehaviour {
     [SerializeField] private GameObject orbitCenterPrefab;
     private PlanetSpawner _planetSpawner;
 
-    [SerializeField] private float orbitFieldSizeMin = 1;
-    [SerializeField] private float orbitFieldSizeMax = 5;
+    private float _orbitFieldSizeMin = 1;
+    private float _orbitFieldSizeMax = 5;
     [SerializeField] private float planetOrbitSpeed = 5;
 
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
     }
 
-    public void SpawnSolarSystem() {
+    public void SpawnSolarSystem(float minOrbitFieldSize, float maxOrbitFieldSize) {
+        _orbitFieldSizeMin = minOrbitFieldSize;
+        _orbitFieldSizeMax = maxOrbitFieldSize;
         RandomizeOrbitFieldSize();
         SpawnPlanetsInOrbit();
     }
 
     private void RandomizeOrbitFieldSize() {
-        float randomOrbitFieldSize = Random.Range(orbitFieldSizeMin, orbitFieldSizeMax);
+        float randomOrbitFieldSize = Random.Range(_orbitFieldSizeMin, _orbitFieldSizeMax);
         Vector3 orbitFieldSizeVector = Vector3.one * randomOrbitFieldSize;
         sunOrbitField.transform.localScale = orbitFieldSizeVector;
     }
