@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 //spawns planets in an orbit inside of the solar system
 [RequireComponent(typeof(PlanetSpawner))]
@@ -34,25 +38,26 @@ public class SolarSystemSpawner : MonoBehaviour {
 
     //spawn all planets and set them in orbit
     private void SpawnPlanetsInOrbit() {
-        float minSpawnDistanceFromSunCenter = transform.localScale.magnitude;
-        float maxSpawnDistanceFromSunCenter = sunOrbitField.transform.localScale.magnitude;
-        float spawnAreaThickness = maxSpawnDistanceFromSunCenter - minSpawnDistanceFromSunCenter;
-        float maxPlanetRadiusWithGravityField = _planetSpawner.GetMaxRadiusPlanetPlusGravity();
-        float maxPlanetDiameterWithGravityField = maxPlanetRadiusWithGravityField * 2;
-        int numberOfPlanetsThatFit = Mathf.FloorToInt(spawnAreaThickness / maxPlanetDiameterWithGravityField);
-        int randomNumberOfPlanetsToSpawn = Random.Range(numberOfPlanetsThatFit / 2, numberOfPlanetsThatFit);
+        //calc the spawn area
+        float sunRadius = transform.lossyScale.x / 2;
+        float sunOrbitFieldRadius = sunOrbitField.transform.lossyScale.x / 2;
+        float spawnAreaThickness = sunOrbitFieldRadius - sunRadius;
 
-        for (int i = 0; i < randomNumberOfPlanetsToSpawn; i++) {
-            SpawnPlanetInOrbit(minSpawnDistanceFromSunCenter, maxSpawnDistanceFromSunCenter);
+        //spawn the planets
+        float totalWidthOfSpawnedPlanets = 0;
+        while (totalWidthOfSpawnedPlanets < spawnAreaThickness) {
+            GameObject spawnedPlanet = SpawnOrbitingPlanet(sunRadius, sunOrbitFieldRadius);
+            float spawnedPlanetFieldDiameter = spawnedPlanet.GetComponentInChildren<PlanetGravity>().transform.lossyScale.x;
+            totalWidthOfSpawnedPlanets += spawnedPlanetFieldDiameter;
         }
     }
 
-    //spawn planet at random position in the orbiting field
-    private void SpawnPlanetInOrbit(float minSpawnDistanceFromSunCenter, float maxSpawnDistanceFromSunCenter) {
-        var randomSpawnPosWorld =
-            GetRandomSpawnPosInOrbitField(minSpawnDistanceFromSunCenter, maxSpawnDistanceFromSunCenter);
-        GameObject spawnedPlanet = _planetSpawner.SpawnPlanet(randomSpawnPosWorld);
+    private GameObject SpawnOrbitingPlanet(float sunRadius, float sunOrbitFieldRadius) {
+        GameObject spawnedPlanet = _planetSpawner.SpawnPlanet(Vector2.one * 3000);
+        Vector2 randomSpawnPosWorld = GetRandomSpawnPosInOrbitField(sunRadius, sunOrbitFieldRadius);
+        spawnedPlanet.transform.position = randomSpawnPosWorld;
         StartPlanetOrbiting(spawnedPlanet);
+        return spawnedPlanet;
     }
 
     private void StartPlanetOrbiting(GameObject spawnedPlanet) {

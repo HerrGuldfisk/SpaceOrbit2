@@ -17,7 +17,7 @@ public class PlanetSpawner : MonoBehaviour {
     private float _gravityFieldSize;
 
     public float GetMaxRadiusPlanetPlusGravity() {
-        return gravityFieldSizeMax + bodySizeMax;
+        return gravityFieldSizeMax;
     }
 
     public GameObject SpawnPlanet(Vector2 worldPosition) {
