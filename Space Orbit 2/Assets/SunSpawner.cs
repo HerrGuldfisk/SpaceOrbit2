@@ -24,8 +24,4 @@ public class SunSpawner : MonoBehaviour {
         Vector3 sizeVector = new Vector3(randomSize, randomSize, randomSize);
         sunInstance.transform.localScale = sizeVector;
     }
-
-    public float GetSolarSystemMaxRadius() {
-        return (sunSizeMax * sunGravityFieldSizeMax);
-    }
 }

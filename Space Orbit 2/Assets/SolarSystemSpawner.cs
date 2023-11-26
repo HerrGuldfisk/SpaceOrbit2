@@ -51,7 +51,6 @@ public class SolarSystemSpawner : MonoBehaviour {
     private void SpawnPlanetInOrbit(float minSpawnDistanceFromSunCenter, float maxSpawnDistanceFromSunCenter) {
         var randomSpawnPosWorld =
             GetRandomSpawnPosInOrbitField(minSpawnDistanceFromSunCenter, maxSpawnDistanceFromSunCenter);
-        //++ how do we make sure that the planets do not spawn on each other?
         GameObject spawnedPlanet = _planetSpawner.SpawnPlanet(randomSpawnPosWorld);
         StartPlanetOrbiting(spawnedPlanet);
     }

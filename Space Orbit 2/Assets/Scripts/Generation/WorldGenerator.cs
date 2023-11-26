@@ -28,16 +28,12 @@ public class WorldGenerator : MonoBehaviour {
     [SerializeField] private float minDistanceBetweenObjects = 50f;
 
     private readonly List<Vector2> _positionsPlacedAt = new List<Vector2>();
-    private readonly List<Vector2> _sunPositions = new List<Vector2>();
-
-    private GridMap _worldGridMap;
 
     private readonly List<GameObject> _suns = new List<GameObject>();
 
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
         _sunSpawner = GetComponent<SunSpawner>();
-        _worldGridMap = new GridMap(mapSize, mapSize);
     }
 
     void Start() {
@@ -72,28 +68,10 @@ public class WorldGenerator : MonoBehaviour {
         //or, the size of the world generation area can determine the max size of the suns, so that its populated correctly.
 
         for (int i = 0; i < numberOfSuns; i++) {
-            // var spawnPosition = GetValidSpawnPosition(SpawnedObjectType.Sun); //++replace by a function that utilizes the gridmap
-            // _positionsPlacedAt.Add(spawnPosition); //++replace with gridmap
-            // use the sun 
-
-            //spawn the sum at origin
             GameObject sunInstance = _sunSpawner.Spawn(Vector2.zero);
-
-            //save transform and radius of sun
-            // Transform sunTransform = sunInstance.transform;
-            // Transform sunFieldTransform = sunInstance.GetComponentsInChildren<Transform>()[1]; //a bit shaky if we modify the sun prefab
-            // float sunRadius = sunFieldTransform.lossyScale.x / 2;
-
-            //move the sun to a random valid position
-            // Vector2 sunPosition = _worldGridMap.GetRandomCellWithDistanceFromOccupiedZones((int)sunRadius);
             Vector2 freeSunPosition = GetValidSpawnPosition(SpawnedObjectType.Sun, sunInstance);
             sunInstance.transform.position = freeSunPosition;
-
-            //add sun to list
             _suns.Add(sunInstance);
-
-            //set grid cells to occupied
-            // _worldGridMap.OccupyCellsInCircle(_worldGridMap.grid, (int)sunPosition.x, (int)sunPosition.y, (int)sunRadius);
         }
     }
 
