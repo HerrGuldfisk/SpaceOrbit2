@@ -19,7 +19,8 @@ namespace OnPlanet
         {
             if (IsRunning)
             {
-                RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + Vector2.down, Vector2.down, MaxMeasureDistance, LayerMask.GetMask("Ground"));
+                // TODO: Currently getting scale from first shild. Make more robust
+                RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + Vector2.down * transform.GetChild(0).localScale.y, Vector2.down, MaxMeasureDistance, LayerMask.GetMask("Ground"));
 
                 if (hit.collider != null)
                 {
@@ -29,7 +30,7 @@ namespace OnPlanet
             }
         }
 
-        // Fix aproper solution later
+        // Fix a proper solution later
         public void UpdateDistanceText()
         {
             if (textField == null) { return; }

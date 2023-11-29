@@ -13,6 +13,8 @@ public class BasicMovement : Gravitable
 
     FuelSystem fuelSystem;
 
+    public static BasicMovement Instance;
+
     public FuelSystem FuelSystem { get { return fuelSystem; } }
 
     [Header("Data (Read only)")]
@@ -65,6 +67,8 @@ public class BasicMovement : Gravitable
         fuelSystem = GetComponent<FuelSystem>();
         fuelSystem.SetMaxFuel(_maxFuel);
         fuelSystem.ResetFuel();
+
+        Instance = this;
     }
 
     void Update()
