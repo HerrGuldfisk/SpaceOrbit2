@@ -614,6 +614,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e885a112ac990da4198d1f8e4e0633b5, type: 3}
+--- !u!1 &284975281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284975282}
+  m_Layer: 0
+  m_Name: ----------EventSystem-----------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284975282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284975281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6131496, y: -28.952263, z: 333.69415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &374263832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,6 +841,36 @@ PrefabInstance:
       propertyPath: _displayText
       value: 
       objectReference: {fileID: 446386244}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: rootObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _orbitRefuel
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: currentSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _fuelUsageSteering
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216932809895427142, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: _fuelUsageThrusting
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1317,6 +1378,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lil Snek (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4326632487933286833, guid: e9401f5410b3d9f42bdb105877bef68e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7660659305556733808, guid: e9401f5410b3d9f42bdb105877bef68e,
         type: 3}
       propertyPath: _target
@@ -1377,6 +1443,58 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &629811015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629811017}
+  - component: {fileID: 629811016}
+  m_Layer: 0
+  m_Name: Testing Snek Flock (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &629811016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629811015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: -7765272770390504765, guid: e9401f5410b3d9f42bdb105877bef68e,
+    type: 3}
+  behaviour: {fileID: 11400000, guid: a7f826f74b16995419fba38a6cd439f6, type: 2}
+  startCount: 10
+  driveFactor: 30
+  maxSpeed: 6
+  neighbourRadius: 16
+  avoidanceRadiusMultiplier: 2
+--- !u!4 &629811017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629811015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1131, y: 18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2380,6 +2498,58 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1534912265}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1071259687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1071259689}
+  - component: {fileID: 1071259688}
+  m_Layer: 0
+  m_Name: Test Flock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1071259688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071259687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 4294681694495879432, guid: 8d264f57c2e35d045ab5971d17a77f13,
+    type: 3}
+  behaviour: {fileID: 11400000, guid: a7f826f74b16995419fba38a6cd439f6, type: 2}
+  startCount: 200
+  driveFactor: 30
+  maxSpeed: 6
+  neighbourRadius: 2
+  avoidanceRadiusMultiplier: 0.5
+--- !u!4 &1071259689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071259687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1098388981 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8431851335165978270, guid: 442e6cd9a0dd1824b8c41ef21aaa441e,
@@ -4571,6 +4741,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1700911736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700911738}
+  - component: {fileID: 1700911737}
+  m_Layer: 0
+  m_Name: Testing Snek Flock (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1700911737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700911736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: -7765272770390504765, guid: e9401f5410b3d9f42bdb105877bef68e,
+    type: 3}
+  behaviour: {fileID: 11400000, guid: a7f826f74b16995419fba38a6cd439f6, type: 2}
+  startCount: 10
+  driveFactor: 30
+  maxSpeed: 6
+  neighbourRadius: 16
+  avoidanceRadiusMultiplier: 2
+--- !u!4 &1700911738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700911736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 217, y: -297, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1803060786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1102280568004835166, guid: 09e4fe071afe46841abf8c66e4f98e0d,
@@ -5452,6 +5674,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2129278488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2141748957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141748959}
+  - component: {fileID: 2141748958}
+  m_Layer: 0
+  m_Name: Testing Snek Flock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2141748958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141748957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebaac726976b0742b3a560902b74031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: -7765272770390504765, guid: e9401f5410b3d9f42bdb105877bef68e,
+    type: 3}
+  behaviour: {fileID: 11400000, guid: a7f826f74b16995419fba38a6cd439f6, type: 2}
+  startCount: 10
+  driveFactor: 30
+  maxSpeed: 6
+  neighbourRadius: 16
+  avoidanceRadiusMultiplier: 2
+--- !u!4 &2141748959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141748957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -208.9, y: 100.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2154814254885934325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5631,6 +5905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snek (World Eater)
       objectReference: {fileID: 0}
+    - target: {fileID: 4250873519666506052, guid: f057bffe23f3dfc43958ab689caf10a9,
+        type: 3}
+      propertyPath: targetDist
+      value: 47
+      objectReference: {fileID: 0}
     - target: {fileID: 5915618789470012605, guid: f057bffe23f3dfc43958ab689caf10a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5767,6 +6046,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2257792754921403775, guid: 5bc96cfbcae8f8843a57f4f3a38c68d8,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5231573475547471641, guid: 5bc96cfbcae8f8843a57f4f3a38c68d8,
         type: 3}
       propertyPath: m_Name
@@ -5941,6 +6225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lil Snek
       objectReference: {fileID: 0}
+    - target: {fileID: 4326632487933286833, guid: e9401f5410b3d9f42bdb105877bef68e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7660659305556733808, guid: e9401f5410b3d9f42bdb105877bef68e,
         type: 3}
       propertyPath: _target
@@ -5992,4 +6281,9 @@ SceneRoots:
   - {fileID: 572397435}
   - {fileID: 9122710541279604916}
   - {fileID: 588973482}
+  - {fileID: 1071259689}
+  - {fileID: 2141748959}
+  - {fileID: 1700911738}
+  - {fileID: 629811017}
+  - {fileID: 284975282}
   - {fileID: 662115876}

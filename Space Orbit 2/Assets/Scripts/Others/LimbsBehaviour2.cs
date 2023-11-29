@@ -4,65 +4,90 @@ using UnityEngine;
 
 public class LimbsBehaviour2 : MonoBehaviour
 {
-    public int segmentAmount;
+    public int segmentAmount = 6;
+    [HideInInspector]
     public LineRenderer lineRenderer;
+    [HideInInspector]
     public Vector3[] segmentPositions;
     private Vector3[] segmentVel;
 
-    public Transform targetDir;
-    public float targetDist;
-    public float smoothSpeed;
+    public GameObject limbSegmentPrefab;
 
+    [HideInInspector]
+    public Transform targetDir;
+    public float targetDist = 3;
+    public float smoothSpeed = 0.005f;
+
+    [HideInInspector]
     public Transform endSegment;
     public Transform[] segmentObjects;
 
+    [HideInInspector]
+    public Flock flock;
+
+    private BaseState _currentState;
+
+    StateMachine _stateMachine = new StateMachine();
+
+    Dictionary<SegmentState, BaseState> _availableStates = new Dictionary<SegmentState, BaseState>();
+
+    public enum SegmentState
+    {
+        Tail,
+        Boid,
+        Chase
+    }
+
     void Start()
     {
+        targetDir = InitTargetDir();
+
         lineRenderer = GetComponent<LineRenderer>();
 
-        segmentAmount = segmentObjects.Length + 1;
+        InitSegments();
 
-        lineRenderer.positionCount = segmentAmount;
-        segmentPositions = new Vector3[segmentAmount];
-        segmentVel = new Vector3[segmentAmount];
+        InitFlock();
 
-        ResetPos();
+        _availableStates.Add(SegmentState.Tail, new SnekTailState(targetDir, targetDist, smoothSpeed, segmentPositions, segmentVel, segmentAmount, lineRenderer, segmentObjects, endSegment));
+
+        _stateMachine.ChangeState(_availableStates[SegmentState.Tail]);
+        _currentState = _stateMachine.CurrentState;
     }
 
     void Update()
     {
-        if (targetDir != null)
-        {
-            segmentPositions[0] = targetDir.position;
-        }
-
-        for (int i = 1; i < segmentAmount; i++)
-        {
-            Vector3 targetPos = segmentPositions[i - 1] + (segmentPositions[i] - segmentPositions[i - 1]).normalized * targetDist;
-            segmentPositions[i] = Vector3.SmoothDamp(segmentPositions[i], targetPos, ref segmentVel[i], smoothSpeed);
-            segmentObjects[i - 1].transform.position = segmentPositions[i];
-        }
-
-        lineRenderer.SetPositions(segmentPositions);
-
-        if (endSegment != null)
-        {
-            endSegment.position = segmentPositions[segmentPositions.Length - 1];
-        }
+        _stateMachine.ExecuteState();
     }
 
-    private void ResetPos()
+    private Transform InitTargetDir()
     {
-        if (targetDir != null)
+        GameObject targetDirObj = new GameObject("TargetDir");
+        targetDirObj.transform.Rotate(Vector3.forward, 180f);
+        targetDirObj.transform.SetParent(transform, false);
+
+        return targetDirObj.transform;
+    }
+
+    private void InitSegments()
+    {
+        segmentObjects = new Transform[segmentAmount];
+
+        for(int i = 0; i < segmentObjects.Length; i++) 
         {
-            segmentPositions[0] = targetDir.position;
+            segmentObjects[i] = Instantiate(limbSegmentPrefab, gameObject.transform.parent).transform;
         }
 
-        for (int i = 1; i < segmentAmount; i++)
-        {
-            segmentPositions[i] = segmentPositions[i - 1] + targetDir.right * targetDist;
-        }
+        //segmentAmount = segmentObjects.Length + 1;
 
-        lineRenderer.SetPositions(segmentPositions);
+        lineRenderer.positionCount = segmentAmount;
+        segmentPositions = new Vector3[segmentAmount];
+        segmentVel = new Vector3[segmentAmount];
+    }
+
+    private void InitFlock()
+    {
+        // Is this a way to inherit flock to SnekFlockState????? how?
+        //flock = new Flock();
+
     }
 }

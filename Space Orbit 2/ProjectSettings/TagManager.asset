@@ -19,13 +19,13 @@ TagManager:
   - Water
   - UI
   - PlayerMinimapMarker
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Planet
+  - Obstacle
+  - Asteroid
+  - Star
+  - NPC
+  - GravityField
   - 
   - 
   - 
