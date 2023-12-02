@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2497148159404667668}
   - component: {fileID: 3201581743390841753}
   - component: {fileID: 4557623143496195685}
+  - component: {fileID: 5754456920777883618}
   m_Layer: 0
   m_Name: World Generator
   m_TagString: Untagged
@@ -90,3 +91,25 @@ MonoBehaviour:
   sunSizeMax: 300
   sunGravityFieldSizeMin: 2
   sunGravityFieldSizeMax: 5
+--- !u!114 &5754456920777883618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252243339038980245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75616888ea1dd54985be674ff3fc492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snekPrefab: {fileID: 4326632487933286833, guid: e9401f5410b3d9f42bdb105877bef68e,
+    type: 3}
+  _snekMoveSpeed: 20
+  _snekRotSpeed: 3
+  _bigSnekPrefab: {fileID: 2807820179941034418, guid: f057bffe23f3dfc43958ab689caf10a9,
+    type: 3}
+  _bigSnekMoveSpeed: 5
+  _bigSnekRotSpeed: 1
+  _flockPrefab: {fileID: 4207784733923426565, guid: 02c32c5f0f2c4bc45a6aab9760acd725,
+    type: 3}

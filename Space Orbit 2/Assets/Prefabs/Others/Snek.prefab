@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4709369353304701399}
   - component: {fileID: -7765272770390504765}
   m_Layer: 12
-  m_Name: Lil Snek
+  m_Name: Snek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

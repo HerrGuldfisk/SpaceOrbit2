@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7420975302081055908}
   - component: {fileID: 6705249095835084690}
   m_Layer: 12
-  m_Name: Snek (World Eater)
+  m_Name: Big Snek (World Eater)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
