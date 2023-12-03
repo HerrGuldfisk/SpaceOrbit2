@@ -49,9 +49,9 @@ MonoBehaviour:
   starPrefab: {fileID: 2646586524208943470, guid: 231afcefafd595c4bbde5751358fa8ca,
     type: 3}
   numberOfPlanets: 0
-  numberOfStars: 0
-  numberOfSuns: 4
-  mapSize: 500
+  numberOfStars: 5
+  numberOfSuns: 6
+  mapSize: 1500
   minGenerationDistanceFromOrigin: 150
   minDistanceBetweenObjects: 50
 --- !u!114 &3201581743390841753
