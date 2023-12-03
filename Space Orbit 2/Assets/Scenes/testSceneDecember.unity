@@ -2343,21 +2343,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1281748750}
-    - target: {fileID: 966864551094914290, guid: 9474efb4afc52cf45a442eaaefa9fac2,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.57891047
-      objectReference: {fileID: 0}
-    - target: {fileID: 966864551094914290, guid: 9474efb4afc52cf45a442eaaefa9fac2,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 966864551094914290, guid: 9474efb4afc52cf45a442eaaefa9fac2,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.40943396
-      objectReference: {fileID: 0}
     - target: {fileID: 1994983696084991795, guid: 9474efb4afc52cf45a442eaaefa9fac2,
         type: 3}
       propertyPath: m_Pivot.x

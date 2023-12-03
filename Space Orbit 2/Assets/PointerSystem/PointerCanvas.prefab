@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 3690228058140872044}
   - component: {fileID: 4828322114306049830}
   - component: {fileID: 5566074398409815011}
+  - component: {fileID: 4206294219449594677}
+  - component: {fileID: -1226804136138465248}
   m_Layer: 5
-  m_Name: PingCanvas
+  m_Name: PointerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +120,32 @@ MonoBehaviour:
   pointerPrefab: {fileID: 7237560801725921744, guid: 9fdb3b672ab694248a9178ed0726d80a,
     type: 3}
   pointerCanvas: {fileID: 1994983696084991795}
+  objectsPointedAt: []
+  pointersSpawned: []
+--- !u!114 &4206294219449594677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451068098210287091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96678e68dbbc86c44985df17a9ab255a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1226804136138465248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451068098210287091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef1d3f111bb96f42a623f70cf042fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5682904696840137061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,6 +253,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879445247435744663, guid: 9fdb3b672ab694248a9178ed0726d80a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.57891047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879445247435744663, guid: 9fdb3b672ab694248a9178ed0726d80a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.40943396
       objectReference: {fileID: 0}
     - target: {fileID: 7237560801725921744, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}

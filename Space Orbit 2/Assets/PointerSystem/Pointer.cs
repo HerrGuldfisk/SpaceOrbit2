@@ -23,20 +23,6 @@ public class Pointer : MonoBehaviour {
         canvasHeight = canvas.pixelRect.height;
     }
 
-    private void OnEnable() {
-        Star.OnStarCollected += OnStarCollected;
-    }
-
-    private void OnDisable() {
-        Star.OnStarCollected -= OnStarCollected;
-    }
-
-    private void OnStarCollected(GameObject starGO) {
-        if (starGO == target.gameObject) {
-            Destroy(gameObject);
-        }
-    }
-
     void Update() {
         if (!target || !targetRenderer) {
             return;
