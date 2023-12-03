@@ -26,11 +26,11 @@ public class Pointer : MonoBehaviour {
     private void OnEnable() {
         Star.OnStarCollected += OnStarCollected;
     }
-    
+
     private void OnDisable() {
         Star.OnStarCollected -= OnStarCollected;
     }
-    
+
     private void OnStarCollected(GameObject starGO) {
         if (starGO == target.gameObject) {
             Destroy(gameObject);
@@ -43,16 +43,17 @@ public class Pointer : MonoBehaviour {
         }
 
         //check if the target is on the main cam
-        Vector3 objectPosOnScreen = mainCamera.WorldToViewportPoint(target.position);
-        bool targetIsOnScreen = objectPosOnScreen.x > 0 && objectPosOnScreen.x < 1 && objectPosOnScreen.y > 0 &&
-                                objectPosOnScreen.y < 1;
+        Vector3 targetPosOnScreen = mainCamera.WorldToViewportPoint(target.position);
+        bool targetIsOnScreen = targetPosOnScreen.x > 0 && targetPosOnScreen.x < 1 && targetPosOnScreen.y > 0 &&
+                                targetPosOnScreen.y < 1;
 
         if (targetIsOnScreen) {
             pointerImage.enabled = false;
         }
         else {
             pointerImage.enabled = true;
-            PositionPointer(objectPosOnScreen);
+            PositionPointer(targetPosOnScreen);
+            UpdatePointerIntensity(targetPosOnScreen);
         }
     }
 
@@ -63,5 +64,21 @@ public class Pointer : MonoBehaviour {
         float pointerYInCanvasScale = pointerY * canvasHeight;
         transform.position = new Vector3(pointerXInCanvasScale, pointerYInCanvasScale, 0);
     }
-    
+
+    //change size and opacity based on distance
+    private void UpdatePointerIntensity(Vector2 targetPosOnScreen) {
+        //change size based on distance
+        Vector2 vecFromScreenCenterToObject = targetPosOnScreen - new Vector2(0.5f, 0.5f);
+        float distanceToTarget = vecFromScreenCenterToObject.magnitude;
+        float newScale = 1 / distanceToTarget;
+        newScale = Mathf.Clamp(newScale, 0.6f, 1);
+        transform.localScale = Vector3.one * newScale;
+
+        //change opacity based on distance
+        float opacity = 1 / distanceToTarget;
+        float opacityClamped = Mathf.Clamp(opacity, 0.6f, 1);
+        Color newPointerColor = pointerImage.color;
+        newPointerColor.a = opacityClamped;
+        pointerImage.color = newPointerColor;
+    }
 }
