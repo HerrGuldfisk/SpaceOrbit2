@@ -291,7 +291,6 @@ GameObject:
   - component: {fileID: 7216932809895427142}
   - component: {fileID: 6624498914071495782}
   - component: {fileID: 7082944826942403088}
-  - component: {fileID: 5396214966194167764}
   - component: {fileID: 1637414783492321257}
   - component: {fileID: 4077656145117070205}
   - component: {fileID: 6321118167358796428}
@@ -403,9 +402,9 @@ MonoBehaviour:
   _speedDrag: 0
   _angularDrag: 0
   _maxFuel: 100
-  _fuelUsageThrusting: 1
-  _fuelUsageSteering: 0.1
-  _orbitRefuel: 0.1
+  _fuelUsageThrusting: 0.4
+  _fuelUsageSteering: 0.04
+  _orbitRefuel: 0.4
 --- !u!114 &6624498914071495782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,18 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentFuelText: 
   _displayText: {fileID: 0}
---- !u!114 &5396214966194167764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617894982804905214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 338ec3c9656deeb4e96e26b0d0309612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &1637414783492321257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -494,9 +481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295546d3528dff74fb5f781be5947b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetPlayerDir: 100
-  _spawnTimer: 24
-  _spawnRadius: 200
+  _offsetPlayerDir: 300
+  _spawnTimer: 5
+  _spawnRadius: 600
 --- !u!114 &6321118167358796428
 MonoBehaviour:
   m_ObjectHideFlags: 0
