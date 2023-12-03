@@ -7,7 +7,7 @@ using UnityEngine;
 public class Star : MonoBehaviour {
     private StarManager _starManager;
 
-    public delegate void StarCollected(Vector2 starPosition);
+    public delegate void StarCollected(GameObject starCollected);
 
     public static event StarCollected OnStarCollected;
 
@@ -24,7 +24,7 @@ public class Star : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             _starManager.AddStarToHeld();
-            OnStarCollected?.Invoke(transform.position);
+            OnStarCollected?.Invoke(gameObject);
             Destroy(gameObject);
         }
     }

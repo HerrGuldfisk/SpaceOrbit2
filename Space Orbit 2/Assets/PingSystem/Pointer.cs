@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,20 @@ public class Pointer : MonoBehaviour {
         Canvas canvas = GetComponentInParent<Canvas>();
         canvasWidth = canvas.pixelRect.width;
         canvasHeight = canvas.pixelRect.height;
+    }
+
+    private void OnEnable() {
+        Star.OnStarCollected += OnStarCollected;
+    }
+    
+    private void OnDisable() {
+        Star.OnStarCollected -= OnStarCollected;
+    }
+    
+    private void OnStarCollected(GameObject starGO) {
+        if (starGO == target.gameObject) {
+            Destroy(gameObject);
+        }
     }
 
     void Update() {
@@ -48,4 +63,5 @@ public class Pointer : MonoBehaviour {
         float pointerYInCanvasScale = pointerY * canvasHeight;
         transform.position = new Vector3(pointerXInCanvasScale, pointerYInCanvasScale, 0);
     }
+    
 }

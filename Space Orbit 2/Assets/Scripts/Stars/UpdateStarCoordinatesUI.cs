@@ -14,17 +14,22 @@ public class UpdateStarCoordinatesUI : MonoBehaviour {
     }
 
     private void OnEnable() {
-        SonarWave.OnStarPositionDetected += OnStarPositionDetected;
+        SonarWave.OnObjectDetected += OnObjectDetected;
         Star.OnStarCollected += OnStarCollected;
     }
 
     private void OnDisable() {
-        SonarWave.OnStarPositionDetected -= OnStarPositionDetected;
+        SonarWave.OnObjectDetected -= OnObjectDetected;
         Star.OnStarCollected -= OnStarCollected;
     }
 
-    private void OnStarPositionDetected(Transform starTransform) {
-        Vector2 starPosition = starTransform.position;
+    private void OnObjectDetected(GameObject objectDetected) {
+        bool isStar = objectDetected.CompareTag("Star");
+        if (!isStar) {
+            return;
+        }
+
+        Vector2 starPosition = objectDetected.transform.position;
         bool starAlreadyListed = _detectedStarPositions.Contains(starPosition);
         if (!starAlreadyListed) {
             _detectedStarPositions.Add(starPosition);
@@ -32,7 +37,8 @@ public class UpdateStarCoordinatesUI : MonoBehaviour {
         }
     }
 
-    private void OnStarCollected(Vector2 starPosition) {
+    private void OnStarCollected(GameObject starCollected) {
+        Vector2 starPosition = starCollected.transform.position;
         _detectedStarPositions.Remove(starPosition);
         UpdateCoordinatesUI();
     }
