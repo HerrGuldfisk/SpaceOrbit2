@@ -23,7 +23,8 @@ public class UpdateStarCoordinatesUI : MonoBehaviour {
         Star.OnStarCollected -= OnStarCollected;
     }
 
-    private void OnStarPositionDetected(Vector2 starPosition) {
+    private void OnStarPositionDetected(Transform starTransform) {
+        Vector2 starPosition = starTransform.position;
         bool starAlreadyListed = _detectedStarPositions.Contains(starPosition);
         if (!starAlreadyListed) {
             _detectedStarPositions.Add(starPosition);

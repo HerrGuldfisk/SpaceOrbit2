@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8261301535068550155}
   - component: {fileID: 3690228058140872044}
   - component: {fileID: 4828322114306049830}
+  - component: {fileID: 5566074398409815011}
   m_Layer: 5
   m_Name: PingCanvas
   m_TagString: Untagged
@@ -31,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8224287716367976284}
+  - {fileID: 6566252753969829843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -102,7 +103,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &7484760186796358122
+--- !u!114 &5566074398409815011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451068098210287091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4270ce84f797b4ba2bdf207971af97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerPrefab: {fileID: 7237560801725921744, guid: 9fdb3b672ab694248a9178ed0726d80a,
+    type: 3}
+  pointerCanvas: {fileID: 1994983696084991795}
+--- !u!1001 &5682904696840137061
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -143,12 +159,12 @@ PrefabInstance:
     - target: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}
@@ -193,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
         type: 3}
@@ -220,9 +236,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fdb3b672ab694248a9178ed0726d80a, type: 3}
---- !u!224 &8224287716367976284 stripped
+--- !u!224 &6566252753969829843 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1584633344166166198, guid: 9fdb3b672ab694248a9178ed0726d80a,
     type: 3}
-  m_PrefabInstance: {fileID: 7484760186796358122}
+  m_PrefabInstance: {fileID: 5682904696840137061}
   m_PrefabAsset: {fileID: 0}

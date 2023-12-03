@@ -9,7 +9,7 @@ public class SonarWave : MonoBehaviour {
     private Vector3 _targetSize;
     private float _startCharge;
 
-    public delegate void StarPositionDetected(Vector2 position);
+    public delegate void StarPositionDetected(Transform starTransform);
 
     public static event StarPositionDetected OnStarPositionDetected;
 
@@ -37,7 +37,7 @@ public class SonarWave : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Star")) {
-            OnStarPositionDetected?.Invoke(collision.gameObject.transform.position);
+            OnStarPositionDetected?.Invoke(collision.gameObject.transform);
         }
     }
 }

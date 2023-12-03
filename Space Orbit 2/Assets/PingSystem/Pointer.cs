@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //points to an object off-screen, and hides if the object is on-screen
 [RequireComponent(typeof(Image))]
 public class Pointer : MonoBehaviour {
-    [SerializeField] Transform target;
+    public Transform target;
     Renderer targetRenderer;
     Camera mainCamera;
     private float canvasWidth;
@@ -42,8 +42,8 @@ public class Pointer : MonoBehaviour {
     }
 
     private void PositionPointer(Vector3 targetPosOnScreen) {
-        float pointerX = Mathf.Clamp(targetPosOnScreen.x, 0.1f, 0.9f);
-        float pointerY = Mathf.Clamp(targetPosOnScreen.y, 0.1f, 0.9f);
+        float pointerX = Mathf.Clamp(targetPosOnScreen.x, 0.05f, 0.95f);
+        float pointerY = Mathf.Clamp(targetPosOnScreen.y, 0.05f, 0.95f);
         float pointerXInCanvasScale = pointerX * canvasWidth;
         float pointerYInCanvasScale = pointerY * canvasHeight;
         transform.position = new Vector3(pointerXInCanvasScale, pointerYInCanvasScale, 0);
