@@ -9,9 +9,7 @@ public class PlanetSettings : MonoBehaviour {
     [SerializeField] PlanetGravityMode _gravityMode = PlanetGravityMode.Linear;
     [SerializeField] float _gravityFieldSize = 50f;
     [SerializeField] float _gravityStrength = 2f;
-
-    [SerializeField] private float BodySize = 15f;
-
+    
     public PlanetGravityMode GravityMode {
         get { return _gravityMode; }
     }
