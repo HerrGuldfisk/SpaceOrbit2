@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OthersSpawner : MonoBehaviour
@@ -59,12 +60,16 @@ public class OthersSpawner : MonoBehaviour
     public GameObject SpawnFlock(Vector2 worldPos, string typeOfOthers, int flockSize, float maxSpeed)
     {
         GameObject flockInstance = Instantiate(_flockPrefab, worldPos, Quaternion.identity);
+        Flock flock = flockInstance.GetComponent<Flock>();
 
         // Set type of flock
+        flock.agentPrefab = _typesOfOthers[typeOfOthers];
 
         // Set flock size
+        flock.startCount = flockSize;
 
         // Set max speed
+        flock.maxSpeed = maxSpeed;
 
         return flockInstance;
     }
@@ -72,18 +77,25 @@ public class OthersSpawner : MonoBehaviour
     public GameObject SpawnFlock(Vector2 worldPos, string typeOfOthers, int flockSize, int driveFactor, float maxSpeed, float neighbourRadius, float avoidanceRadiusMultiplier) 
     {
         GameObject flockInstance = Instantiate(_flockPrefab, worldPos, Quaternion.identity);
+        Flock flock = flockInstance.GetComponent<Flock>();
 
         // Set type of flock
+        flock.agentPrefab = _typesOfOthers[typeOfOthers];
 
         // Set flock size
+        flock.startCount = flockSize;
 
         // Set drive factor (reactivity kind of)
+        flock.driveFactor = driveFactor;
 
         // Set max speed
+        flock.maxSpeed = maxSpeed;
 
         // Set neighbour radius
+        flock.neighbourRadius = neighbourRadius;
 
         // Set avoidance radius multiplier
+        flock.avoidanceRadiusMultiplier = avoidanceRadiusMultiplier;
 
         return flockInstance;
     }
