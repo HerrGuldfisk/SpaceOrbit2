@@ -149,7 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988d2958c06b2df4d8f74b9874876a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentAmount: 4
+  segmentCount: 6
+  currentSegmentCount: 0
+  newSegmentCount: 0
   lineRenderer: {fileID: 3015436691277455252}
   segmentPositions: []
   limbSegmentPrefab: {fileID: 3934827478571993353, guid: ef8fe33daafb8814197267e7bfabe547,
@@ -300,7 +302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4326632487933286833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51c1ae54558992d44ba215ed9105bcd3, type: 3}
   m_Name: 

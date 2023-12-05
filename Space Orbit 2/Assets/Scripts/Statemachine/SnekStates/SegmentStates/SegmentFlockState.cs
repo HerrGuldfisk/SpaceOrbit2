@@ -4,7 +4,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 
-public class SnekFlockState : BaseState
+public class SegmentFlockState : BaseState
 {
     public override void Enter()
     {
