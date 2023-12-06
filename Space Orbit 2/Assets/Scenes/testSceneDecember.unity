@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: _offsetPlayerDir
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 4604894954112998481, guid: b78a424bf53eaed44be7e8670d8c1bf7,
+        type: 3}
+      propertyPath: segmentCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6624498914071495782, guid: b78a424bf53eaed44be7e8670d8c1bf7,
         type: 3}
       propertyPath: _displayText
