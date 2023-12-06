@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6984323075468810432}
   - component: {fileID: 8046824334102961976}
-  - component: {fileID: 2459817773202214758}
+  - component: {fileID: 4604894954112998481}
   m_Layer: 0
   m_Name: Cargo
   m_TagString: Untagged
@@ -220,7 +220,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &2459817773202214758
+--- !u!114 &4604894954112998481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,17 +229,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1418500694729433394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988d2958c06b2df4d8f74b9874876a27, type: 3}
+  m_Script: {fileID: 11500000, guid: 995a1d45b1636d740a2c1df9799204d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentAmount: 3
+  segmentCount: 1
+  currentSegmentCount: 0
+  newSegmentCount: 0
   lineRenderer: {fileID: 0}
   segmentPositions: []
-  limbSegmentPrefab: {fileID: 3934827478571993353, guid: ef8fe33daafb8814197267e7bfabe547,
+  limbSegmentPrefab: {fileID: 2646586524208943470, guid: 161f804356a7ad64d9cac6c2445982d4,
     type: 3}
   targetDir: {fileID: 0}
   targetDist: 1.5
-  smoothSpeed: 0.1
+  smoothSpeed: 0.0001
   endSegment: {fileID: 0}
   segmentObjects: []
   flock: {fileID: 0}

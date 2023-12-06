@@ -13,11 +13,13 @@ public enum SpawnedObjectType {
 // randomly places a set amount of planets, stars, and suns around the world
 [RequireComponent(typeof(PlanetSpawner))]
 [RequireComponent(typeof(SunSpawner))]
+[RequireComponent (typeof(OthersSpawner))]
 public class WorldGenerator : MonoBehaviour {
     [SerializeField] private GameObject starPrefab;
 
     private PlanetSpawner _planetSpawner;
     private SunSpawner _sunSpawner;
+    private OthersSpawner _othersSpawner;
 
     [SerializeField] private int numberOfPlanets = 30;
     [SerializeField] private int numberOfStars = 5;
@@ -34,6 +36,7 @@ public class WorldGenerator : MonoBehaviour {
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
         _sunSpawner = GetComponent<SunSpawner>();
+        _othersSpawner = GetComponent<OthersSpawner>();
     }
 
     void Start() {
@@ -44,6 +47,7 @@ public class WorldGenerator : MonoBehaviour {
         SpawnAllStars();
         SpawnAllPlanets();
         SpawnAllSuns();
+        SpawnAllOthers();
     }
 
     private void SpawnAllStars() {
@@ -59,6 +63,25 @@ public class WorldGenerator : MonoBehaviour {
             var spawnPosition = GetValidSpawnPosition(SpawnedObjectType.Planet);
             _planetSpawner.SpawnPlanet(spawnPosition);
             _positionsPlacedAt.Add(spawnPosition);
+        }
+    }
+
+    private void SpawnAllOthers()
+    {
+        SpawnSnekFlocks();
+    }
+
+    private void SpawnSnekFlocks()
+    {
+        foreach (GameObject sun in _suns)
+        {
+            int ranNumFlocks = Random.Range(0, 3);
+            while(ranNumFlocks > 0)
+            {
+                int ranSneksInFlock = Random.Range(5, 15);
+                _othersSpawner.SpawnFlock(sun.transform.position, "Snek", ranSneksInFlock);
+                ranNumFlocks--;
+            }
         }
     }
 

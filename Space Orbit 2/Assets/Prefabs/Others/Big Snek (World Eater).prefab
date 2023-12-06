@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7420975302081055908}
   - component: {fileID: 6705249095835084690}
   m_Layer: 12
-  m_Name: Snek (World Eater)
+  m_Name: Big Snek (World Eater)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988d2958c06b2df4d8f74b9874876a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentAmount: 15
+  segmentCount: 6
+  currentSegmentCount: 0
+  newSegmentCount: 0
   lineRenderer: {fileID: 7665515510861685448}
   segmentPositions: []
   limbSegmentPrefab: {fileID: 3934827478571993353, guid: ef8fe33daafb8814197267e7bfabe547,
@@ -346,19 +348,5 @@ MonoBehaviour:
   targetDist: 37
   smoothSpeed: 0.006
   endSegment: {fileID: 0}
-  segmentObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  segmentObjects: []
   flock: {fileID: 0}

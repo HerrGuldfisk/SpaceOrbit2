@@ -11,6 +11,7 @@ TagManager:
   - AudioManager
   - Asteroid
   - Star
+  - Cargo
   layers:
   - Default
   - TransparentFX

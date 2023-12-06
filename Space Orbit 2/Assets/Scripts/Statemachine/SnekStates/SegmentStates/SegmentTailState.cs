@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnekTailState : BaseState
+public class SegmentTailState : BaseState
 {
     public Transform TargetDir { get; private set; }
     public float TargetDist { get; private set; }
@@ -15,7 +15,7 @@ public class SnekTailState : BaseState
     public Transform EndSegment { get; private set; }
 
 
-    public SnekTailState(Transform targetDir, float targetDist, float smoothSpeed, Vector3[] segmentPositions, Vector3[] segmentVel, int segmentAmount, LineRenderer lineRenderer, Transform[] segmentObjects, Transform endSegment) : base()
+    public SegmentTailState(Transform targetDir, float targetDist, float smoothSpeed, Vector3[] segmentPositions, Vector3[] segmentVel, int segmentAmount, LineRenderer lineRenderer, Transform[] segmentObjects, Transform endSegment) : base()
     {
         TargetDir = targetDir;
         TargetDist = targetDist;

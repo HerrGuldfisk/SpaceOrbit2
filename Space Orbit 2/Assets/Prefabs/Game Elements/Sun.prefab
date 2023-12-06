@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 7239224056361073828}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.25689, y: -11.348115, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -237,8 +237,6 @@ MonoBehaviour:
   sunOrbitField: {fileID: 5281962886718414792}
   orbitCenterPrefab: {fileID: 8294317798392583447, guid: e9d179f8d249d704b910820d6646cfd3,
     type: 3}
-  orbitFieldSizeMin: 5
-  orbitFieldSizeMax: 15
   planetOrbitSpeed: 5
 --- !u!114 &6548033116636454052
 MonoBehaviour:

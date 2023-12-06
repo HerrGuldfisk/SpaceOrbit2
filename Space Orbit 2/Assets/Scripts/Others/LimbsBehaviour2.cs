@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class LimbsBehaviour2 : MonoBehaviour
 {
-    public int segmentAmount = 6;
+    public int segmentCount = 6;
+    [HideInInspector]
+    public int currentSegmentCount;
+    [HideInInspector]
+    public int newSegmentCount;
     [HideInInspector]
     public LineRenderer lineRenderer;
     [HideInInspector]
@@ -25,20 +29,32 @@ public class LimbsBehaviour2 : MonoBehaviour
     [HideInInspector]
     public Flock flock;
 
-    private BaseState _currentState;
+    [HideInInspector]
+    public BaseState _currentState;
 
-    StateMachine _stateMachine = new StateMachine();
+    [HideInInspector]
+    public StateMachine _stateMachine = new StateMachine();
 
-    Dictionary<SegmentState, BaseState> _availableStates = new Dictionary<SegmentState, BaseState>();
+    [HideInInspector]
+    public Dictionary<SegmentState, BaseState> _availableStates = new Dictionary<SegmentState, BaseState>();
 
     public enum SegmentState
     {
         Tail,
-        Boid,
-        Chase
+        Boid
     }
 
     void Start()
+    {
+        InitLimb();
+    }
+
+    void Update()
+    {
+        _stateMachine.ExecuteState();
+    }
+
+    public void InitLimb()
     {
         targetDir = InitTargetDir();
 
@@ -48,18 +64,13 @@ public class LimbsBehaviour2 : MonoBehaviour
 
         InitFlock();
 
-        _availableStates.Add(SegmentState.Tail, new SnekTailState(targetDir, targetDist, smoothSpeed, segmentPositions, segmentVel, segmentAmount, lineRenderer, segmentObjects, endSegment));
+        _availableStates.Add(SegmentState.Tail, new SegmentTailState(targetDir, targetDist, smoothSpeed, segmentPositions, segmentVel, segmentCount, lineRenderer, segmentObjects, endSegment));
 
         _stateMachine.ChangeState(_availableStates[SegmentState.Tail]);
         _currentState = _stateMachine.CurrentState;
     }
 
-    void Update()
-    {
-        _stateMachine.ExecuteState();
-    }
-
-    private Transform InitTargetDir()
+    public Transform InitTargetDir()
     {
         GameObject targetDirObj = new GameObject("TargetDir");
         targetDirObj.transform.Rotate(Vector3.forward, 180f);
@@ -68,20 +79,23 @@ public class LimbsBehaviour2 : MonoBehaviour
         return targetDirObj.transform;
     }
 
-    private void InitSegments()
+    public void InitSegments()
     {
-        segmentObjects = new Transform[segmentAmount];
+        if(segmentCount < 1)
+        { return; }
+
+        segmentObjects = new Transform[segmentCount];
 
         for(int i = 0; i < segmentObjects.Length; i++) 
         {
             segmentObjects[i] = Instantiate(limbSegmentPrefab, gameObject.transform.parent).transform;
         }
 
-        //segmentAmount = segmentObjects.Length + 1;
+        //segmentCount = segmentObjects.Length + 1;
 
-        lineRenderer.positionCount = segmentAmount;
-        segmentPositions = new Vector3[segmentAmount];
-        segmentVel = new Vector3[segmentAmount];
+        lineRenderer.positionCount = segmentCount;
+        segmentPositions = new Vector3[segmentCount];
+        segmentVel = new Vector3[segmentCount];
     }
 
     private void InitFlock()
@@ -89,5 +103,11 @@ public class LimbsBehaviour2 : MonoBehaviour
         // Is this a way to inherit flock to SnekFlockState????? how?
         //flock = new Flock();
 
+    }
+
+    public void AddSegments(int add)
+    {
+        currentSegmentCount = segmentCount;
+        newSegmentCount = currentSegmentCount + Mathf.Abs(add);
     }
 }
