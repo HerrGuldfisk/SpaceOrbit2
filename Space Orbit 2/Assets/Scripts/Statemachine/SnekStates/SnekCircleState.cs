@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnekIdleState : BaseState
+public class SnekCircleState : BaseState
 {
     public override void Enter()
     {
@@ -11,7 +11,7 @@ public class SnekIdleState : BaseState
 
     public override void Execute()
     {
-        
+        throw new System.NotImplementedException();
     }
 
     public override void Exit()

@@ -174,9 +174,9 @@ GameObject:
   - component: {fileID: 834853925753315306}
   - component: {fileID: 2353059091669785164}
   - component: {fileID: 2689656141198184544}
-  - component: {fileID: 7660659305556733808}
   - component: {fileID: 4709369353304701399}
   - component: {fileID: -7765272770390504765}
+  - component: {fileID: 3189092566389096799}
   m_Layer: 12
   m_Name: Snek
   m_TagString: Untagged
@@ -295,21 +295,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7660659305556733808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4326632487933286833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c1ae54558992d44ba215ed9105bcd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSpeed: 3
-  _moveSpeed: 20
-  _target: {fileID: 0}
 --- !u!114 &4709369353304701399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,5 +317,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75adbdc88ba89594b95c2e246a6b3aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3189092566389096799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326632487933286833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1b60f0a8e592741b5f128b991f1005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
