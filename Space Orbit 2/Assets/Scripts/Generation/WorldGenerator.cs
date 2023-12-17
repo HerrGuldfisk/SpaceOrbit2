@@ -4,22 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public enum SpawnedObjectType {
-    Star,
-    Sun
-}
-
 [RequireComponent(typeof(SunSpawner))]
 [RequireComponent(typeof(OthersSpawner))]
 public class WorldGenerator : MonoBehaviour {
-    [SerializeField] private GameObject starPrefab;
-
     private SunSpawner _sunSpawner;
     private OthersSpawner _othersSpawner;
 
-    [SerializeField] private int numberOfStars = 5;
     [SerializeField] private int numberOfSuns = 4;
-
     [SerializeField] private int mapSize = 1000;
     [SerializeField] private float minGenerationDistanceFromOrigin = 50f;
     [SerializeField] private float minDistanceBetweenObjects = 50f;
@@ -38,17 +29,8 @@ public class WorldGenerator : MonoBehaviour {
     }
 
     void GenerateMap() {
-        SpawnAllStars();
         SpawnAllSuns();
         SpawnAllOthers();
-    }
-
-    private void SpawnAllStars() {
-        for (int i = 0; i < numberOfStars; i++) {
-            var spawnPosition = GetValidSpawnPosition(SpawnedObjectType.Star);
-            Instantiate(starPrefab, spawnPosition, Quaternion.identity);
-            _positionsPlacedAt.Add(spawnPosition);
-        }
     }
 
     private void SpawnAllOthers() {
@@ -69,16 +51,16 @@ public class WorldGenerator : MonoBehaviour {
     private void SpawnAllSuns() {
         for (int i = 0; i < numberOfSuns; i++) {
             GameObject sunInstance = _sunSpawner.Spawn(Vector2.zero);
-            Vector2 freeSunPosition = GetValidSpawnPosition(SpawnedObjectType.Sun, sunInstance);
+            Vector2 freeSunPosition = GetValidSunPosition(sunInstance);
             sunInstance.transform.position = freeSunPosition;
             _suns.Add(sunInstance);
         }
     }
 
-    private Vector2 GetValidSpawnPosition(SpawnedObjectType type, GameObject spawnedObject = null) {
+    private Vector2 GetValidSunPosition(GameObject spawnedSun = null) {
         Vector2 randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
         int iterator = 0;
-        while (PosIsTooCloseToExistingObject(randomPos, type, spawnedObject)) {
+        while (SunPosIsTooCloseToExistingObject(randomPos, spawnedSun)) {
             randomPos = GetRandomPosition(minGenerationDistanceFromOrigin, mapSize);
             iterator++;
             if (iterator > 30) {
@@ -97,28 +79,26 @@ public class WorldGenerator : MonoBehaviour {
         return position;
     }
 
-    bool PosIsTooCloseToExistingObject(Vector2 positionToCheck, SpawnedObjectType type, GameObject spawnedObject = null) {
+    bool SunPosIsTooCloseToExistingObject(Vector2 positionToCheck, GameObject spawnedObject = null) {
         bool isTooClose = false;
 
-        if (type == SpawnedObjectType.Sun) {
-            Debug.Assert(spawnedObject != null, "have to provide the ref to spawned object when checking sun positions!");
-            Transform[] spawnedSunTransforms = spawnedObject.GetComponentsInChildren<Transform>();
-            float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
-            bool orbitFieldCoversWorldOrigin = (radiusOfSpawnedSun > positionToCheck.magnitude);
+        Debug.Assert(spawnedObject != null, "have to provide the ref to spawned object when checking sun positions!");
+        Transform[] spawnedSunTransforms = spawnedObject.GetComponentsInChildren<Transform>();
+        float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
+        bool orbitFieldCoversWorldOrigin = (radiusOfSpawnedSun > positionToCheck.magnitude);
 
-            if (orbitFieldCoversWorldOrigin) {
-                isTooClose = true;
-            }
-            else {
-                foreach (GameObject sun in _suns) {
-                    Transform[] existingSunTransforms = sun.GetComponentsInChildren<Transform>();
-                    float radiusOfExistingSun = existingSunTransforms[1].lossyScale.x / 2;
-                    float minDistanceBetweenSuns = radiusOfExistingSun + radiusOfSpawnedSun + minDistanceBetweenObjects;
-                    float distanceBetweenSuns = Vector2.Distance(sun.transform.position, positionToCheck);
-                    if (distanceBetweenSuns < minDistanceBetweenSuns) {
-                        isTooClose = true;
-                        break;
-                    }
+        if (orbitFieldCoversWorldOrigin) {
+            isTooClose = true;
+        }
+        else {
+            foreach (GameObject sun in _suns) {
+                Transform[] existingSunTransforms = sun.GetComponentsInChildren<Transform>();
+                float radiusOfExistingSun = existingSunTransforms[1].lossyScale.x / 2;
+                float minDistanceBetweenSuns = radiusOfExistingSun + radiusOfSpawnedSun + minDistanceBetweenObjects;
+                float distanceBetweenSuns = Vector2.Distance(sun.transform.position, positionToCheck);
+                if (distanceBetweenSuns < minDistanceBetweenSuns) {
+                    isTooClose = true;
+                    break;
                 }
             }
         }

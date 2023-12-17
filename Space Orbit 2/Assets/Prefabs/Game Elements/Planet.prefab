@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5034587144813052781}
   - component: {fileID: 1857982348797003296}
   - component: {fileID: 9086095426475886232}
+  - component: {fileID: -7104727234950608199}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -54,7 +55,6 @@ MonoBehaviour:
   _gravityMode: 1
   _gravityFieldSize: 50
   _gravityStrength: 2
-  BodySize: 15
   _body: {fileID: 2838535985692705650}
   _gravityField: {fileID: 7621000570941648732}
 --- !u!50 &8982101897094905950
@@ -151,6 +151,26 @@ MonoBehaviour:
   minNumberOfAsteroids: 0
   maxAsteroidSize: 10
   minAsteroidSize: 1
+--- !u!114 &-7104727234950608199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102280568004835166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7008492e9efd266478b89316282b1b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityField: {fileID: 7621000570941648732}
+  body: {fileID: 2838535985692705650}
+  collectiblePrefab: {fileID: 2646586524208943470, guid: 231afcefafd595c4bbde5751358fa8ca,
+    type: 3}
+  orbitCenterPrefab: {fileID: 8294317798392583447, guid: e9d179f8d249d704b910820d6646cfd3,
+    type: 3}
+  orbitVelocity: 25
+  minDistanceFromEdges: 5
 --- !u!1 &1266288961151893475
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
@@ -24,6 +21,8 @@ public class SolarSystemSpawner : MonoBehaviour {
     private float _sunOrbitFieldRadius;
     private float _spawnAreaThickness;
 
+    private readonly List<GameObject> _planets = new List<GameObject>();
+
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
     }
@@ -33,6 +32,13 @@ public class SolarSystemSpawner : MonoBehaviour {
         _orbitFieldSizeMax = maxOrbitFieldSize;
         RandomizeOrbitFieldSize();
         SpawnPlanetsInOrbit();
+        SpawnCollectibleOnRandomPlanet();
+    }
+
+    private void SpawnCollectibleOnRandomPlanet() {
+        int randomPlanetIndex = Random.Range(0, _planets.Count);
+        GameObject randomPlanet = _planets[randomPlanetIndex];
+        randomPlanet.GetComponent<PlanetCollectibleSpawner>().SpawnCollectible();
     }
 
     private void RandomizeOrbitFieldSize() {
@@ -64,6 +70,7 @@ public class SolarSystemSpawner : MonoBehaviour {
             PositionPlanetInSolarSystem(spawnedPlanet);
             StartPlanetOrbiting(spawnedPlanet);
             totalWidthOfSpawnedPlanets += GetPlanetFieldDiameter(spawnedPlanet);
+            _planets.Add(spawnedPlanet);
         }
     }
 
