@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4542770068291277483}
   - component: {fileID: 588080442815052314}
   - component: {fileID: 7205586394481108600}
+  - component: {fileID: 1338603564138351248}
   m_Layer: 13
   m_Name: Gravity
   m_TagString: Untagged
@@ -305,6 +306,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9bc5304d31fc54f86a8aa12722ad5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1338603564138351248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266288961151893475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa199735f007d347a0866bddd702a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRechargeFuel: 1
 --- !u!1 &1819606559420382375
 GameObject:
   m_ObjectHideFlags: 0

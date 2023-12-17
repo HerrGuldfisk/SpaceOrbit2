@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FuelPackage : MonoBehaviour
 {
-    FuelSystem fuelSystem;
+    FuelTank _fuelTank;
 
     public float amountFuel = 20f;
 
@@ -19,8 +19,8 @@ public class FuelPackage : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                fuelSystem = collision.GetComponent<FuelSystem>();
-                fuelSystem.AddFuel(amountFuel);
+                _fuelTank = collision.GetComponent<FuelTank>();
+                _fuelTank.AddFuel(amountFuel);
 
                 Destroy(gameObject);
             }
