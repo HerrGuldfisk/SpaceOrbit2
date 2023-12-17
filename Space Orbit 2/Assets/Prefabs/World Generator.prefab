@@ -50,7 +50,7 @@ MonoBehaviour:
     type: 3}
   numberOfStars: 5
   numberOfSuns: 6
-  mapSize: 1500
+  mapSize: 3000
   minGenerationDistanceFromOrigin: 150
   minDistanceBetweenObjects: 50
 --- !u!114 &4557623143496195685
@@ -67,10 +67,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sunPrefab: {fileID: 7239224056361073828, guid: a64bce54c825a7841ae5afb9ee67a68b,
     type: 3}
-  sunSizeMin: 50
-  sunSizeMax: 300
-  sunGravityFieldSizeMin: 2
-  sunGravityFieldSizeMax: 5
+  sunSizeMin: 150
+  sunSizeMax: 500
+  sunGravityFieldSizeMin: 3
+  sunGravityFieldSizeMax: 6
 --- !u!114 &5754456920777883618
 MonoBehaviour:
   m_ObjectHideFlags: 0

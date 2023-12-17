@@ -661,6 +661,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2497148159404667668, guid: bf8ea93c47649a345abdd7c4e91fb731,
+        type: 3}
+      propertyPath: mapSize
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557623143496195685, guid: bf8ea93c47649a345abdd7c4e91fb731,
+        type: 3}
+      propertyPath: sunSizeMax
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557623143496195685, guid: bf8ea93c47649a345abdd7c4e91fb731,
+        type: 3}
+      propertyPath: sunSizeMin
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557623143496195685, guid: bf8ea93c47649a345abdd7c4e91fb731,
+        type: 3}
+      propertyPath: sunGravityFieldSizeMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557623143496195685, guid: bf8ea93c47649a345abdd7c4e91fb731,
+        type: 3}
+      propertyPath: sunGravityFieldSizeMin
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5252243339038980245, guid: bf8ea93c47649a345abdd7c4e91fb731,
         type: 3}
       propertyPath: m_Name
