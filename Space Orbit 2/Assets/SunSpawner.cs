@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 //generates a sun that has planets orbiting around it
-[RequireComponent(typeof(PlanetSpawner))]
 public class SunSpawner : MonoBehaviour {
     [SerializeField] private GameObject sunPrefab;
     [SerializeField] private float sunSizeMin = 15f;

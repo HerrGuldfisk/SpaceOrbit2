@@ -5,23 +5,18 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum SpawnedObjectType {
-    Planet,
     Star,
     Sun
 }
 
-// randomly places a set amount of planets, stars, and suns around the world
-[RequireComponent(typeof(PlanetSpawner))]
 [RequireComponent(typeof(SunSpawner))]
-[RequireComponent (typeof(OthersSpawner))]
+[RequireComponent(typeof(OthersSpawner))]
 public class WorldGenerator : MonoBehaviour {
     [SerializeField] private GameObject starPrefab;
 
-    private PlanetSpawner _planetSpawner;
     private SunSpawner _sunSpawner;
     private OthersSpawner _othersSpawner;
 
-    [SerializeField] private int numberOfPlanets = 30;
     [SerializeField] private int numberOfStars = 5;
     [SerializeField] private int numberOfSuns = 4;
 
@@ -34,7 +29,6 @@ public class WorldGenerator : MonoBehaviour {
     private readonly List<GameObject> _suns = new List<GameObject>();
 
     private void Awake() {
-        _planetSpawner = GetComponent<PlanetSpawner>();
         _sunSpawner = GetComponent<SunSpawner>();
         _othersSpawner = GetComponent<OthersSpawner>();
     }
@@ -45,7 +39,6 @@ public class WorldGenerator : MonoBehaviour {
 
     void GenerateMap() {
         SpawnAllStars();
-        SpawnAllPlanets();
         SpawnAllSuns();
         SpawnAllOthers();
     }
@@ -58,26 +51,14 @@ public class WorldGenerator : MonoBehaviour {
         }
     }
 
-    private void SpawnAllPlanets() {
-        for (int i = 0; i < numberOfPlanets; i++) {
-            var spawnPosition = GetValidSpawnPosition(SpawnedObjectType.Planet);
-            _planetSpawner.SpawnPlanet(spawnPosition);
-            _positionsPlacedAt.Add(spawnPosition);
-        }
-    }
-
-    private void SpawnAllOthers()
-    {
+    private void SpawnAllOthers() {
         SpawnSnekFlocks();
     }
 
-    private void SpawnSnekFlocks()
-    {
-        foreach (GameObject sun in _suns)
-        {
+    private void SpawnSnekFlocks() {
+        foreach (GameObject sun in _suns) {
             int ranNumFlocks = Random.Range(0, 3);
-            while(ranNumFlocks > 0)
-            {
+            while (ranNumFlocks > 0) {
                 int ranSneksInFlock = Random.Range(5, 15);
                 _othersSpawner.SpawnFlock(sun.transform.position, "Snek", ranSneksInFlock);
                 ranNumFlocks--;
@@ -119,18 +100,7 @@ public class WorldGenerator : MonoBehaviour {
     bool PosIsTooCloseToExistingObject(Vector2 positionToCheck, SpawnedObjectType type, GameObject spawnedObject = null) {
         bool isTooClose = false;
 
-        if (type == SpawnedObjectType.Planet) {
-            float maxPlanetSize = GetComponent<PlanetSpawner>().GetMaxRadiusPlanetPlusGravity();
-            float effectiveMinDistanceBetweenPoints = minDistanceBetweenObjects + maxPlanetSize;
-            foreach (Vector2 positionPlaced in _positionsPlacedAt) {
-                float distanceBetweenNewAndOldPosition = Vector2.Distance(positionToCheck, positionPlaced);
-                if (distanceBetweenNewAndOldPosition < effectiveMinDistanceBetweenPoints) {
-                    isTooClose = true;
-                    break;
-                }
-            }
-        }
-        else if (type == SpawnedObjectType.Sun) {
+        if (type == SpawnedObjectType.Sun) {
             Debug.Assert(spawnedObject != null, "have to provide the ref to spawned object when checking sun positions!");
             Transform[] spawnedSunTransforms = spawnedObject.GetComponentsInChildren<Transform>();
             float radiusOfSpawnedSun = spawnedSunTransforms[1].lossyScale.x / 2;
