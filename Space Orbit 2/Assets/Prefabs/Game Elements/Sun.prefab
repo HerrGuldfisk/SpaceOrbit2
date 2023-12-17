@@ -254,5 +254,5 @@ MonoBehaviour:
     type: 3}
   bodySizeMin: 2
   bodySizeMax: 15
-  gravityFieldSizeMin: 10
-  gravityFieldSizeMax: 100
+  gravityFieldSizeMin: 70
+  gravityFieldSizeMax: 200
