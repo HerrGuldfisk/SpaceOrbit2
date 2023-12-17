@@ -291,7 +291,6 @@ GameObject:
   - component: {fileID: 259639928020838210}
   - component: {fileID: -926032029527976827}
   - component: {fileID: 7216932809895427142}
-  - component: {fileID: 6624498914071495782}
   - component: {fileID: 7082944826942403088}
   - component: {fileID: 1637414783492321257}
   - component: {fileID: 4077656145117070205}
@@ -407,21 +406,6 @@ MonoBehaviour:
   _fuelUsageThrusting: 0.4
   _fuelUsageSteering: 0.04
   _orbitRefuel: 0.4
---- !u!114 &6624498914071495782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3617894982804905214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec973517ca78b544ab156d33ee1f33fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentCoordinates: 
-  _displayText: {fileID: 0}
-  _target: {fileID: 3925908500541426124}
 --- !u!114 &7082944826942403088
 MonoBehaviour:
   m_ObjectHideFlags: 0
