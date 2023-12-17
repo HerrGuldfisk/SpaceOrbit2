@@ -237,6 +237,8 @@ MonoBehaviour:
   sunOrbitField: {fileID: 5281962886718414792}
   orbitCenterPrefab: {fileID: 8294317798392583447, guid: e9d179f8d249d704b910820d6646cfd3,
     type: 3}
+  hubPlanetPrefab: {fileID: 1102280568004835166, guid: a103a867032b7ef49b8b10bddb628718,
+    type: 3}
   planetOrbitSpeed: 5
 --- !u!114 &6548033116636454052
 MonoBehaviour:
