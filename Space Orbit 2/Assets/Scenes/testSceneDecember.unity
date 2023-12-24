@@ -314,17 +314,17 @@ PrefabInstance:
     - target: {fileID: 3617894982804905214, guid: b78a424bf53eaed44be7e8670d8c1bf7,
         type: 3}
       propertyPath: m_Name
-      value: Starship SpaceOrbit
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3925908500541426124, guid: b78a424bf53eaed44be7e8670d8c1bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24
+      value: -13.1
       objectReference: {fileID: 0}
     - target: {fileID: 3925908500541426124, guid: b78a424bf53eaed44be7e8670d8c1bf7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.4
+      value: -67
       objectReference: {fileID: 0}
     - target: {fileID: 3925908500541426124, guid: b78a424bf53eaed44be7e8670d8c1bf7,
         type: 3}
@@ -477,13 +477,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.192282
+      value: -13.1
       objectReference: {fileID: 0}
     - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.014248
+      value: -57.7
       objectReference: {fileID: 0}
     - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
         type: 3}
@@ -524,6 +539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996562638630994505, guid: 231afcefafd595c4bbde5751358fa8ca,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -993,7 +1013,7 @@ PrefabInstance:
     - target: {fileID: 1102280568004835166, guid: a103a867032b7ef49b8b10bddb628718,
         type: 3}
       propertyPath: m_Name
-      value: HubPlanet
+      value: StartHubPlanet
       objectReference: {fileID: 0}
     - target: {fileID: 1652856652778913595, guid: a103a867032b7ef49b8b10bddb628718,
         type: 3}
@@ -1045,17 +1065,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8510579983670237394, guid: a103a867032b7ef49b8b10bddb628718,
+        type: 3}
+      propertyPath: detectSelfOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510579983670237394, guid: a103a867032b7ef49b8b10bddb628718,
+        type: 3}
+      propertyPath: detectSelfOnStart
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a103a867032b7ef49b8b10bddb628718, type: 3}
---- !u!4 &1281748750 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1652856652778913595, guid: a103a867032b7ef49b8b10bddb628718,
-    type: 3}
-  m_PrefabInstance: {fileID: 1281748749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1476591423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1647,11 +1671,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 157606152948122747, guid: 9474efb4afc52cf45a442eaaefa9fac2,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1281748750}
     - target: {fileID: 1994983696084991795, guid: 9474efb4afc52cf45a442eaaefa9fac2,
         type: 3}
       propertyPath: m_Pivot.x

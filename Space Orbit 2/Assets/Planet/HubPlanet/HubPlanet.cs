@@ -14,6 +14,10 @@ public class HubPlanet : MonoBehaviour {
     [SerializeField] private FuelRechargeArea fuelRechargeArea;
     public bool isAlive;
 
+    public delegate void HubPlanetRevived(GameObject hubPlanet);
+
+    public static event HubPlanetRevived OnHubPlanetRevived;
+
     private void Awake() {
         SetDead();
     }
@@ -30,6 +34,7 @@ public class HubPlanet : MonoBehaviour {
         collectibeInSocketVisual.SetActive(true);
         planetBodyRenderer.material = alivePlanetMaterial;
         fuelRechargeArea.canRechargeFuel = true;
-        GetComponent<HubSonarWave>().SendSonarWave();
+        GetComponent<HubPlanetDetector>().PingTheClosestTwoDeadHubPlanets();
+        OnHubPlanetRevived?.Invoke(gameObject);
     }
 }

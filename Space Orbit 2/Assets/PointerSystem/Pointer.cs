@@ -5,51 +5,71 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //points to an object off-screen, and hides if the object is on-screen
-[RequireComponent(typeof(Image))]
 public class Pointer : MonoBehaviour {
     public Transform target;
-    Renderer targetRenderer;
-    Camera mainCamera;
-    private float canvasWidth;
-    private float canvasHeight;
-    private Image pointerImage => GetComponent<Image>();
+    Renderer _targetRenderer;
+    Camera _mainCamera;
+    private float _canvasWidth;
+    private float _canvasHeight;
+    private Transform playerT;
+    [SerializeField] private GameObject pointerImageGo;
+    [SerializeField] private CanvasGroup pointerCanvasGroup;
+    [SerializeField] private Image fillImage;
+    [SerializeField] private float distanceBetweenPointerAndPlayer = 25f;
+    [SerializeField] private float minPointerDistanceFromScreenEdge = 20;
 
     void Start() {
-        mainCamera = Camera.main;
-        targetRenderer = target.GetComponentInChildren<Renderer>();
-        Debug.Assert(targetRenderer != null, "no renderer found on target");
+        _mainCamera = Camera.main;
+        _targetRenderer = target.GetComponentInChildren<Renderer>();
+        playerT = FindObjectOfType<BasicMovement>().transform;
+        Debug.Assert(playerT != null, "no player found");
+        Debug.Assert(_targetRenderer != null, "no renderer found on target");
         Canvas canvas = GetComponentInParent<Canvas>();
-        canvasWidth = canvas.pixelRect.width;
-        canvasHeight = canvas.pixelRect.height;
+        _canvasWidth = canvas.pixelRect.width;
+        _canvasHeight = canvas.pixelRect.height;
     }
 
     void Update() {
-        if (!target || !targetRenderer) {
+        if (!target || !_targetRenderer) {
             return;
         }
 
         //check if the target is on the main cam
-        Vector3 targetPosOnScreen = mainCamera.WorldToViewportPoint(target.position);
+        Vector3 targetPosOnScreen = _mainCamera.WorldToViewportPoint(target.position);
         bool targetIsOnScreen = targetPosOnScreen.x > 0 && targetPosOnScreen.x < 1 && targetPosOnScreen.y > 0 &&
                                 targetPosOnScreen.y < 1;
 
         if (targetIsOnScreen) {
-            pointerImage.enabled = false;
+            pointerImageGo.SetActive(false);
         }
         else {
-            pointerImage.enabled = true;
-            PositionPointer(targetPosOnScreen);
+            pointerImageGo.SetActive(true);
+            PositionPointer();
             UpdatePointerIntensity(targetPosOnScreen);
         }
     }
 
-    private void PositionPointer(Vector3 targetPosOnScreen) {
-        float pointerX = Mathf.Clamp(targetPosOnScreen.x, 0.05f, 0.95f);
-        float pointerY = Mathf.Clamp(targetPosOnScreen.y, 0.05f, 0.95f);
-        float pointerXInCanvasScale = pointerX * canvasWidth;
-        float pointerYInCanvasScale = pointerY * canvasHeight;
+    private void PositionPointer() {
+        Vector2 targetPos = target.position;
+        Vector2 playerPos = playerT.position;
+        Vector2 vecFromPlayerToTarget = targetPos - playerPos;
+        Vector2 vecFromPlayerToPointer = vecFromPlayerToTarget.normalized * distanceBetweenPointerAndPlayer;
+        Vector2 pointerPosWorld = playerPos + vecFromPlayerToPointer;
+        Vector2 pointerPosScreen = _mainCamera.WorldToScreenPoint(pointerPosWorld);
+
+        // Calculate the scaling factor from screen to canvas
+        float scaleX = _canvasWidth / Screen.width;
+        float scaleY = _canvasHeight / Screen.height;
+
+        // Clamp the screen position and scale to canvas
+        float clampedX = Mathf.Clamp(pointerPosScreen.x, minPointerDistanceFromScreenEdge, Screen.width - minPointerDistanceFromScreenEdge);
+        float clampedY = Mathf.Clamp(pointerPosScreen.y, minPointerDistanceFromScreenEdge, Screen.height - minPointerDistanceFromScreenEdge);
+        float pointerXInCanvasScale = clampedX * scaleX;
+        float pointerYInCanvasScale = clampedY * scaleY;
+
         transform.position = new Vector3(pointerXInCanvasScale, pointerYInCanvasScale, 0);
     }
+
 
     //change size and opacity based on distance
     private void UpdatePointerIntensity(Vector2 targetPosOnScreen) {
@@ -63,8 +83,10 @@ public class Pointer : MonoBehaviour {
         //change opacity based on distance
         float opacity = 1 / distanceToTarget;
         float opacityClamped = Mathf.Clamp(opacity, 0.6f, 1);
-        Color newPointerColor = pointerImage.color;
-        newPointerColor.a = opacityClamped;
-        pointerImage.color = newPointerColor;
+        pointerCanvasGroup.alpha = opacityClamped;
+    }
+
+    public void SetColor(Color newColor) {
+        fillImage.color = newColor;
     }
 }

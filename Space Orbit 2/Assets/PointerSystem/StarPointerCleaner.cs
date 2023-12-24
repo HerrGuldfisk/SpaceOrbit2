@@ -12,20 +12,20 @@ public class StarPointerCleaner : MonoBehaviour {
         _pointerSpawner = GetComponent<PointerSpawner>();
     }
 
-    private void OnEnable() {
-        Star.OnStarCollected += HandleStarCollected;
-    }
+    // private void OnEnable() {
+    //     Star.OnStarCollected += HandleStarCollected;
+    // }
+    //
+    // private void OnDisable() {
+    //     Star.OnStarCollected -= HandleStarCollected;
+    // }
 
-    private void OnDisable() {
-        Star.OnStarCollected -= HandleStarCollected;
-    }
-
-    private void HandleStarCollected(GameObject starCollected) {
-        foreach (GameObject pointer in _pointerSpawner.pointersSpawned) {
-            if (pointer.GetComponent<Pointer>().target == starCollected.transform) {
-                _pointerSpawner.RemovePointer(pointer.GetComponent<Pointer>());
-                break;
-            }
-        }
-    }
+    // private void HandleStarCollected(GameObject starCollected) {
+    //     foreach (GameObject pointer in _pointerSpawner.pointersSpawned) {
+    //         if (pointer.GetComponent<Pointer>().target == starCollected.transform) {
+    //             _pointerSpawner.RemovePointer(pointer.GetComponent<Pointer>());
+    //             break;
+    //         }
+    //     }
+    // }
 }
