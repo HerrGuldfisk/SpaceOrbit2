@@ -50,6 +50,8 @@ public class Pointer : MonoBehaviour {
     }
 
     private void PositionPointer() {
+        if (!playerT) return;
+
         Vector2 targetPos = target.position;
         Vector2 playerPos = playerT.position;
         Vector2 vecFromPlayerToTarget = targetPos - playerPos;
