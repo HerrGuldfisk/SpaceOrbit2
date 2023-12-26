@@ -6,13 +6,7 @@ using UnityEngine;
 public class OthersSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _snekPrefab;
-    [SerializeField, Range(0.1f, 1000f)] private float _snekMoveSpeed = 20f;
-    [SerializeField, Range(0f, 10f)] private float _snekRotSpeed = 3f;
-
     [SerializeField] private GameObject _bigSnekPrefab;
-    [SerializeField, Range(0.1f, 1000f)] private float _bigSnekMoveSpeed = 5f;
-    [SerializeField, Range(0f, 10f)] private float _bigSnekRotSpeed = 1f;
-
     [SerializeField] private GameObject _flockPrefab;
 
     private Dictionary<string, FlockAgent> _typesOfOthers;
@@ -53,6 +47,7 @@ public class OthersSpawner : MonoBehaviour
 
         // Set flock size
         flock.startCount = flockSize;
+        
 
         return flockInstance;
     }

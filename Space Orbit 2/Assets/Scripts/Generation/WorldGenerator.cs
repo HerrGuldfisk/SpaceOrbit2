@@ -16,7 +16,6 @@ public class WorldGenerator : MonoBehaviour {
     [SerializeField] private float minDistanceBetweenObjects = 50f;
 
     private readonly List<Vector2> _positionsPlacedAt = new List<Vector2>();
-
     private readonly List<GameObject> _suns = new List<GameObject>();
 
     private void Awake() {
@@ -30,30 +29,31 @@ public class WorldGenerator : MonoBehaviour {
 
     void GenerateMap() {
         SpawnAllSuns();
-        SpawnAllOthers();
-    }
-
-    private void SpawnAllOthers() {
-        SpawnSnekFlocks();
-    }
-
-    private void SpawnSnekFlocks() {
-        foreach (GameObject sun in _suns) {
-            int ranNumFlocks = Random.Range(0, 3);
-            while (ranNumFlocks > 0) {
-                int ranSneksInFlock = Random.Range(5, 15);
-                _othersSpawner.SpawnFlock(sun.transform.position, "Snek", ranSneksInFlock);
-                ranNumFlocks--;
-            }
-        }
     }
 
     private void SpawnAllSuns() {
         for (int i = 0; i < numberOfSuns; i++) {
+            SpawnSun();
+        }
+
+        void SpawnSun() {
             GameObject sunInstance = _sunSpawner.Spawn(Vector2.zero);
             Vector2 freeSunPosition = GetValidSunPosition(sunInstance);
             sunInstance.transform.position = freeSunPosition;
+            float sunDistanceFromWorldCenter = freeSunPosition.magnitude;
+            float solarSystemDifficultyLevel = sunDistanceFromWorldCenter / mapSize;
+            sunInstance.GetComponent<SolarSystemDifficulty>().SetDifficulty(solarSystemDifficultyLevel);
             _suns.Add(sunInstance);
+            SpawnSnekFlokOnSun(sunInstance);
+        }
+    }
+
+    private void SpawnSnekFlokOnSun(GameObject sun) { //could be moved to solar system spawner
+        int ranNumFlocks = Random.Range(0, 3);
+        while (ranNumFlocks > 0) {
+            int ranSneksInFlock = Random.Range(5, 15);
+            _othersSpawner.SpawnFlock(sun.transform.position, "Snek", ranSneksInFlock);
+            ranNumFlocks--;
         }
     }
 

@@ -23,7 +23,7 @@ public class PlanetSpawner : MonoBehaviour {
     public GameObject SpawnPlanet(Vector2 worldPosition) {
         GameObject planetInstance = Instantiate(planetPrefab, worldPosition, Quaternion.identity);
         RandomizePlanetSettings(planetInstance);
-        planetInstance.GetComponent<AsteroidSpawner>().SpawnAsteroidsInOrbit();
+        planetInstance.GetComponent<PlanetAsteroidManager>().SpawnAsteroidsInOrbit(0.5f);
         return planetInstance;
     }
 

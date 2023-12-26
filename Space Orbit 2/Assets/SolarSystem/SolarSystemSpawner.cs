@@ -7,24 +7,28 @@ using Vector3 = UnityEngine.Vector3;
 
 //spawns planets in an orbit inside of the solar system
 [RequireComponent(typeof(PlanetSpawner))]
+[RequireComponent(typeof(SolarSystemDifficulty))]
 public class SolarSystemSpawner : MonoBehaviour {
     [SerializeField] private GameObject sunOrbitField;
     [SerializeField] private GameObject orbitCenterPrefab;
     [SerializeField] private GameObject hubPlanetPrefab;
     private PlanetSpawner _planetSpawner;
+    private Transform _sunT;
 
     private float _orbitFieldSizeMin = 1;
     private float _orbitFieldSizeMax = 5;
     [SerializeField] private float planetOrbitSpeed = 5;
 
-    private float _sunRadius;
+    public float _sunRadius;
     private float _sunOrbitFieldRadius;
-    private float _spawnAreaThickness;
+    public float _spawnAreaThickness;
 
-    private readonly List<GameObject> _planets = new List<GameObject>();
+    public readonly List<GameObject> planets = new List<GameObject>();
+    public readonly List<GameObject> planetOrbitCenters = new List<GameObject>();
 
     private void Awake() {
         _planetSpawner = GetComponent<PlanetSpawner>();
+        _sunT = transform;
     }
 
     public void SpawnSolarSystem(float minOrbitFieldSize, float maxOrbitFieldSize) {
@@ -36,8 +40,8 @@ public class SolarSystemSpawner : MonoBehaviour {
     }
 
     private void SpawnCollectibleOnRandomPlanet() {
-        int randomPlanetIndex = Random.Range(0, _planets.Count);
-        GameObject randomPlanet = _planets[randomPlanetIndex];
+        int randomPlanetIndex = Random.Range(0, planets.Count);
+        GameObject randomPlanet = planets[randomPlanetIndex];
         randomPlanet.GetComponent<PlanetCollectibleSpawner>().SpawnCollectible();
     }
 
@@ -53,7 +57,6 @@ public class SolarSystemSpawner : MonoBehaviour {
         _spawnAreaThickness = _sunOrbitFieldRadius - _sunRadius;
     }
 
-    //spawn all planets and set them in orbit
     private void SpawnPlanetsInOrbit() {
         //keep track of width taken up by planet fields
         float totalWidthOfSpawnedPlanets = 0;
@@ -70,7 +73,7 @@ public class SolarSystemSpawner : MonoBehaviour {
             PositionPlanetInSolarSystem(spawnedPlanet);
             StartPlanetOrbiting(spawnedPlanet);
             totalWidthOfSpawnedPlanets += GetPlanetFieldDiameter(spawnedPlanet);
-            _planets.Add(spawnedPlanet);
+            planets.Add(spawnedPlanet);
         }
     }
 
@@ -85,9 +88,11 @@ public class SolarSystemSpawner : MonoBehaviour {
     }
 
     private void StartPlanetOrbiting(GameObject spawnedPlanet) {
-        GameObject spawnedOrbitCenter = Instantiate(orbitCenterPrefab, transform.position, Quaternion.identity, transform);
+        GameObject spawnedOrbitCenter = Instantiate(orbitCenterPrefab, transform.position, Quaternion.identity, _sunT);
+        planetOrbitCenters.Add(spawnedOrbitCenter);
         spawnedPlanet.transform.parent = spawnedOrbitCenter.transform;
-        spawnedOrbitCenter.GetComponent<RotateContinuously>().angularVelocity = planetOrbitSpeed;
+        float distanceFromSunCenter = Vector2.Distance(spawnedPlanet.transform.position, _sunT.position);
+        spawnedOrbitCenter.GetComponent<RotateContinuously>().angularVelocity = planetOrbitSpeed * 50f / distanceFromSunCenter;
     }
 
     private Vector2 GetRandomSpawnPosInOrbitField() {

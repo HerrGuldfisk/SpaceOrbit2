@@ -27,11 +27,13 @@ public class OrbitProvider : MonoBehaviour {
     //     OrbitingObjects.Add(newOrbiting);
     // }
 
-    public void AddObjectInOrbit(GameObject objectThatShouldOrbit) {
+    public void AddObjectInOrbit(GameObject objectThatShouldOrbit, float velocity = 5) {
         GameObject orbitCenter =
             Instantiate(orbitCenterPrefab, transform.position, quaternion.identity, _planetTransform);
         objectThatShouldOrbit.transform.parent = orbitCenter.transform;
-        orbitCenter.GetComponent<RotateContinuously>().angularVelocity = 10;
+        float distanceFromObjectToOrbitCenter = Vector3.Distance(objectThatShouldOrbit.transform.position, orbitCenter.transform.position);
+        float angularVelocity = velocity / distanceFromObjectToOrbitCenter;
+        orbitCenter.GetComponent<RotateContinuously>().angularVelocity = angularVelocity;
     }
 
 //     private void LateUpdate()

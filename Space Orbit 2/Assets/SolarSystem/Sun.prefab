@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 2500897939882227682}
   - component: {fileID: 8197454458995982502}
   - component: {fileID: 6548033116636454052}
+  - component: {fileID: -5999839578272493886}
+  - component: {fileID: 7730699877665576217}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -240,6 +242,8 @@ MonoBehaviour:
   hubPlanetPrefab: {fileID: 1102280568004835166, guid: a103a867032b7ef49b8b10bddb628718,
     type: 3}
   planetOrbitSpeed: 5
+  _sunRadius: 0
+  _spawnAreaThickness: 0
 --- !u!114 &6548033116636454052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +262,32 @@ MonoBehaviour:
   bodySizeMax: 15
   gravityFieldSizeMin: 70
   gravityFieldSizeMax: 200
+--- !u!114 &-5999839578272493886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239224056361073828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee9b19021ef6cd489d94d745f8ba617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePlanetSpeed: 100
+  planetSpeedDifficultyMultiplier: 0.3
+  snekFlockDensityMultiplier: 0.01
+  maxSneksPerFlock: 10
+  maxPlanetGravityStrength: 0.5
+--- !u!114 &7730699877665576217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239224056361073828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c249cab826cb43a44879fc70d6d03fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
