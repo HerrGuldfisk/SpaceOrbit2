@@ -24,8 +24,8 @@ namespace SolarSystem {
             SpawnSnekFlocks(newFlockCount, newSnekPerFlockCount);
         }
 
-        private void SpawnSnekFlocks(int numberOfToSpawn, int numberOfSneksPerFlock) {
-            while (numberOfToSpawn > _snekFlocks.Count) {
+        private void SpawnSnekFlocks(int numberOfFlocksWeWantInSolarSystem, int numberOfSneksPerFlock) {
+            while (numberOfFlocksWeWantInSolarSystem > _snekFlocks.Count) {
                 SpawnFlock(numberOfSneksPerFlock);
             }
         }
