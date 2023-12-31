@@ -10,23 +10,30 @@ namespace SolarSystem {
     [RequireComponent(typeof(SolarSystemTransformMethods))]
     public class SolarSystemSnekManager : MonoBehaviour {
         private readonly List<GameObject> _snekFlocks = new();
+        private SolarSystemTransformMethods _solarSystemTransformMethods;
+        private OthersSpawner _othersSpawner;
+
+        private void Awake() {
+            _solarSystemTransformMethods = GetComponent<SolarSystemTransformMethods>();
+            _othersSpawner = FindObjectOfType<OthersSpawner>();
+            Debug.Assert(_othersSpawner != null, "cant find an other spawner in the scene");
+        }
 
         public void RespawnSnekFlocks(int newFlockCount, int newSnekPerFlockCount) {
             ClearAllFlocks();
             SpawnSnekFlocks(newFlockCount, newSnekPerFlockCount);
         }
 
-        private void SpawnSnekFlocks(int numberOfFlocks, int numberOfSneksInFlock) {
-            SolarSystemTransformMethods transformMethods = GetComponent<SolarSystemTransformMethods>();
-            OthersSpawner othersSpawner = FindObjectOfType<OthersSpawner>();
-            Debug.Assert(othersSpawner != null, "cant find an other spawner in the scene");
-            while (numberOfFlocks > 0) {
-                //pos should be random between sun and orbit field
-                Vector2 spawnPos = transformMethods.GetRandomPosOutsideBody();
-                GameObject flockInstance = othersSpawner.SpawnFlock(spawnPos, "Snek", numberOfSneksInFlock);
-                numberOfFlocks--;
-                _snekFlocks.Add(flockInstance);
+        private void SpawnSnekFlocks(int numberOfToSpawn, int numberOfSneksPerFlock) {
+            while (numberOfToSpawn > _snekFlocks.Count) {
+                SpawnFlock(numberOfSneksPerFlock);
             }
+        }
+
+        private void SpawnFlock(int numberOfSneks) {
+            Vector2 spawnPos = _solarSystemTransformMethods.GetRandomPosOutsideBody();
+            GameObject flockInstance = _othersSpawner.SpawnFlock(spawnPos, "Snek", numberOfSneks);
+            _snekFlocks.Add(flockInstance);
         }
 
         private void ClearAllFlocks() {
