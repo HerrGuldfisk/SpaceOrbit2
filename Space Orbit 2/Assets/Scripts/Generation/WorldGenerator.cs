@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using SolarSystem;
 
 [RequireComponent(typeof(SunSpawner))]
 [RequireComponent(typeof(OthersSpawner))]
@@ -48,7 +49,8 @@ public class WorldGenerator : MonoBehaviour {
         }
     }
 
-    private void SpawnSnekFlokOnSun(GameObject sun) { //could be moved to solar system spawner
+    private void SpawnSnekFlokOnSun(GameObject sun) {
+        //could be moved to solar system spawner
         int ranNumFlocks = Random.Range(0, 3);
         while (ranNumFlocks > 0) {
             int ranSneksInFlock = Random.Range(5, 15);
