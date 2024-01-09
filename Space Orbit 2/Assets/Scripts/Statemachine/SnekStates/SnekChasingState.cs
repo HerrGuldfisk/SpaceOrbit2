@@ -12,7 +12,7 @@ public class SnekChasingState : BaseState
 
     private Vector2 _direction;
 
-    public GameObject Target { get; private set; }
+    public GameObject Target { get; set; }
 
     public GameObject Snek { get; private set; }
 
@@ -28,6 +28,8 @@ public class SnekChasingState : BaseState
         {
             Exit();
         }
+
+        Target = Snek.GetComponent<SnekBehaviour>()._target;
     }
 
     public override void Execute()
@@ -44,6 +46,6 @@ public class SnekChasingState : BaseState
 
     public override void Exit()
     {
-        
+
     }
 }

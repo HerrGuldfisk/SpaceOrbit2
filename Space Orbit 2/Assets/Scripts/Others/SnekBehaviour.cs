@@ -6,10 +6,7 @@ using static LimbsBehaviour2;
 
 public class SnekBehaviour : MonoBehaviour
 {
-    private GameObject _target;
-
-    private CircleCollider2D _snekVision;
-    private float _snekVisionRadius = 10f;
+    public GameObject _target;
 
     [HideInInspector]
     public StateMachine _stateMachine = new StateMachine();
@@ -21,16 +18,15 @@ public class SnekBehaviour : MonoBehaviour
     {
         Idle,
         Chase,
+        Return,
         Circle
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _snekVision = gameObject.AddComponent<CircleCollider2D>();
-        _snekVision.radius = _snekVisionRadius;
-
         _availableStates.Add(SnekState.Idle, new SnekIdleState());
+        _availableStates.Add(SnekState.Return, new SnekReturnState());
         _availableStates.Add(SnekState.Chase, new SnekChasingState(_target, gameObject));
 
         _stateMachine.ChangeState(_availableStates[SnekState.Idle]);
@@ -44,19 +40,15 @@ public class SnekBehaviour : MonoBehaviour
     }
 
     // add a game object and write this into a component that is added to the new object, it will handle vision instead...
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void PlayerWasSeen(Collider2D col)
     {
-        Collider2D col = collision.gameObject.GetComponent<Collider2D>();
+        print("player is seen");
+        _target = col.gameObject;
+        _stateMachine.ChangeState(_availableStates[SnekState.Chase]);
+    }
 
-        // Check if snekVision collider is touching something
-        if (col.IsTouching(_snekVision))
-        {
-            // is it seeing the player?
-            if (col.gameObject.CompareTag("Player"))
-            {
-                _target = col.gameObject;
-                _stateMachine.ChangeState(_availableStates[SnekState.Chase]);
-            }
-        }
+    public void PlayerWasLost(Vector3 lastPosition)
+    {
+        _target = null;
     }
 }
