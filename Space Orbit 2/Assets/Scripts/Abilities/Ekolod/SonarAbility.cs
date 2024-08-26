@@ -62,10 +62,10 @@ public class SonarAbility : PlayerAbility
     {
         while (_charge < _maxCharge)
         {
-            if(_basicMovement.FuelSystem.GetCurrentFuel() > Time.deltaTime * 2)
+            if(_basicMovement.FuelTank.GetCurrentFuel() > Time.deltaTime * 2)
             {
                 _charge += Time.deltaTime;
-                if(!_basicMovement.FuelSystem.TryRemoveFuel( Time.deltaTime * 2))
+                if(!_basicMovement.FuelTank.TryRemoveFuel( Time.deltaTime * 2))
                 {
 
                 }

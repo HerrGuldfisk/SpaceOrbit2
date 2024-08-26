@@ -6,18 +6,9 @@ public class CameraFollowPlanetState : BaseState
 {
     public PlanetSettings Planet { get; set; }
     public Camera Camera { get; private set; }
-
-    private float _cameraSizetarget = 40;
     private float _startOrthoSize;
-
     private float _transitionTime = 1;
     private Vector3 _startPosition;
-
-    public CameraFollowPlanetState(PlanetSettings planet, Camera camera) : base() 
-    {
-        Planet = planet;
-        Camera = camera;
-    }
 
     public CameraFollowPlanetState(Camera camera) : base()
     {

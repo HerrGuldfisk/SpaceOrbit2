@@ -8,6 +8,10 @@ TagManager:
   - Ship
   - FuelPackage
   - Planet
+  - AudioManager
+  - Asteroid
+  - Star
+  - Cargo
   layers:
   - Default
   - TransparentFX
@@ -16,13 +20,13 @@ TagManager:
   - Water
   - UI
   - PlayerMinimapMarker
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Planet
+  - Obstacle
+  - Asteroid
+  - Star
+  - NPC
+  - GravityField
   - 
   - 
   - 
